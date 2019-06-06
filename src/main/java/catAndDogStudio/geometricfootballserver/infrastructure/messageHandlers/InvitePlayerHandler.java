@@ -1,14 +1,11 @@
-package catAndDogStudio.geometricfootballserver.infrastructure.messagesHandlers;
+package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.channels.SelectableChannel;
-import java.nio.channels.SocketChannel;
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,7 +20,7 @@ public class InvitePlayerHandler extends BaseMessageHandler {
             .collect(Collectors.toSet());
 
     @Override
-    public void handleMessage(SelectableChannel channel, Game game, String[] splittedMessage) {
+    protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
         String invitedPlayer = splittedMessage[1];
         Invitation invitation = game.getInvitations().stream()
                 .filter(i -> i.getInvitedPlayer().equals(invitedPlayer))
@@ -50,8 +47,17 @@ public class InvitePlayerHandler extends BaseMessageHandler {
                         .invitatorChannel(channel)
                         .invitedPlayerChannel(invitedPlayerChannel)
                         .build());
-        sendMessage(invitedPlayerChannel, game, OutputMessages.INVITATION + ";" + game.getOwnerName());
-        sendMessage(channel, game, "INVITATION_SENT" + ";" + invitedPlayer);
+        Game invitedPlayerGame = serverState.getWaitingForGames().get(invitedPlayerChannel);
+        invitedPlayerGame.getInvitations().add(
+                Invitation.builder()
+                        .creationTime(new Date().getTime())
+                        .invitator(game.getOwnerName())
+                        .invitedPlayer(invitedPlayer)
+                        .invitatorChannel(channel)
+                        .invitedPlayerChannel(invitedPlayerChannel)
+                        .build());
+        sendMessage(invitedPlayerChannel, invitedPlayerGame, OutputMessages.INVITATION + ";" + game.getOwnerName());
+        sendMessage(channel, game, OutputMessages.INVITATION_SENT + ";" + invitedPlayer);
     }
 
     @Override

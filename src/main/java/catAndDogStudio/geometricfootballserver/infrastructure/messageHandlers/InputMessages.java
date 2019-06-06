@@ -1,16 +1,11 @@
-package catAndDogStudio.geometricfootballserver.infrastructure.messagesHandlers;
+package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
 public class InputMessages {
-    public final static String START_GAME = "NEW_GAME";
     public final static String GET_PLAYERS = "GET_PLAYERS";
     public final static String INVITE_PLAYER = "INVITE_PLAYER";
     public final static String JOIN_GAME = "JOIN_GAME";
-    public final static String INVITE_RESPONSE = "INVITE_RESPONSE";
     public final static String HEARTHBEAT = "HEARTBEAT";
-    public final static String INVITATION = "INVITATION";
     public final static String CANCEL_INVITATION = "CANCEL_INVITATION";
-    public final static String HOST_LEFT = "HOST_LEFT";
-    public final static String PLAYER_LEFT = "PLAYER_LEFT";
     public final static String MAU = "MAU";
     public final static String BYE = "BYE";
     public final static String HOST_GAME = "HOST_GAME";

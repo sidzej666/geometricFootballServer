@@ -153,10 +153,8 @@ public class DogServer implements ChannelWriter{
 
         try {
             for(String message : messagesFromClient) {
-                final String responseToClientWithoutEndLine = geometricService.handleMessage(key.channel(),
+                geometricService.handleMessage(key.channel(),
                         gameObjectForClient.get(key.channel()), message);
-                final ByteBuffer buffer = ByteBuffer.wrap((responseToClientWithoutEndLine + "\n").getBytes());
-                doWrite(buffer, (SocketChannel) key.channel());
             }
         } catch (Exception e) {
             log.warn("Exception while handling message: " + messageFromClient, e);

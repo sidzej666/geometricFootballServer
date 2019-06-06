@@ -12,7 +12,6 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 public class ServerState {
-    private final Map<SelectableChannel, Game> awaitingAuthentication = new HashMap<>();
     private final Map<SelectableChannel, Game> hostedGames = new HashMap<>();
     private final Map<SelectableChannel, Game> waitingForGames = new HashMap<>();
     private final Map<SelectableChannel, Game> playersInGame = new HashMap<>();
@@ -30,4 +29,12 @@ public class ServerState {
                 .findFirst()
                 .orElse(null);
     }
+    public SelectableChannel getHostPlayer(final String hostName) {
+        return hostedGames.keySet().stream()
+                .filter(k -> hostedGames.get(k).getOwnerName().equals(hostName))
+                .findFirst()
+                .orElse(null);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package catAndDogStudio.geometricfootballserver.infrastructure.messagesHandlers;
+package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
