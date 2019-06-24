@@ -17,4 +17,9 @@ public class InputMessages {
     public final static String INVITATION_ACCEPTED_BY_GUEST = "INVITATION_ACCEPTED_BY_GUEST";
     public final static String INVITATION_REJECTED_BY_GUEST = "INVITATION_REJECTED_BY_GUEST";
     public final static String GAME_STATUS = "GAME_STATUS";
+    public final static String PING = "PING";
+    public final static String SET_TACTIC = "SET_TACTIC";
+    public final static String SET_TEAM_PLAYERS = "SET_TEAM_PLAYERS";
+    public final static String SET_TACTIC_MAPPING = "SET_TACTIC_MAPPING";
+    public final static String SET_TEAM = "SET_TEAM";
 }

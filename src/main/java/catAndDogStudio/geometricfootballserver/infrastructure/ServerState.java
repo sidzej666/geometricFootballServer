@@ -23,6 +23,9 @@ public class ServerState {
     public Map<SelectableChannel, Game> getWaitingForGames() {
         return waitingForGames;
     }
+    public Map<SelectableChannel, Game> getPlayersInGame() {
+        return playersInGame;
+    }
     public SelectableChannel getWaitingPlayer(final String playerName) {
         return waitingForGames.keySet().stream()
                 .filter(k -> waitingForGames.get(k).getOwnerName().equals(playerName))

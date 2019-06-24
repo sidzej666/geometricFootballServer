@@ -28,6 +28,11 @@ public class MessageHandlingStrategy {
     private final InvitationAcceptedByGuestHandler invitationAcceptedByGuestHandler;
     private final InvitationRejectedByGuestHandler invitationRejectedByGuestHandler;
     private final PlayerKickedOutByHostHandler playerKickedOutByHostHandler;
+    private final PingPongHandler pingPongHandler;
+    private final SetTacticHandler setTacticHandler;
+    private final SetTeamHandler setTeamHandler;
+    private final SetTeamPlayersHandler setTeamPlayersHandler;
+    private final SetTacticMappingHandler setTacticMappingHandler;
     private Map<String, GeometricServerMessageHandler> handlers = new HashMap<>();
 
     @PostConstruct
@@ -45,9 +50,15 @@ public class MessageHandlingStrategy {
         handlers.put(InputMessages.INVITATION_ACCEPTED_BY_GUEST, invitationAcceptedByGuestHandler);
         handlers.put(InputMessages.INVITATION_REJECTED_BY_GUEST, invitationRejectedByGuestHandler);
         handlers.put(InputMessages.KITTY_KICKED_BY_HOST_KITTY, playerKickedOutByHostHandler);
+        handlers.put(InputMessages.PING, pingPongHandler);
+        handlers.put(InputMessages.SET_TACTIC, setTacticHandler);
+        handlers.put(InputMessages.SET_TEAM, setTeamHandler);
+        handlers.put(InputMessages.SET_TACTIC_MAPPING, setTacticMappingHandler);
+        handlers.put(InputMessages.SET_TEAM_PLAYERS, setTeamPlayersHandler);
     }
 
     public void handleMessage(SelectableChannel channel, Game game, String message) {
+        log.debug("message received from " + game.getOwnerName() + " " + message);
         final String[] splittedMessage;
         try {
             splittedMessage = message.split(";");

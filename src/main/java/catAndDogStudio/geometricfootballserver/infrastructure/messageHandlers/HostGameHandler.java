@@ -23,6 +23,7 @@ public class HostGameHandler extends BaseMessageHandler {
             return;
         }
         game.setPlayerState(PlayerState.GAME_HOST);
+        game.setGrantedColor(splittedMessage[2]);
         serverState.getHostedGames().put(channel, game);
         sendMessage(channel, game, OutputMessages.GAME_HOSTED + ";" + game.getOwnerName());
     }

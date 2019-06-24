@@ -13,4 +13,5 @@ public class Invitation {
     private final String invitedPlayer;
     private final SelectableChannel invitedPlayerChannel;
     private final long creationTime;
+    private final String preferredColor;
 }

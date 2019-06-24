@@ -1,9 +1,6 @@
 package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
-import catAndDogStudio.geometricfootballserver.infrastructure.Game;
-import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
-import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
-import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,14 +29,17 @@ public class JoinGameHandler extends BaseMessageHandler {
                 .invitatorChannel(hostChannel)
                 .invitedPlayer(game.getOwnerName())
                 .invitedPlayerChannel(channel)
+                .preferredColor(game.getPreferredColor())
                 .build());
-        sendMessage(hostChannel, hostGame, OutputMessages.INVITATION + ";" + game.getOwnerName());
+        sendMessage(hostChannel, hostGame, OutputMessages.INVITATION + Constants.MESSAGE_SEPARATOR + game.getOwnerName()
+            + Constants.MESSAGE_SEPARATOR + game.getPreferredColor());
         game.getInvitations().add(Invitation.builder()
                 .creationTime(new Date().getTime())
                 .invitator(hostGame.getOwnerName())
                 .invitatorChannel(hostChannel)
                 .invitedPlayer(game.getOwnerName())
                 .invitedPlayerChannel(channel)
+                .preferredColor(game.getPreferredColor())
                 .build());
         game.setPlayerState(PlayerState.AWAITING_INVITATION_DECISION);
         sendMessage(channel, game, OutputMessages.INVITATION_SENT + ";" + hostGame.getOwnerName());

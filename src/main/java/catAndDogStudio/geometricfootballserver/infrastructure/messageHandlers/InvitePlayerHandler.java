@@ -46,6 +46,7 @@ public class InvitePlayerHandler extends BaseMessageHandler {
                         .invitedPlayer(invitedPlayer)
                         .invitatorChannel(channel)
                         .invitedPlayerChannel(invitedPlayerChannel)
+                        .preferredColor(splittedMessage[2])
                         .build());
         Game invitedPlayerGame = serverState.getWaitingForGames().get(invitedPlayerChannel);
         invitedPlayerGame.getInvitations().add(
@@ -55,6 +56,7 @@ public class InvitePlayerHandler extends BaseMessageHandler {
                         .invitedPlayer(invitedPlayer)
                         .invitatorChannel(channel)
                         .invitedPlayerChannel(invitedPlayerChannel)
+                        .preferredColor(splittedMessage[2])
                         .build());
         sendMessage(invitedPlayerChannel, invitedPlayerGame, OutputMessages.INVITATION + ";" + game.getOwnerName());
         sendMessage(channel, game, OutputMessages.INVITATION_SENT + ";" + invitedPlayer);

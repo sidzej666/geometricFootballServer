@@ -1,5 +1,6 @@
 package catAndDogStudio.geometricfootballserver.infrastructure;
 
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.LeaveGameService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ import java.util.*;
 public class DogServer implements ChannelWriter{
     private static final int BUFFER_SIZE = 1024;
     private static final long MAX_CONNECTIONS = 100_000l;
+
+    private final LeaveGameService leaveGameService;
 
     @Value("${port}")
     private int port;
@@ -55,6 +58,7 @@ public class DogServer implements ChannelWriter{
                 }
                 for(SelectableChannel c : channelsToRemove) {
                     log.warn("Client disconnected {}", gameObjectForClient.get(c).getOwnerName());
+                    leaveGameService.leaveGame(c, gameObjectForClient.get(c), true);
                     session.remove(c);
                     gameObjectForClient.remove(c);
                     geometricService.remove(c);
@@ -149,8 +153,14 @@ public class DogServer implements ChannelWriter{
         assert !Objects.isNull(key);
 
         String messageFromClient = this.session.get(key.channel()).toString().trim();
-        String[] messagesFromClient = messageFromClient.split(Constants.END_MESSAGE_MARKER);
-
+        if (!messageFromClient.contains(Constants.END_MESSAGE_MARKER)) {
+            geometricService.storePartialMessage(key.channel(), gameObjectForClient.get(key.channel()), messageFromClient);
+            return;
+        }
+        Game game = gameObjectForClient.get(key.channel());
+        String fullMessage = game.getPartialMessage() == null ? "" : game.getPartialMessage() + messageFromClient;
+        String[] messagesFromClient = fullMessage.split(Constants.END_MESSAGE_MARKER);
+        game.setPartialMessage(null);
         try {
             for(String message : messagesFromClient) {
                 geometricService.handleMessage(key.channel(),

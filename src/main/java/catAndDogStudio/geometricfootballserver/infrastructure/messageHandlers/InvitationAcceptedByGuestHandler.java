@@ -4,6 +4,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.PlayersInTeamMessageCreator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
     private final ServerState serverState;
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.AWAITS_GAME);
+    private final PlayersInTeamMessageCreator playersInTeamMessageCreator;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
@@ -36,7 +38,8 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
             sendMessage(channel, game, OutputMessages.INVITATION_NOT_FOUND + ";" + hostGame.getOwnerName());
             return;
         }
-
+        serverState.getWaitingForGames().remove(channel);
+        serverState.getPlayersInGame().put(channel, game);
         game.setPlayerState(PlayerState.GAME_GUEST);
         sendInvitationAcceptedToGameHostAndChangeHostState(hostChannel, hostGame, game, invitation);
         sendMessageToGuestAndUpdateGuestGameStateTransition(channel, game, invitation);
@@ -60,8 +63,11 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
                                                                     Game guestGame, Invitation hostInvitation) {
         hostGame.getInvitations().remove(hostInvitation);
         hostGame.getPlayersInGame().put(hostInvitation.getInvitedPlayerChannel(), guestGame);
+        guestGame.setHostChannel(hostChannel);
+        guestGame.setGrantedColor(hostInvitation.getPreferredColor());
         sendMessage(hostChannel, hostGame, OutputMessages.INVITATION_ACCEPTED_BY_GUEST + ";" +
                 hostGame.getOwnerName() + ";" + guestGame.getOwnerName());
+        sendMessage(hostChannel, hostGame, playersInTeamMessageCreator.message(hostGame));
     }
 
     @Override

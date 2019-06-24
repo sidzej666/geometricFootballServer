@@ -57,4 +57,8 @@ public class GeometricService implements ChannelWriter {
         }
     }
 
+    public void storePartialMessage(SelectableChannel channel, Game game, String messageFromClient) {
+        String partialMessage = game.getPartialMessage() == null ? "" : game.getPartialMessage();
+        game.setPartialMessage(partialMessage + messageFromClient);
+    }
 }

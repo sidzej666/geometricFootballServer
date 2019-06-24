@@ -12,26 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Slf4j
-public abstract class BaseMessageHandler implements GeometricServerMessageHandler {
-    protected final void sendMessage(SelectableChannel channel, Game game, String message) {
-        try {
-            final ByteBuffer buffer = ByteBuffer.wrap((message + "\n").getBytes());
-            doWrite(buffer, (SocketChannel) channel);
-            log.debug("message sent to {}, message: {}", game.getOwnerName(), message);
-        } catch (Exception e){
-            log.error("Error while sending message in {}, receiver {}, message {}" , this.getClass().getSimpleName(),
-                    game.getOwnerName(), message);
-        }
-    }
-    private void doWrite(final ByteBuffer buffer, final SocketChannel channel) throws IOException {
-        if (Objects.isNull(buffer) || Objects.isNull(channel)) {
-            throw new IllegalArgumentException("Required buffer and channel.");
-        }
-
-        while (buffer.hasRemaining()) {
-            channel.write(buffer);
-        }
-    }
+public abstract class BaseMessageHandler extends MessageSender implements GeometricServerMessageHandler {
     @Override
     public final void handleMessage(SelectableChannel channel, Game game, String[] splittedMessage) {
         if (!validateState(game.getPlayerState())) {

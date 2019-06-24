@@ -1,5 +1,6 @@
 package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
+import catAndDogStudio.geometricfootballserver.infrastructure.Constants;
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
@@ -52,7 +53,9 @@ public class GetPlayersHandler extends BaseMessageHandler {
                 .filter(g -> !g.getOwnerName().equals(game.getOwnerName()))
                 .forEach(g -> {
                     response.append(g.getOwnerName());
-                    response.append(";");
+                    response.append(Constants.SUB_MESSAGE_SEPARATOR);
+                    response.append(g.getPreferredColor());
+                    response.append(Constants.MESSAGE_SEPARATOR);
                     return;
                 });
         return response.toString();

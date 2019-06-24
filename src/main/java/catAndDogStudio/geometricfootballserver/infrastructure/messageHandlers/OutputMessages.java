@@ -26,4 +26,9 @@ public class OutputMessages {
     public final static String INVITATION_REJECTED_BY_GUEST = "INVITATION_REJECTED_BY_GUEST";
     public final static String NO_SUCH_KITTY_IN_GAME_KUWETA = "NO_SUCH_KITTY_IN_GAME_KUWETA";
     public final static String KITTY_KICKED_OUT = "KITTY_KICKED_OUT";
+    public final static String PONG = "PONG";
+    public final static String TEAM_TACTIC = "TEAM_TACTIC";
+    public final static String TEAM_TEAM = "TEAM_TEAM";
+    public final static String TEAM_TEAM_PLAYERS = "TEAM_TEAM_PLAYERS";
+    public final static String TEAM_TACTIC_MAPPING = "TEAM_TACTIC_MAPPING";
 }
