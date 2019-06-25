@@ -158,13 +158,19 @@ public class DogServer implements ChannelWriter{
             return;
         }
         Game game = gameObjectForClient.get(key.channel());
-        String fullMessage = game.getPartialMessage() == null ? "" : game.getPartialMessage() + messageFromClient;
+        String fullMessage = (game.getPartialMessage() == null ? "" : game.getPartialMessage()) + messageFromClient;
+        final boolean lastPartIsPartialMessage = !fullMessage.endsWith(Constants.END_MESSAGE_MARKER);
         String[] messagesFromClient = fullMessage.split(Constants.END_MESSAGE_MARKER);
         game.setPartialMessage(null);
         try {
-            for(String message : messagesFromClient) {
+            for(int i = 0; i < messagesFromClient.length; i++) {
+                if (lastPartIsPartialMessage && i == messagesFromClient.length - 1) {
+                    geometricService.storePartialMessage(key.channel(), gameObjectForClient.get(key.channel()),
+                            messagesFromClient[i]);
+                    return;
+                }
                 geometricService.handleMessage(key.channel(),
-                        gameObjectForClient.get(key.channel()), message);
+                        gameObjectForClient.get(key.channel()), messagesFromClient[i]);
             }
         } catch (Exception e) {
             log.warn("Exception while handling message: " + messageFromClient, e);

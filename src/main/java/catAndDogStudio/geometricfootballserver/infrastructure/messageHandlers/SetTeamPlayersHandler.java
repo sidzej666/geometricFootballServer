@@ -29,7 +29,7 @@ public class SetTeamPlayersHandler extends BaseMessageHandler{
                 players.append(Constants.MESSAGE_SEPARATOR);
             }
         }
-        game.setTeam(players.toString());
+        game.setPlayers(players.toString());
         game.getPlayersInGame().keySet().stream()
                 .forEach(c -> sendTeam(c, game.getPlayersInGame().get(c), game.getPlayers()));
     }
