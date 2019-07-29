@@ -5,6 +5,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.PlayersInTeamMessageCreator;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.TeamInfoMessageCreator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
     private final ServerState serverState;
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.AWAITS_GAME);
     private final PlayersInTeamMessageCreator playersInTeamMessageCreator;
+    private final TeamInfoMessageCreator teamInfoMessageCreator;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
@@ -42,11 +44,11 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
         serverState.getPlayersInGame().put(channel, game);
         game.setPlayerState(PlayerState.GAME_GUEST);
         sendInvitationAcceptedToGameHostAndChangeHostState(hostChannel, hostGame, game, invitation);
-        sendMessageToGuestAndUpdateGuestGameStateTransition(channel, game, invitation);
+        sendMessageToGuestAndUpdateGuestGameStateTransition(channel, game, invitation, hostGame);
     }
 
     private void sendMessageToGuestAndUpdateGuestGameStateTransition(SelectableChannel guestChannel, Game guestGame,
-                                                                     Invitation hostInvitation) {
+                                                                     Invitation hostInvitation, Game hostGame) {
         Invitation guestInvitation = guestGame.getInvitations().stream()
                 .filter(i -> i.getInvitator().equals(hostInvitation.getInvitator()))
                 .findFirst()
@@ -57,6 +59,8 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
         guestGame.setPlayerState(PlayerState.GAME_GUEST);
         sendMessage(guestChannel, guestGame, OutputMessages.INVITATION_ACCEPTED_BY_GUEST + ";" +
                 hostInvitation.getInvitator() + ";" + guestGame.getOwnerName());
+        sendMessage(guestChannel, guestGame, playersInTeamMessageCreator.message(hostGame));
+        teamInfoMessageCreator.sendAllAvailableTeamInfo(hostGame, guestChannel, guestGame);
     }
 
     private void sendInvitationAcceptedToGameHostAndChangeHostState(SelectableChannel hostChannel, Game hostGame,

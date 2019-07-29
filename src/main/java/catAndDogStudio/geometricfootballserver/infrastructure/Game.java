@@ -23,6 +23,7 @@ public class Game {
     private String tacticMapping;
     private String players;
     private String team;
+    private Map<String, String> playersUsersMapping = new HashMap<>();
     private String partialMessage;
 
     public void setUp(String ownerName) {

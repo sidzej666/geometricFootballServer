@@ -39,7 +39,7 @@ public class PlayerKickedOutByHostHandler extends BaseMessageHandler {
 
     private void sendPlayerKickedOutToAllPlayersInGame(Game game, String guestName) {
         for (SelectableChannel channel: game.getPlayersInGame().keySet()) {
-            sendMessage(channel, game, OutputMessages.KITTY_KICKED_OUT + ";" + guestName);
+            sendMessage(channel, game.getPlayersInGame().get(channel), OutputMessages.KITTY_KICKED_OUT + ";" + guestName);
         }
     }
     @Override

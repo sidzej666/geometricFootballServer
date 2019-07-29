@@ -31,4 +31,5 @@ public class OutputMessages {
     public final static String TEAM_TEAM = "TEAM_TEAM";
     public final static String TEAM_TEAM_PLAYERS = "TEAM_TEAM_PLAYERS";
     public final static String TEAM_TACTIC_MAPPING = "TEAM_TACTIC_MAPPING";
+    public final static String TEAM_PLAYERS_USERS_MAPPING = "TEAM_PLAYERS_USERS_MAPPING";
 }

@@ -16,21 +16,25 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SetTacticHandler extends BaseMessageHandler{
+public class SetTeamPlayersUsersMappingHandler extends BaseMessageHandler {
     private final ServerState serverState;
     private final Set<PlayerState> availableStates = EnumSet.of(PlayerState.GAME_HOST);
     private final TeamInfoMessageCreator teamInfoMessageCreator;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
-        final String tactic = splittedMessage[1];
-        game.setTactic(tactic);
+        for(int i = 1; i < splittedMessage.length; i++) {
+            final String[] playerIdAndUserName = splittedMessage[i].split(Constants.SUB_MESSAGE_SEPARATOR_FOR_IDS);
+            final String playerId = playerIdAndUserName[0];
+            final String userName = playerIdAndUserName[1];
+            game.getPlayersUsersMapping().put(playerId, userName);
+        }
         game.getPlayersInGame().keySet().stream()
-                .forEach(c -> sendTactic(c, game.getPlayersInGame().get(c),  game));
+                .forEach(c -> sendPlayerUsersMapping(c, game.getPlayersInGame().get(c), game));
     }
 
-    private void sendTactic(SelectableChannel c, Game guestGame, Game hostGame) {
-        sendMessage(c, guestGame, teamInfoMessageCreator.teamTacticMessage(hostGame));
+    private void sendPlayerUsersMapping(SelectableChannel c, Game guestGame, Game hostGame) {
+        sendMessage(c, guestGame, teamInfoMessageCreator.teamPlayersUsersMapping(hostGame));
     }
 
     @Override

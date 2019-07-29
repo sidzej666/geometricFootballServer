@@ -4,6 +4,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Constants;
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.TeamInfoMessageCreator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,17 +19,18 @@ import java.util.Set;
 public class SetTacticMappingHandler extends BaseMessageHandler{
     private final ServerState serverState;
     private final Set<PlayerState> availableStates = EnumSet.of(PlayerState.GAME_HOST);
+    private final TeamInfoMessageCreator teamInfoMessageCreator;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
         final String tacticMapping = splittedMessage[1];
-        game.setTactic(tacticMapping);
+        game.setTacticMapping(tacticMapping);
         game.getPlayersInGame().keySet().stream()
-                .forEach(c -> sendTactic(c, game.getPlayersInGame().get(c), tacticMapping));
+                .forEach(c -> sendTactic(c, game.getPlayersInGame().get(c), game));
     }
 
-    private void sendTactic(SelectableChannel c, Game guestGame, String tacticMapping) {
-        sendMessage(c, guestGame, OutputMessages.TEAM_TACTIC_MAPPING + Constants.MESSAGE_SEPARATOR + tacticMapping);
+    private void sendTactic(SelectableChannel c, Game guestGame, Game hostGame) {
+        sendMessage(c, guestGame, teamInfoMessageCreator.teamTacticMappingMessage(hostGame));
     }
 
     @Override

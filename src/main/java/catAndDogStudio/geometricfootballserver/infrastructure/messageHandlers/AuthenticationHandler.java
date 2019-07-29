@@ -19,9 +19,9 @@ public class AuthenticationHandler extends BaseMessageHandler {
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
         String key = splittedMessage[1];
         if ("1234567890".equals(key)) {
-            game.setOwnerName("kotek-maskotek");
+            game.setOwnerName("kotekMaskotek");
         } else if ("0987654321".equals(key)) {
-            game.setOwnerName("java-kotek");
+            game.setOwnerName("javaKotek");
         } else if ("1".equals(key)) {
             game.setOwnerName("piesek");
         } else if ("2".equals(key)) {

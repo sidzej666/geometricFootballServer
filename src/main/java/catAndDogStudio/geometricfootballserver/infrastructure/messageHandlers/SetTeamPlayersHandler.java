@@ -4,7 +4,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Constants;
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
-import javafx.beans.binding.StringBinding;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.TeamInfoMessageCreator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,9 +16,10 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SetTeamPlayersHandler extends BaseMessageHandler{
+public class SetTeamPlayersHandler extends BaseMessageHandler {
     private final ServerState serverState;
     private final Set<PlayerState> availableStates = EnumSet.of(PlayerState.GAME_HOST);
+    private final TeamInfoMessageCreator teamInfoMessageCreator;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
@@ -31,11 +32,11 @@ public class SetTeamPlayersHandler extends BaseMessageHandler{
         }
         game.setPlayers(players.toString());
         game.getPlayersInGame().keySet().stream()
-                .forEach(c -> sendTeam(c, game.getPlayersInGame().get(c), game.getPlayers()));
+                .forEach(c -> sendTeam(c, game.getPlayersInGame().get(c), game));
     }
 
-    private void sendTeam(SelectableChannel c, Game guestGame, String players) {
-        sendMessage(c, guestGame, OutputMessages.TEAM_TEAM_PLAYERS + Constants.MESSAGE_SEPARATOR + players);
+    private void sendTeam(SelectableChannel c, Game guestGame, Game hostGame) {
+        sendMessage(c, guestGame, teamInfoMessageCreator.teamPlayersMessage(hostGame));
     }
 
     @Override

@@ -33,6 +33,7 @@ public class MessageHandlingStrategy {
     private final SetTeamHandler setTeamHandler;
     private final SetTeamPlayersHandler setTeamPlayersHandler;
     private final SetTacticMappingHandler setTacticMappingHandler;
+    private final SetTeamPlayersUsersMappingHandler setTeamPlayersUsersMappingHandler;
     private Map<String, GeometricServerMessageHandler> handlers = new HashMap<>();
 
     @PostConstruct
@@ -55,6 +56,7 @@ public class MessageHandlingStrategy {
         handlers.put(InputMessages.SET_TEAM, setTeamHandler);
         handlers.put(InputMessages.SET_TACTIC_MAPPING, setTacticMappingHandler);
         handlers.put(InputMessages.SET_TEAM_PLAYERS, setTeamPlayersHandler);
+        handlers.put(InputMessages.SET_TEAM_PLAYERS_USERS_MAPPING, setTeamPlayersUsersMappingHandler);
     }
 
     public void handleMessage(SelectableChannel channel, Game game, String message) {

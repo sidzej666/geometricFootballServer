@@ -58,7 +58,8 @@ public class InvitePlayerHandler extends BaseMessageHandler {
                         .invitedPlayerChannel(invitedPlayerChannel)
                         .preferredColor(splittedMessage[2])
                         .build());
-        sendMessage(invitedPlayerChannel, invitedPlayerGame, OutputMessages.INVITATION + ";" + game.getOwnerName());
+        sendMessage(invitedPlayerChannel, invitedPlayerGame, OutputMessages.INVITATION + ";" + game.getOwnerName()
+            + ";" + splittedMessage[2]);
         sendMessage(channel, game, OutputMessages.INVITATION_SENT + ";" + invitedPlayer);
     }
 

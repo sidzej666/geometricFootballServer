@@ -2,6 +2,7 @@ package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.*;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.PlayersInTeamMessageCreator;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.TeamInfoMessageCreator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
     private final ServerState serverState;
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.GAME_HOST);
     private final PlayersInTeamMessageCreator playersInTeamMessageCreator;
+    private final TeamInfoMessageCreator teamInfoMessageCreator;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
@@ -50,16 +52,12 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
         serverState.getWaitingForGames().remove(invitation.getInvitedPlayerChannel());
         serverState.getPlayersInGame().put(invitation.getInvitedPlayerChannel(), guestGame);
         sendMessage(channel, game, OutputMessages.KITTY_JOINED_GAME + ";" + invitation.getInvitedPlayer());
+
         sentPlayersListToAcceptedPlayer(game, invitation.getInvitedPlayerChannel(), guestGame);
+        teamInfoMessageCreator.sendAllAvailableTeamInfo(game, invitation.getInvitedPlayerChannel(), guestGame);
     }
 
     private void sentPlayersListToAcceptedPlayer(Game game, SelectableChannel invitedPlayerChannel, Game guestGame) {
-        /*
-        String message = OutputMessages.TEAM_PLAYERS + ";" + game.getOwnerName() + ";";
-        for(Game playerInGame : game.getPlayersInGame().values()) {
-            message += playerInGame.getOwnerName() + ";";
-        }
-        */
         sendMessage(invitedPlayerChannel, guestGame, playersInTeamMessageCreator.message(game));
     }
 

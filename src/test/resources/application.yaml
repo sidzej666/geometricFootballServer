@@ -1,1 +1,13 @@
 port: 8012
+
+proxy:
+  port: 8011
+  noOfConnectionsToRealServer: 10
+
+spring:
+  profiles:
+    active:
+      testServer
+
+clients:
+  proxyTestServer: http://localhost:8081/geometricServer

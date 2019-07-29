@@ -22,4 +22,5 @@ public class InputMessages {
     public final static String SET_TEAM_PLAYERS = "SET_TEAM_PLAYERS";
     public final static String SET_TACTIC_MAPPING = "SET_TACTIC_MAPPING";
     public final static String SET_TEAM = "SET_TEAM";
+    public final static String SET_TEAM_PLAYERS_USERS_MAPPING = "SET_TEAM_PLAYERS_USERS_MAPPING";
 }

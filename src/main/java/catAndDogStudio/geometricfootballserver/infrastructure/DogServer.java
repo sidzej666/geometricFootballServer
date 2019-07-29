@@ -1,8 +1,6 @@
 package catAndDogStudio.geometricfootballserver.infrastructure;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.LeaveGameService;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +15,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class DogServer implements ChannelWriter{
+public class DogServer implements ChannelWriter {
     private static final int BUFFER_SIZE = 1024;
     private static final long MAX_CONNECTIONS = 100_000l;
 
