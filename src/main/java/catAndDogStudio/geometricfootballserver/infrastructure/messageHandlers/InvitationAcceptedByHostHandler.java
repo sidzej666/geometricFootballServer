@@ -58,7 +58,7 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
     }
 
     private void sentPlayersListToAcceptedPlayer(Game game, SelectableChannel invitedPlayerChannel, Game guestGame) {
-        sendMessage(invitedPlayerChannel, guestGame, playersInTeamMessageCreator.message(game));
+        sendMessage(invitedPlayerChannel, guestGame, playersInTeamMessageCreator.message(game, OutputMessages.TEAM_PLAYERS));
     }
 
     private void sendPlayerJoinGameToAllPlayersInGame(Game game, String newPlayer) {

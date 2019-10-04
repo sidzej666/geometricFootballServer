@@ -31,6 +31,9 @@ public enum PlayerState {
     ),
     WAIT_FOR_OPPONENTS(
             Stream.of(GAME_HOST, IN_GAME).collect(Collectors.toSet())
+    ),
+    PLAYING(
+
     );
 
     public final Set<PlayerState> possibleStatesForTransition;

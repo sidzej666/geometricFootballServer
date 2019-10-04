@@ -30,7 +30,7 @@ public class SetTacticMappingHandler extends BaseMessageHandler{
     }
 
     private void sendTactic(SelectableChannel c, Game guestGame, Game hostGame) {
-        sendMessage(c, guestGame, teamInfoMessageCreator.teamTacticMappingMessage(hostGame));
+        sendMessage(c, guestGame, teamInfoMessageCreator.teamTacticMappingMessage(hostGame, OutputMessages.TEAM_TACTIC_MAPPING));
     }
 
     @Override

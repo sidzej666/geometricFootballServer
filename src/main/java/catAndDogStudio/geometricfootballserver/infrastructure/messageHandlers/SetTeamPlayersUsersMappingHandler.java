@@ -34,7 +34,7 @@ public class SetTeamPlayersUsersMappingHandler extends BaseMessageHandler {
     }
 
     private void sendPlayerUsersMapping(SelectableChannel c, Game guestGame, Game hostGame) {
-        sendMessage(c, guestGame, teamInfoMessageCreator.teamPlayersUsersMapping(hostGame));
+        sendMessage(c, guestGame, teamInfoMessageCreator.teamPlayersUsersMapping(hostGame, OutputMessages.TEAM_PLAYERS_USERS_MAPPING));
     }
 
     @Override

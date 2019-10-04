@@ -59,7 +59,7 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
         guestGame.setPlayerState(PlayerState.GAME_GUEST);
         sendMessage(guestChannel, guestGame, OutputMessages.INVITATION_ACCEPTED_BY_GUEST + ";" +
                 hostInvitation.getInvitator() + ";" + guestGame.getOwnerName());
-        sendMessage(guestChannel, guestGame, playersInTeamMessageCreator.message(hostGame));
+        sendMessage(guestChannel, guestGame, playersInTeamMessageCreator.message(hostGame, OutputMessages.TEAM_PLAYERS));
         teamInfoMessageCreator.sendAllAvailableTeamInfo(hostGame, guestChannel, guestGame);
     }
 
@@ -71,7 +71,7 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
         guestGame.setGrantedColor(hostInvitation.getPreferredColor());
         sendMessage(hostChannel, hostGame, OutputMessages.INVITATION_ACCEPTED_BY_GUEST + ";" +
                 hostGame.getOwnerName() + ";" + guestGame.getOwnerName());
-        sendMessage(hostChannel, hostGame, playersInTeamMessageCreator.message(hostGame));
+        sendMessage(hostChannel, hostGame, playersInTeamMessageCreator.message(hostGame, OutputMessages.TEAM_PLAYERS));
     }
 
     @Override

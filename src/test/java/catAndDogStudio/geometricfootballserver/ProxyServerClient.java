@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Configuration
+//@Configuration
 @Slf4j
 public class ProxyServerClient {
     @Value("${clients.proxyTestServer}")

@@ -16,6 +16,7 @@ public class Game {
     private final List<Invitation> invitations = new ArrayList<>();
     private final Map<SelectableChannel, Game> playersInGame = new HashMap<>();
     private long lastHearthBeatTime;
+    private Long readyForGameTime;
     private SelectableChannel hostChannel;
     private String preferredColor;
     private String grantedColor;
@@ -25,6 +26,7 @@ public class Game {
     private String team;
     private Map<String, String> playersUsersMapping = new HashMap<>();
     private String partialMessage;
+    private ActiveGame activeGame;
 
     public void setUp(String ownerName) {
         this.ownerName = ownerName;

@@ -14,6 +14,7 @@ import java.util.Map;
 public class ServerState {
     private final Map<SelectableChannel, Game> hostedGames = new HashMap<>();
     private final Map<SelectableChannel, Game> waitingForGames = new HashMap<>();
+    private final Map<SelectableChannel, Game> teamsWaitingForOpponents = new HashMap<>();
     private final Map<SelectableChannel, Game> playersInGame = new HashMap<>();
 
     public Map<SelectableChannel, Game> getHostedGames() {
@@ -25,6 +26,9 @@ public class ServerState {
     }
     public Map<SelectableChannel, Game> getPlayersInGame() {
         return playersInGame;
+    }
+    public Map<SelectableChannel, Game> getTeamsWaitingForOpponents() {
+        return teamsWaitingForOpponents;
     }
     public SelectableChannel getWaitingPlayer(final String playerName) {
         return waitingForGames.keySet().stream()
@@ -38,6 +42,4 @@ public class ServerState {
                 .findFirst()
                 .orElse(null);
     }
-
-
 }

@@ -54,6 +54,8 @@ public class LeaveGameService extends MessageSender {
         game.setPlayerState(PlayerState.AUTHENTICATED);
         serverState.getHostedGames().remove(channel);
         serverState.getWaitingForGames().remove(channel);
+        serverState.getTeamsWaitingForOpponents().remove(channel);
+        serverState.getPlayersInGame().remove(channel);
         if (!isDisconnection) {
             sendMessage(channel, game, OutputMessages.LEFT_FROM_GAME);
         }
@@ -82,6 +84,15 @@ public class LeaveGameService extends MessageSender {
     }
     private void sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(SelectableChannel guestChannel, Game guestGame) {
         Game hostGame = serverState.getHostedGames().get(guestGame.getHostChannel());
+        if (hostGame == null) {
+            hostGame = serverState.getTeamsWaitingForOpponents().get(guestGame.getHostChannel());
+        }
+        if (hostGame == null) {
+            hostGame = serverState.getPlayersInGame().get(guestGame.getHostChannel());
+        }
+        if (hostGame == null) {
+            return;
+        }
         SelectableChannel hostChannel = guestGame.getHostChannel();
         hostGame.getPlayersInGame().remove(guestChannel);
         sendMessage(hostChannel, hostGame, OutputMessages.PLAYER_LEFT + ";" + guestGame.getOwnerName());

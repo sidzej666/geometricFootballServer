@@ -30,7 +30,7 @@ public class SetTeamHandler extends BaseMessageHandler{
     }
 
     private void sendTeam(SelectableChannel c, Game guestGame, Game hostGame) {
-        sendMessage(c, guestGame, teamInfoMessageCreator.teamTeamMessage(hostGame));
+        sendMessage(c, guestGame, teamInfoMessageCreator.teamTeamMessage(hostGame, OutputMessages.TEAM_TEAM));
     }
 
     @Override

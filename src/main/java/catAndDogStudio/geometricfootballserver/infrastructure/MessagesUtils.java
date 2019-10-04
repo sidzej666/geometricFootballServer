@@ -13,9 +13,18 @@ public class MessagesUtils {
     public static String[] writeAndRead(Socket socket, String message) throws Exception {
         write(socket, message);
         final String[] serverResponse = read(socket);
-        log.info("Message: " + message + " | Server response: " + serverResponse);
+        log.info("Message: " + message + " | Server response: " + responseToLog(serverResponse));
         return serverResponse;
     }
+
+    private static String responseToLog(String[] serverResponse) {
+        String result = "";
+        for (String s : serverResponse) {
+            result += "[" + s + "]";
+        }
+        return result;
+    }
+
     public static void write(Socket socket, String message) throws Exception {
         socket.getOutputStream().write(message.getBytes());
         log.info("Message: " + message);
@@ -46,7 +55,7 @@ public class MessagesUtils {
                 throw new IllegalStateException("To long waiting for server response, test ERROR");
             }
         }
-        //log.info("Server message: " + responses);
+        log.info("Server message: " + responseToLog(responses));
         return responses;
     }
 }

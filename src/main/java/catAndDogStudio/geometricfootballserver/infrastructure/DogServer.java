@@ -32,7 +32,7 @@ public class DogServer implements ChannelWriter {
         try (Selector selector = Selector.open(); ServerSocketChannel channel = ServerSocketChannel.open()) {
             initChannel(channel, selector);
             while (!Thread.currentThread().isInterrupted()) {
-                log.info("active clients: {}", session);
+                //log.info("active clients: {}", session);
                 if (selector.isOpen()) {
                     final int numKeys = selector.select();
                     if (numKeys > 0) {
@@ -55,7 +55,9 @@ public class DogServer implements ChannelWriter {
                     }
                 }
                 for(SelectableChannel c : channelsToRemove) {
-                    log.warn("Client disconnected {}", gameObjectForClient.get(c).getOwnerName());
+                    if (gameObjectForClient.get(c).getOwnerName() != null) {
+                        log.warn("Client disconnected {}", gameObjectForClient.get(c).getOwnerName());
+                    }
                     leaveGameService.leaveGame(c, gameObjectForClient.get(c), true);
                     session.remove(c);
                     gameObjectForClient.remove(c);

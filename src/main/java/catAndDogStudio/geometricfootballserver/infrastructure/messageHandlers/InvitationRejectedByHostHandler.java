@@ -4,6 +4,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.InvitationsBusinessLogic;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class InvitationRejectedByHostHandler extends BaseMessageHandler{
     private final ServerState serverState;
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.GAME_HOST);
+    private final InvitationsBusinessLogic invitationsBusinessLogic;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
@@ -33,18 +35,7 @@ public class InvitationRejectedByHostHandler extends BaseMessageHandler{
         Game guestGame = serverState.getWaitingForGames().get(invitation.getInvitedPlayerChannel());
         game.getInvitations().remove(invitation);
         sendMessage(channel, game, OutputMessages.KITTY_INVITATION_REJECTED + ";" + guestName);
-        sendPlayerInvitationRejectedAndTransitionGuestState(game.getOwnerName(), guestGame, invitation.getInvitedPlayerChannel());
-    }
-
-    private void sendPlayerInvitationRejectedAndTransitionGuestState(String ownerName, Game guestGame, SelectableChannel invitedPlayerChannel) {
-        guestGame.setPlayerState(PlayerState.AWAITS_GAME);
-        Invitation guestInvitation = guestGame.getInvitations().stream()
-                .filter(i -> i.getInvitator().equals(ownerName))
-                .findFirst()
-                .orElse(null);
-        guestGame.getInvitations().remove(guestInvitation);
-        sendMessage(invitedPlayerChannel, guestGame, OutputMessages.KITTY_NOT_WANTED + ";" + ownerName + ";"
-            + guestGame.getOwnerName());
+        invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(game.getOwnerName(), guestGame, invitation.getInvitedPlayerChannel());
     }
 
     @Override

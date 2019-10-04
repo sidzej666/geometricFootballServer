@@ -23,6 +23,10 @@ public class JoinGameHandler extends BaseMessageHandler {
             return;
         }
         Game hostGame = serverState.getHostedGames().get(hostChannel);
+        if (hostGame.getPlayerState() != PlayerState.GAME_HOST) {
+            sendMessage(channel, game, OutputMessages.getInvitationNotAllowedMessage(hostGame.getOwnerName(), hostGame.getPlayerState()));
+            return;
+        }
         hostGame.getInvitations().add(Invitation.builder()
                 .creationTime(new Date().getTime())
                 .invitator(hostGame.getOwnerName())

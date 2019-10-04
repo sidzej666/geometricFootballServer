@@ -11,8 +11,8 @@ public class PlayersInTeamMessageCreator {
     private final static String PLAYER = "PLAYER";
     private final static String INVITATION = "INVITATION";
     private final static String HOST = "HOST";
-    public String message(final Game game) {
-        final StringBuilder stringBuilder = new StringBuilder(OutputMessages.TEAM_PLAYERS);
+    public String message(final Game game, final String messageType) {
+        final StringBuilder stringBuilder = new StringBuilder(messageType);
         stringBuilder.append(Constants.MESSAGE_SEPARATOR);
         stringBuilder.append(game.getOwnerName());
         stringBuilder.append(Constants.SUB_MESSAGE_SEPARATOR);

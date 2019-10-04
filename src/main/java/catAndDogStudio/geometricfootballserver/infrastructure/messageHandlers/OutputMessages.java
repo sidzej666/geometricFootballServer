@@ -1,5 +1,9 @@
 package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
+import catAndDogStudio.geometricfootballserver.infrastructure.Constants;
+import catAndDogStudio.geometricfootballserver.infrastructure.Game;
+import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
+
 public class OutputMessages {
     public final static String PLAYERS = "PLAYERS";
     public final static String ALREADY_INVITED = "ALREADY_INVITED";
@@ -20,6 +24,7 @@ public class OutputMessages {
     public final static String INVITATION_CANCELLED = "INVITATION_CANCELLED";
     public final static String KITTY_JOINED_GAME = "KITTY_JOINED_GAME";
     public final static String TEAM_PLAYERS = "TEAM_PLAYERS";
+    public final static String OPPONENT_TEAM_PLAYERS = "OPPONENT_TEAM_PLAYERS";
     public final static String KITTY_INVITATION_REJECTED = "KITTY_INVITATION_REJECTED";
     public final static String KITTY_NOT_WANTED = "KITTY_NOT_WANTED";
     public final static String INVITATION_ACCEPTED_BY_GUEST = "INVITATION_ACCEPTED_BY_GUEST";
@@ -32,4 +37,28 @@ public class OutputMessages {
     public final static String TEAM_TEAM_PLAYERS = "TEAM_TEAM_PLAYERS";
     public final static String TEAM_TACTIC_MAPPING = "TEAM_TACTIC_MAPPING";
     public final static String TEAM_PLAYERS_USERS_MAPPING = "TEAM_PLAYERS_USERS_MAPPING";
+    public final static String READY_FOR_GAME_VALIDATION_ERROR = "READY_FOR_GAME_VALIDATION_ERROR";
+    public final static String READY_FOR_GAME_TRANSITION = "READY_FOR_GAME_TRANSITION";
+    public final static String GO_BACK_TO_TEAM_PREPARATION_TRANSITION = "GO_BACK_TO_TEAM_PREPARATION_TRANSITION";
+    public final static String INVITATION_NOT_ALLOWED = "INVITATION_NOT_ALLOWED";
+    public final static String OPPONENT_TEAM_TACTIC = "OPPONENT_TEAM_TACTIC";
+    public final static String OPPONENT_TEAM_TEAM = "OPPONENT_TEAM_TEAM";
+    public final static String OPPONENT_TEAM_TEAM_PLAYERS = "OPPONENT_TEAM_TEAM_PLAYERS";
+    public final static String OPPONENT_TEAM_TACTIC_MAPPING = "OPPONENT_TEAM_TACTIC_MAPPING";
+    public final static String OPPONENT_TEAM_PLAYERS_USERS_MAPPING = "OPPONENT_TEAM_PLAYERS_USERS_MAPPING";
+    public final static String OPPONENT_FOUND = "OPPONENT_FOUND";
+
+    public final static String getReadyForGameTransitionMessage() {
+        return READY_FOR_GAME_TRANSITION;
+    }
+    public final static String getInvitationNotAllowedMessage(String hostName, PlayerState hostState) {
+        return INVITATION_NOT_ALLOWED + Constants.MESSAGE_SEPARATOR + "Host " + hostName + " is already in "
+                + hostState + " state";
+    }
+    public final static String getGoBackToTeamPreparationTransition() {
+        return GO_BACK_TO_TEAM_PREPARATION_TRANSITION;
+    }
+    public final static String getOpponentFoundMessage(final String opponentHostName) {
+        return OPPONENT_FOUND + Constants.MESSAGE_SEPARATOR + opponentHostName;
+    }
 }
