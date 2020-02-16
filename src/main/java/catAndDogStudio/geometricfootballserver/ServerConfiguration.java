@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 @Profile("server")
 public class ServerConfiguration {
 
-    @Autowired
+    //@Autowired
     private DogServer dogServer;
     @Autowired
     private GeometricFootballServer geometricFootballServer;

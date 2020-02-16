@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "proxyTestServer", url = "${clients.proxyTestServer}")
 public interface ProxyTestServer {
     @RequestMapping(method = RequestMethod.POST, value = "/client/{clientId}/readAndWrite")
-    String[] readAndWrite(@PathVariable("clientId") int clientId, @RequestBody Message message);
+    Message readAndWrite(@PathVariable("clientId") int clientId, @RequestBody Message message);
 }

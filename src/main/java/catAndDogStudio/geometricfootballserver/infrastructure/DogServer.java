@@ -14,7 +14,7 @@ import java.util.*;
 
 @RequiredArgsConstructor
 @Slf4j
-@Service
+//@Service
 public class DogServer implements ChannelWriter {
     private static final int BUFFER_SIZE = 1024;
     private static final long MAX_CONNECTIONS = 100_000l;
@@ -58,7 +58,7 @@ public class DogServer implements ChannelWriter {
                     if (gameObjectForClient.get(c).getOwnerName() != null) {
                         log.warn("Client disconnected {}", gameObjectForClient.get(c).getOwnerName());
                     }
-                    leaveGameService.leaveGame(c, gameObjectForClient.get(c), true);
+                    //leaveGameService.leaveGame(c, gameObjectForClient.get(c), true);
                     session.remove(c);
                     gameObjectForClient.remove(c);
                     geometricService.remove(c);
@@ -169,8 +169,10 @@ public class DogServer implements ChannelWriter {
                             messagesFromClient[i]);
                     return;
                 }
+                /*
                 geometricService.handleMessage(key.channel(),
                         gameObjectForClient.get(key.channel()), messagesFromClient[i]);
+                 */
             }
         } catch (Exception e) {
             log.warn("Exception while handling message: " + messageFromClient, e);

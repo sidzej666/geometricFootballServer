@@ -1,6 +1,7 @@
 package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.nio.channels.SelectableChannel;
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
+//@Service
 @Slf4j
 @RequiredArgsConstructor
 public class MessageHandlingStrategy {
@@ -63,22 +64,14 @@ public class MessageHandlingStrategy {
         handlers.put(InputMessages.GO_BACK_TO_TEAM_PREPARATION, goBackToTeamCreationHandler);
     }
 
-    public void handleMessage(SelectableChannel channel, Game game, String message) {
-        log.debug("message received from " + game.getOwnerName() + " " + message);
-        final String[] splittedMessage;
-        try {
-            splittedMessage = message.split(";");
-        } catch (Exception e) {
-            log.warn("error while splitting message, sender: {}, message: {}, error: {} {}",
-                    game.getOwnerName(), message, e.getMessage(), e.getStackTrace());
-            return;
-        }
-        GeometricServerMessageHandler handler = handlers.get(splittedMessage[0]);
+    public void handleMessage(final SelectableChannel channel, final Game game, final GeometricFootballRequest.Request request) {
+        log.debug("message received from " + game.getOwnerName() + " " + request);
+        GeometricServerMessageHandler handler = handlers.get(request.getType());
         if (handler != null) {
-            handler.handleMessage(channel, game, splittedMessage);
+            handler.handleMessage(channel, game, new String[]{});
             return;
         }
 
-        log.warn("no valid strategy found for message, sender: {}, message: {}", game.getOwnerName(), message);
+        log.warn("no valid strategy found for message, sender: {}, message: {}", game.getOwnerName(), request);
     }
 }

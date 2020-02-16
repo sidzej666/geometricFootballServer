@@ -1,6 +1,9 @@
 package catAndDogStudio.geometricfootballserver.infrastructure.netty;
 
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.MessageHandlingStrategy;
+import catAndDogStudio.geometricfootballserver.infrastructure.Game;
+import catAndDogStudio.geometricfootballserver.infrastructure.GeometricService;
+import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.MessageHandlingStrategy;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
 import io.netty.channel.Channel;
@@ -16,18 +19,24 @@ import org.springframework.stereotype.Component;
 public class GeometricFootballServerHandler extends SimpleChannelInboundHandler<GeometricFootballRequest.Request> {
 
     private final ChannelGroup allClients;
-    private final MessageHandlingStrategy messageHandlingStrategy;
+    private final GeometricService geometricService;
+    private final ServerState serverState;
+    Game game;
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        game = new Game();
         final Channel newCat = ctx.channel();
         allClients.add(newCat);
+        serverState.addGame(newCat.id(), game);
     }
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         final Channel leavingCat = ctx.channel();
-        allClients.remove(leavingCat);
+        log.info("handler removed: {}" + leavingCat.id());
+        serverState.removeGame(leavingCat.id());
+        // TODO: add leaving service here? :)
     }
 
     @Override
@@ -37,34 +46,13 @@ public class GeometricFootballServerHandler extends SimpleChannelInboundHandler<
     }
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, GeometricFootballRequest.Request msg) throws Exception {
-        System.out.println("message received: " + msg);
-        ctx.channel().writeAndFlush(createResponse());
+    public void channelRead0(ChannelHandlerContext ctx, GeometricFootballRequest.Request request) throws Exception {
+        //System.out.println("message received: " + request);
+        geometricService.handleMessage(ctx.channel(), game, request);
     }
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
-    }
-
-    private GeometricFootballResponse.Response createResponse() {
-        final GeometricFootballResponse.Response response = GeometricFootballResponse.Response.newBuilder()
-                .setType(GeometricFootballResponse.ResponseType.MAU)
-                .setMauResponse(GeometricFootballResponse.MauResponse.newBuilder()
-                        .setCatName("server-kot")
-                        .setMau("Witaj client kocie, tutaj server kot, mau!")
-                        .build())
-                .build();
-        //log.info("returned message: " + response.toByteArray().length + " " + bytesAsString(response.toByteArray()));
-        return response;
-    }
-    
-    private String bytesAsString(final byte[] bytes) {
-        final StringBuilder stringBuilder = new StringBuilder();
-        for (byte znak: bytes) {
-            stringBuilder.append(znak);
-            stringBuilder.append(" ");
-        }
-        return stringBuilder.toString();
     }
 }

@@ -1,15 +1,14 @@
 package catAndDogStudio.geometricfootballserver;
 
 import catAndDogStudio.geometricfootballserver.clients.Message;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
+import com.google.protobuf.InvalidProtocolBufferException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 //@Configuration
 @Slf4j
@@ -22,13 +21,17 @@ public class ProxyServerClient {
         this.url = url;
     }
 
-    public String[] writeAndRead(int clientId, String message) {
-        final List<String> result =  ((ArrayList<Object>)restTemplate.postForObject(getUrl(clientId) + "/writeAndRead", Message.builder().message(message).build(), Object.class))
-                .stream()
-                .map(m -> (String) m)
-                .collect(Collectors.toList());
-        log.info("Response: " + result);
-        return result.toArray(new String[result.size()]);
+    public GeometricFootballResponse.Response writeAndRead(int clientId, GeometricFootballRequest.Request request) {
+        final Message result =
+                restTemplate.postForObject(getUrl(clientId) + "/writeAndRead",
+                        Message.builder().message(request.toByteArray()).build(),
+                        Message.class);
+        try {
+            log.info("Response: " + GeometricFootballResponse.Response.parseFrom(result.getMessage()));
+            return GeometricFootballResponse.Response.parseFrom(result.getMessage());
+        } catch (final InvalidProtocolBufferException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void resetClient(int clientId) {
         restTemplate.exchange(getUrl(clientId) + "/resetClient", HttpMethod.POST, null, Void.class);
@@ -36,5 +39,12 @@ public class ProxyServerClient {
 
     private String getUrl(int clientId) {
         return url + "/client/" + clientId;
+    }
+    private String recreateClientsUrl() {
+        return url + "/recreateClients";
+    }
+
+    public void recreateClients() {
+        restTemplate.postForEntity(recreateClientsUrl(), HttpEntity.EMPTY, Void.class);
     }
 }

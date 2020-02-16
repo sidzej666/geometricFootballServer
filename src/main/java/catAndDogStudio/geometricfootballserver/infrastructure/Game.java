@@ -20,6 +20,8 @@ public class Game {
     private SelectableChannel hostChannel;
     private String preferredColor;
     private String grantedColor;
+    private String gameName;
+    private String waitingComment;
     private String tactic;
     private String tacticMapping;
     private String players;

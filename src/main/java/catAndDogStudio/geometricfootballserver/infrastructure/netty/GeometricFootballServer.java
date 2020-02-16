@@ -41,4 +41,8 @@ public class GeometricFootballServer {
             workerGroup.shutdownGracefully();
         }
     }
+
+    public void setPort(final int port) {
+        this.port = port;
+    }
 }

@@ -3,6 +3,7 @@ package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import io.netty.channel.group.ChannelGroup;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,12 @@ import org.springframework.stereotype.Service;
 import java.nio.channels.SelectableChannel;
 import java.util.Set;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
 public class AwaitGameHandler extends BaseMessageHandler {
     private final ServerState serverState;
+    private final ChannelGroup waitingForGames;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {

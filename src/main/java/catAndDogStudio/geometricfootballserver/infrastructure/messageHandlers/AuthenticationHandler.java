@@ -10,7 +10,7 @@ import java.nio.channels.SelectableChannel;
 import java.util.Date;
 import java.util.Set;
 
-@Service
+//@Service
 @Slf4j
 @RequiredArgsConstructor
 public class AuthenticationHandler extends BaseMessageHandler {

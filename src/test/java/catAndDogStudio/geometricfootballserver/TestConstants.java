@@ -14,6 +14,9 @@ public class TestConstants {
     @Value("${port}")
     private int port;
 
+    @Value("${nettyPort}")
+    private int nettyPort;
+
     @Value("${proxy.port}")
     private int realServerProxyPort;
 
@@ -23,7 +26,10 @@ public class TestConstants {
     public int getPortForTests() {
         if (Arrays.stream(env.getActiveProfiles()).anyMatch(p -> "testServer".equals(p))) {
             return port;
-        } else if(Arrays.stream(env.getActiveProfiles()).anyMatch(p -> "callRealServerProxy".equals(p))) {
+        } else if (Arrays.stream(env.getActiveProfiles()).anyMatch(p -> "nettyTestServer".equals(p))) {
+            return nettyPort;
+        }
+        else if(Arrays.stream(env.getActiveProfiles()).anyMatch(p -> "callRealServerProxy".equals(p))) {
             return realServerProxyPort;
         }
         throw new RuntimeException("no profile - port mapping for tests, current active profiles: " + env.getActiveProfiles());

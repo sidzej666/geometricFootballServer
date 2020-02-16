@@ -1,7 +1,9 @@
 package catAndDogStudio.geometricfootballserver.infrastructure;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.InputMessages;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.MessageHandlingStrategy;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.MessageHandlingStrategy;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
+import io.netty.channel.Channel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,8 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectableChannel;
 import java.nio.channels.SocketChannel;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,9 +40,11 @@ public class GeometricService implements ChannelWriter {
         }
     }
 
-    public void handleMessage(SelectableChannel channel, Game game, String message) {
-        messageHandlingStrategy.handleMessage(channel, game, message);
+    public void handleMessage(final Channel channel, final Game game,
+                              final GeometricFootballRequest.Request request) {
+        messageHandlingStrategy.handleMessage(channel, game, request);
     }
+
     private void sendPlayerLeftGameAndHandleHostDisconnection(Game game, SelectableChannel s) {
 
     }

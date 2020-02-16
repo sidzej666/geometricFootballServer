@@ -3,6 +3,7 @@ server:
 
 port: 5000
 nettyPort: 5001
+timeoutInSeconds: 180
 proxy:
   port: 8011
   noOfConnectionsToRealServer: 10
@@ -13,3 +14,8 @@ spring:
 
 clients:
   proxyTestServer: http://localhost:8081/geometricServer
+
+logging:
+  level:
+    catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.MessageHandlingStrategy: DEBUG
+    catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.MessageSender: DEBUG

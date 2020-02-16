@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.nio.channels.SelectableChannel;
 import java.util.Set;
 
-@Service
+//@Service
 @Slf4j
 @RequiredArgsConstructor
 public class HostGameHandler extends BaseMessageHandler {

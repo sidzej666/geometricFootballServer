@@ -6,20 +6,29 @@ import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.MessageSender;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.OutputMessages;
+import io.netty.channel.Channel;
+import io.netty.channel.group.ChannelGroup;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.nio.channels.SelectableChannel;
+import java.util.EnumSet;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class LeaveGameService extends MessageSender {
     private final ServerState serverState;
+    private final ChannelGroup hosts;
+    @Getter
+    private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.GAME_HOST, PlayerState.GAME_GUEST,
+            PlayerState.AWAITS_GAME, PlayerState.AWAITING_INVITATION_DECISION);
 
-    public void leaveGame(SelectableChannel channel, Game game, boolean isDisconnection) {
+    public void leaveGame(Channel channel, Game game, boolean isDisconnection) {
         if (game.getPlayerState() == PlayerState.GAME_HOST) {
             game.getInvitations().stream()
                     .forEach(i -> {
@@ -49,16 +58,16 @@ public class LeaveGameService extends MessageSender {
                     .forEach(i -> sendPlayerLeftToHostAndRemoveInvitation(i));
             game.getInvitations().clear();
         } else if (game.getPlayerState() == PlayerState.GAME_GUEST) {
-            sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(channel, game);
+            //sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(channel, game);
         }
-        game.setPlayerState(PlayerState.AUTHENTICATED);
+        if (!isDisconnection) {
+            game.setPlayerState(PlayerState.AUTHENTICATED);
+        }
         serverState.getHostedGames().remove(channel);
         serverState.getWaitingForGames().remove(channel);
         serverState.getTeamsWaitingForOpponents().remove(channel);
         serverState.getPlayersInGame().remove(channel);
-        if (!isDisconnection) {
-            sendMessage(channel, game, OutputMessages.LEFT_FROM_GAME);
-        }
+        //sendMessage(channel, game, OutputMessages.LEFT_FROM_GAME);
     }
 
     private void sendHostLeft(SelectableChannel invitedPlayerChannel, Game hostedGame,

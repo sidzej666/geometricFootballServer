@@ -1,7 +1,9 @@
 port: 8012
+nettyPort: 5001
+timeoutInSeconds: 180
 
 proxy:
-  port: 8011
+  port: 8081
   noOfConnectionsToRealServer: 10
 
 spring:
