@@ -33,6 +33,17 @@ public class ProxyServerClient {
             throw new RuntimeException(e);
         }
     }
+    public GeometricFootballResponse.Response read(int clientId) {
+        final Message result = restTemplate.postForObject(getUrl(clientId) + "/read",
+                null,
+                Message.class);
+        try {
+            log.info("Response: " + GeometricFootballResponse.Response.parseFrom(result.getMessage()));
+            return GeometricFootballResponse.Response.parseFrom(result.getMessage());
+        } catch (final InvalidProtocolBufferException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void resetClient(int clientId) {
         restTemplate.exchange(getUrl(clientId) + "/resetClient", HttpMethod.POST, null, Void.class);
     }

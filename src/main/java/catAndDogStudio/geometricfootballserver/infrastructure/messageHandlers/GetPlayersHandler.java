@@ -6,7 +6,6 @@ import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.nio.channels.SelectableChannel;
 import java.util.Collection;
@@ -29,7 +28,7 @@ public class GetPlayersHandler extends BaseMessageHandler {
     public void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
         final String message;
         if (WAITING.equals(splittedMessage[1])) {
-            message = preparePlayersMessage(game, serverState.getWaitingForGames().values());
+            message = preparePlayersMessage(game, serverState.getWaitingForGamesOld().values());
         } else if (HOSTING.equals(splittedMessage[1])) {
             message = preparePlayersMessage(game, serverState.getHostedGames().values());
         } else {

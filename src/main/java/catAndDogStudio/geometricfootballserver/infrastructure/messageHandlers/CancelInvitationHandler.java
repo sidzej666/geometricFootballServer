@@ -53,7 +53,7 @@ public class CancelInvitationHandler extends BaseMessageHandler {
     }
 
     private void cancelInvitationByHost(Invitation invitation, Game hostGame) {
-        Game guestGame = serverState.getWaitingForGames().get(invitation.getInvitedPlayerChannel());
+        Game guestGame = serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel());
         sendMessage(invitation.getInvitedPlayerChannel(), guestGame,
                 OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitator());
         Invitation guestInvitation = guestGame.getInvitations().stream()

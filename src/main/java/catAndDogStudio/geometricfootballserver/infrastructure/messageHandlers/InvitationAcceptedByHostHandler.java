@@ -35,7 +35,7 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
             return;
         }
         game.getInvitations().remove(invitation);
-        Game guestGame = serverState.getWaitingForGames().get(invitation.getInvitedPlayerChannel());
+        Game guestGame = serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel());
         guestGame.setPlayerState(PlayerState.GAME_GUEST);
         guestGame.setGrantedColor(guestColor);
         guestGame.setHostChannel(channel);
@@ -49,7 +49,7 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
         if (guestInvitation != null) {
             guestGame.getInvitations().remove(guestInvitation);
         }
-        serverState.getWaitingForGames().remove(invitation.getInvitedPlayerChannel());
+        serverState.getWaitingForGamesOld().remove(invitation.getInvitedPlayerChannel());
         serverState.getPlayersInGame().put(invitation.getInvitedPlayerChannel(), guestGame);
         sendMessage(channel, game, OutputMessages.KITTY_JOINED_GAME + ";" + invitation.getInvitedPlayer());
 

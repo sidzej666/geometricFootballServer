@@ -57,4 +57,60 @@ public class MockFactory {
                         .build())
                 .build();
     }
+
+    public GeometricFootballRequest.Request sendHostInvitationToGuest(final String hostName,
+                                                                      final String guestName,
+                                                                      final String color) {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.TEAM_INVITATION)
+                .setTeamInvitation(GeometricFootballRequest.TeamInvitation.newBuilder()
+                        .setGameHostName(hostName)
+                        .setInvitedPlayer(guestName)
+                        .setPreferredColor(color)
+                        .setTeamInvitationAction(GeometricFootballRequest.TeamInvitationAction.CREATE)
+                        .setTeamInvitationDirection(GeometricFootballRequest.TeamInvitationDirection.FROM_HOST_TO_PLAYER)
+                        .setId(hostName)
+                        .build())
+                .build();
+    }
+
+    public GeometricFootballRequest.Request sendGuestInvitationToHost(final String hostName,
+                                                                      final String guestName,
+                                                                      final String color) {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.TEAM_INVITATION)
+                .setTeamInvitation(GeometricFootballRequest.TeamInvitation.newBuilder()
+                        .setGameHostName(hostName)
+                        .setInvitedPlayer(guestName)
+                        .setPreferredColor(color)
+                        .setTeamInvitationAction(GeometricFootballRequest.TeamInvitationAction.CREATE)
+                        .setTeamInvitationDirection(GeometricFootballRequest.TeamInvitationDirection.FROM_PLAYER_TO_HOST)
+                        .setId(hostName)
+                        .build())
+                .build();
+    }
+
+    public GeometricFootballRequest.Request invitationResult(final String hostName,
+            final String guestName, final GeometricFootballRequest.TeamInvitationDirection direction,
+            final GeometricFootballRequest.TeamInvitationAction action) {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.TEAM_INVITATION)
+                .setTeamInvitation(GeometricFootballRequest.TeamInvitation.newBuilder()
+                        .setTeamInvitationDirection(direction)
+                        .setGameHostName(hostName)
+                        .setInvitedPlayer(guestName)
+                        .setId(hostName)
+                        .setTeamInvitationAction(action)
+                        .build())
+                .build();
+    }
+
+    public GeometricFootballRequest.Request kickPlayer(final String username) {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.KICK_PLAYER)
+                .setKickPlayer(GeometricFootballRequest.KickPlayer.newBuilder()
+                        .setUsername(username)
+                        .build())
+                .build();
+    }
 }

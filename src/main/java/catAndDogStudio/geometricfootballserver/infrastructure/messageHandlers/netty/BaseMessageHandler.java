@@ -45,4 +45,13 @@ public abstract class BaseMessageHandler extends MessageSender implements Geomet
                         .build())
                 .build() );
     }
+
+    protected GeometricFootballResponse.Response error(final String message) {
+        return GeometricFootballResponse.Response.newBuilder()
+                .setType(GeometricFootballResponse.ResponseType.ERROR)
+                .setErrorResponse(GeometricFootballResponse.ErrorResponse.newBuilder()
+                        .setMessage(message)
+                        .build())
+                .build();
+    }
 }

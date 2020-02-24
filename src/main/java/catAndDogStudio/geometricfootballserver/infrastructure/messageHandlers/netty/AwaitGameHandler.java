@@ -2,6 +2,7 @@ package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.n
 
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.LeaveGameService;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
@@ -19,6 +20,7 @@ import java.util.Set;
 public class AwaitGameHandler extends BaseMessageHandler {
 
     private final ChannelGroup waitingForGames;
+    private final ServerState serverState;
 
     @Override
     protected Set<PlayerState> getPossibleStates() {

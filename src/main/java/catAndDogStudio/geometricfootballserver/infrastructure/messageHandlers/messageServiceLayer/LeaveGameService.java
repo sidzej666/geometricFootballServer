@@ -24,6 +24,7 @@ import java.util.Set;
 public class LeaveGameService extends MessageSender {
     private final ServerState serverState;
     private final ChannelGroup hosts;
+    private final ChannelGroup playersInGames;
     @Getter
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.GAME_HOST, PlayerState.GAME_GUEST,
             PlayerState.AWAITS_GAME, PlayerState.AWAITING_INVITATION_DECISION);
@@ -32,8 +33,8 @@ public class LeaveGameService extends MessageSender {
         if (game.getPlayerState() == PlayerState.GAME_HOST) {
             game.getInvitations().stream()
                     .forEach(i -> {
-                        sendHostLeft(i.getInvitedPlayerChannel(), game, serverState.getWaitingForGames());
-                        Game guestGame = serverState.getWaitingForGames().get(i);
+                        sendHostLeft(i.getInvitedPlayerChannel(), game, serverState.getWaitingForGamesOld());
+                        Game guestGame = serverState.getWaitingForGamesOld().get(i);
                         Invitation invitation = guestGame.getInvitations().stream()
                                 .filter(inv -> inv.getInvitator().equals(game.getOwnerName()))
                                 .findAny()
@@ -49,7 +50,7 @@ public class LeaveGameService extends MessageSender {
                         Game guestGame = serverState.getPlayersInGame().get(g);
                         guestGame.setPlayerState(PlayerState.AWAITS_GAME);
                         serverState.getPlayersInGame().remove(g);
-                        serverState.getWaitingForGames().put(g, guestGame);
+                        serverState.getWaitingForGamesOld().put(g, guestGame);
                     });
             game.getPlayersInGame().clear();
         } else if (game.getPlayerState() == PlayerState.AWAITS_GAME
@@ -64,7 +65,7 @@ public class LeaveGameService extends MessageSender {
             game.setPlayerState(PlayerState.AUTHENTICATED);
         }
         serverState.getHostedGames().remove(channel);
-        serverState.getWaitingForGames().remove(channel);
+        serverState.getWaitingForGamesOld().remove(channel);
         serverState.getTeamsWaitingForOpponents().remove(channel);
         serverState.getPlayersInGame().remove(channel);
         //sendMessage(channel, game, OutputMessages.LEFT_FROM_GAME);

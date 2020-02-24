@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.nio.channels.SelectableChannel;
 import java.util.Date;
 import java.util.EnumSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -46,7 +45,7 @@ public class ReadyForGameHandler  extends BaseMessageHandler{
 
     private void cancelInvitation(Invitation i, Game ownerGame) {
         SelectableChannel invitedPlayerChannel = serverState.getWaitingPlayer(i.getInvitedPlayer());
-        Game invitedPlayerGame = serverState.getWaitingForGames().get(invitedPlayerChannel);
+        Game invitedPlayerGame = serverState.getWaitingForGamesOld().get(invitedPlayerChannel);
         invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(ownerGame.getOwnerName(),
                 invitedPlayerGame, invitedPlayerChannel);
     }

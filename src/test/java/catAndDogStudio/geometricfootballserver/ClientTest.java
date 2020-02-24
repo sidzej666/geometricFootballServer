@@ -31,7 +31,7 @@ public class ClientTest {
 
     @Before
     public void resetServer() {
-        serverState.getWaitingForGames().clear();
+        serverState.getWaitingForGamesOld().clear();
         serverState.getPlayersInGame().clear();
         serverState.getHostedGames().clear();
         serverState.getTeamsWaitingForOpponents().clear();

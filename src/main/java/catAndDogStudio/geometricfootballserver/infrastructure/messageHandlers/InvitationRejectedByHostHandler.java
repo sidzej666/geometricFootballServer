@@ -28,11 +28,11 @@ public class InvitationRejectedByHostHandler extends BaseMessageHandler{
                 .filter(i -> i.getInvitedPlayer().equals(guestName))
                 .findAny()
                 .orElse(null);
-        if (invitation == null || serverState.getWaitingForGames().get(invitation.getInvitedPlayerChannel()) == null) {
+        if (invitation == null || serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel()) == null) {
             sendMessage(channel, game, OutputMessages.INVITATION_NOT_FOUND + ";" + guestName);
             return;
         }
-        Game guestGame = serverState.getWaitingForGames().get(invitation.getInvitedPlayerChannel());
+        Game guestGame = serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel());
         game.getInvitations().remove(invitation);
         sendMessage(channel, game, OutputMessages.KITTY_INVITATION_REJECTED + ";" + guestName);
         invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(game.getOwnerName(), guestGame, invitation.getInvitedPlayerChannel());

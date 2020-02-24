@@ -1,37 +1,15 @@
 package catAndDogStudio.geometricfootballserver;
 
 import catAndDogStudio.geometricfootballserver.mocks.MockFactory;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest.TeamInvitationAction;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest.TeamInvitationDirection;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("doNotRunWhileBuild")
-@Ignore
-public class UserStatesAndMessagesForUnityClient {
-
-    private final String url = "http://localhost:8081/geometricServer";
-    private ProxyServerClient proxyServerClient = new ProxyServerClient(url);
-    private final MockFactory mockFactory = new MockFactory();
-
-    @Before
-    public void before(){
-        //dogServerTestProxy.setUp();
-        //environment.setActiveProfiles("callRealServerProxy");
-    }
-
-    @Test
-    public void resetClients() throws Exception {
-        proxyServerClient.resetClient(0);
-        proxyServerClient.resetClient(1);
-        proxyServerClient.resetClient(2);
-        proxyServerClient.resetClient(3);
-    }
-
-    @Test
-    public void recreateClients() throws Exception {
-        proxyServerClient.recreateClients();
-    }
+public class UserStatesAndMessagesForUnityClient extends UnityMocksBase {
 
     @Test
     public void authenticateIn4CLients() throws Exception {
@@ -42,24 +20,9 @@ public class UserStatesAndMessagesForUnityClient {
     }
 
     @Test
-    public void awaitGameByPiesek() throws Exception {
-        proxyServerClient.writeAndRead(0, mockFactory.authenticate("piesek", "1"));
-        proxyServerClient.writeAndRead(0, mockFactory.awaitGame("piesek", "waiting for game", "RED"));
-    }
-    @Test
-    public void acceptHostMysioInvitationByGuestPiesek() throws Exception {
-        //proxyServerClient.writeAndRead(0, ClientMessages.acceptHostInvitation("mysio"));
-    }
-    @Test
     public void awaitGameByMysio() throws Exception {
         //proxyServerClient.writeAndRead(1, ClientMessages.authenticate("2"));
         //proxyServerClient.writeAndRead(1, ClientMessages.awaitGame("mysio", "BLUE"));
-    }
-
-    @Test
-    public void joinGameByPiesekToHostMysio() throws Exception {
-        awaitGameByPiesek();
-        //proxyServerClient.writeAndRead(0, ClientMessages.joinGameRequest("mysio"));
     }
     @Test
     public void joinGameByMysioToHostPiesek() throws Exception {
@@ -67,12 +30,7 @@ public class UserStatesAndMessagesForUnityClient {
         //proxyServerClient.writeAndRead(1, ClientMessages.joinGameRequest("piesek"));
     }
 
-    @Test
-    public void hostGameByJavaKotek() throws Exception {
-        proxyServerClient.writeAndRead(1, mockFactory.authenticate("javaKotek", "0987654321"));
-        proxyServerClient.writeAndRead(1, mockFactory.hostGame("javaKotek", "javaKotek game", "GREEN"));
-        //setTeamDataByHostMysioToGuestPiesek();
-    }
+
     @Test
     public void awaitOpponentsByHostJavaKotekWithHexagoniaFlyers() throws Exception {
         //proxyServerClient.writeAndRead(2, ClientMessages.authenticate("0987654321"));

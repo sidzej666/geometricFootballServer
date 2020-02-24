@@ -40,7 +40,7 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
             sendMessage(channel, game, OutputMessages.INVITATION_NOT_FOUND + ";" + hostGame.getOwnerName());
             return;
         }
-        serverState.getWaitingForGames().remove(channel);
+        serverState.getWaitingForGamesOld().remove(channel);
         serverState.getPlayersInGame().put(channel, game);
         game.setPlayerState(PlayerState.GAME_GUEST);
         sendInvitationAcceptedToGameHostAndChangeHostState(hostChannel, hostGame, game, invitation);

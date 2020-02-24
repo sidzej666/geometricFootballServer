@@ -27,7 +27,7 @@ public class InvitePlayerHandler extends BaseMessageHandler {
                 .findFirst()
                 .orElse(null);
         if (invitation != null) {
-            if (serverState.getWaitingForGames().containsKey(invitation.getInvitedPlayerChannel())) {
+            if (serverState.getWaitingForGamesOld().containsKey(invitation.getInvitedPlayerChannel())) {
                 sendMessage(channel, game, OutputMessages.ALREADY_INVITED + ";" + invitedPlayer);
                 return;
             } else {
@@ -48,7 +48,7 @@ public class InvitePlayerHandler extends BaseMessageHandler {
                         .invitedPlayerChannel(invitedPlayerChannel)
                         .preferredColor(splittedMessage[2])
                         .build());
-        Game invitedPlayerGame = serverState.getWaitingForGames().get(invitedPlayerChannel);
+        Game invitedPlayerGame = serverState.getWaitingForGamesOld().get(invitedPlayerChannel);
         invitedPlayerGame.getInvitations().add(
                 Invitation.builder()
                         .creationTime(new Date().getTime())

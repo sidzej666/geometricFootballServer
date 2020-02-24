@@ -30,7 +30,7 @@ public class PlayerKickedOutByHostHandler extends BaseMessageHandler {
             return;
         }
         Game guestGame = game.getPlayersInGame().get(guestChannel);
-        serverState.getWaitingForGames().put(guestChannel, guestGame);
+        serverState.getWaitingForGamesOld().put(guestChannel, guestGame);
         guestGame.setPlayerState(PlayerState.AWAITS_GAME);
         sendPlayerKickedOutToAllPlayersInGame(game, guestName);
         game.getPlayersInGame().remove(guestChannel);

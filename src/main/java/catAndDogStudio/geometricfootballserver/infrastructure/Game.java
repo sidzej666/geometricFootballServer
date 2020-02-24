@@ -1,5 +1,7 @@
 package catAndDogStudio.geometricfootballserver.infrastructure;
 
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelId;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +17,11 @@ public class Game {
     private PlayerState playerState = PlayerState.AWAITING_AUTHENTICATION;
     private final List<Invitation> invitations = new ArrayList<>();
     private final Map<SelectableChannel, Game> playersInGame = new HashMap<>();
+    private final Map<ChannelId, Game> playersInTeam = new HashMap<>();
     private long lastHearthBeatTime;
     private Long readyForGameTime;
     private SelectableChannel hostChannel;
+    private Channel channel;
     private String preferredColor;
     private String grantedColor;
     private String gameName;

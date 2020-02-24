@@ -26,6 +26,7 @@ public class GeometricFootballServerHandler extends SimpleChannelInboundHandler<
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         game = new Game();
+        game.setChannel(ctx.channel());
         final Channel newCat = ctx.channel();
         allClients.add(newCat);
         serverState.addGame(newCat.id(), game);
