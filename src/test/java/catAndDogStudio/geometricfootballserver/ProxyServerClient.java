@@ -44,6 +44,9 @@ public class ProxyServerClient {
             throw new RuntimeException(e);
         }
     }
+    public void clearPendingMessage(int clientId) {
+        restTemplate.exchange(getUrl(clientId) + "/clearPendingMessage", HttpMethod.POST, null, Void.class);
+    }
     public void resetClient(int clientId) {
         restTemplate.exchange(getUrl(clientId) + "/resetClient", HttpMethod.POST, null, Void.class);
     }

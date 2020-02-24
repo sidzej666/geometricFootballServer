@@ -1,12 +1,18 @@
 package catAndDogStudio.geometricfootballserver;
 
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
+import org.junit.Before;
 import org.junit.Test;
 
 public class UnickMockHostJavaKotek extends UnityMocksBase {
     @Test
     public void reset() throws Exception {
         resetClients();
+    }
+
+    @Before
+    public void clearPendingMessages() throws Exception {
+        proxyServerClient.clearPendingMessage(1);
     }
 
     // jakaKotek - HOST
@@ -34,7 +40,6 @@ public class UnickMockHostJavaKotek extends UnityMocksBase {
     public void acceptGuestMysioInvitationByHostJavaKotek() throws Exception {
         proxyServerClient.writeAndRead(1, mockFactory.invitationResult("javaKotek", "mysio",
                 GeometricFootballRequest.TeamInvitationDirection.FROM_HOST_TO_PLAYER, GeometricFootballRequest.TeamInvitationAction.ACCEPT));
-        proxyServerClient.read(1);
     }
     @Test
     public void kickGuestMysioByHostJavaKotek() throws Exception {
