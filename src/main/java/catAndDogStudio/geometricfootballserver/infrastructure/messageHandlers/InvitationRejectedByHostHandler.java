@@ -35,7 +35,7 @@ public class InvitationRejectedByHostHandler extends BaseMessageHandler{
         Game guestGame = serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel());
         game.getInvitations().remove(invitation);
         sendMessage(channel, game, OutputMessages.KITTY_INVITATION_REJECTED + ";" + guestName);
-        invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(game.getOwnerName(), guestGame, invitation.getInvitedPlayerChannel());
+        //invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(game.getOwnerName(), guestGame, invitation.getInvitedPlayerChannel());
     }
 
     @Override

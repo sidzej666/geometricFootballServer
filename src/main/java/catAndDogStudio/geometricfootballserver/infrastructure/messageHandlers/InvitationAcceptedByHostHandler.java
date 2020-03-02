@@ -38,8 +38,8 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
         Game guestGame = serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel());
         guestGame.setPlayerState(PlayerState.GAME_GUEST);
         guestGame.setGrantedColor(guestColor);
-        guestGame.setHostChannel(channel);
-        game.getPlayersInGame().put(invitation.getInvitedPlayerChannel(), guestGame);
+        //guestGame.setHostChannel(channel);
+        //game.getPlayersInGame().put(invitation.getInvitedPlayerChannel(), guestGame);
         sendPlayerJoinGameToAllPlayersInGame(game, guestName);
         game.getInvitations().remove(invitation);
         Invitation guestInvitation = guestGame.getInvitations().stream()
@@ -50,11 +50,11 @@ public class InvitationAcceptedByHostHandler extends BaseMessageHandler {
             guestGame.getInvitations().remove(guestInvitation);
         }
         serverState.getWaitingForGamesOld().remove(invitation.getInvitedPlayerChannel());
-        serverState.getPlayersInGame().put(invitation.getInvitedPlayerChannel(), guestGame);
+        //serverState.getPlayersInGame().put(invitation.getInvitedPlayerChannel(), guestGame);
         sendMessage(channel, game, OutputMessages.KITTY_JOINED_GAME + ";" + invitation.getInvitedPlayer());
 
-        sentPlayersListToAcceptedPlayer(game, invitation.getInvitedPlayerChannel(), guestGame);
-        teamInfoMessageCreator.sendAllAvailableTeamInfo(game, invitation.getInvitedPlayerChannel(), guestGame);
+        //sentPlayersListToAcceptedPlayer(game, invitation.getInvitedPlayerChannel(), guestGame);
+        //teamInfoMessageCreator.sendAllAvailableTeamInfo(game, invitation.getInvitedPlayerChannel(), guestGame);
     }
 
     private void sentPlayersListToAcceptedPlayer(Game game, SelectableChannel invitedPlayerChannel, Game guestGame) {

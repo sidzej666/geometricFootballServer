@@ -16,14 +16,14 @@ import java.util.Set;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class LeaveGameHandler extends BaseMessageHandler {
+public class LeaveTeamHandler extends BaseMessageHandler {
 
     private final LeaveGameService leaveGameService;
 
     @Override
     protected void messageAction(final Channel channel, final Game game,
                                  final GeometricFootballRequest.Request request) {
-
+        leaveGameService.leaveGame(channel, game, false);
     }
 
     @Override

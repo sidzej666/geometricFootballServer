@@ -66,8 +66,8 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
     private void sendInvitationAcceptedToGameHostAndChangeHostState(SelectableChannel hostChannel, Game hostGame,
                                                                     Game guestGame, Invitation hostInvitation) {
         hostGame.getInvitations().remove(hostInvitation);
-        hostGame.getPlayersInGame().put(hostInvitation.getInvitedPlayerChannel(), guestGame);
-        guestGame.setHostChannel(hostChannel);
+        //hostGame.getPlayersInGame().put(hostInvitation.getInvitedPlayerChannel(), guestGame);
+        //guestGame.setHostChannel(hostChannel);
         guestGame.setGrantedColor(hostInvitation.getPreferredColor());
         sendMessage(hostChannel, hostGame, OutputMessages.INVITATION_ACCEPTED_BY_GUEST + ";" +
                 hostGame.getOwnerName() + ";" + guestGame.getOwnerName());

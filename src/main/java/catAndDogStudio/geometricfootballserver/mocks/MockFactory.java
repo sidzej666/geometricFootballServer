@@ -113,4 +113,12 @@ public class MockFactory {
                         .build())
                 .build();
     }
+
+    public GeometricFootballRequest.Request leaveTeam() {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.LEAVE_TEAM)
+                .setLeaveTeam(GeometricFootballRequest.LeaveTeam.newBuilder()
+                        .build())
+                .build();
+    }
 }

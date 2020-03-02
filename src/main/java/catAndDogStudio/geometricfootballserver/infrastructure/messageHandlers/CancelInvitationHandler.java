@@ -54,8 +54,8 @@ public class CancelInvitationHandler extends BaseMessageHandler {
 
     private void cancelInvitationByHost(Invitation invitation, Game hostGame) {
         Game guestGame = serverState.getWaitingForGamesOld().get(invitation.getInvitedPlayerChannel());
-        sendMessage(invitation.getInvitedPlayerChannel(), guestGame,
-                OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitator());
+        //sendMessage(invitation.getInvitedPlayerChannel(), guestGame,
+        //        OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitator());
         Invitation guestInvitation = guestGame.getInvitations().stream()
                 .filter(i -> i.getInvitedPlayer().equals(invitation.getInvitedPlayer()))
                 .findFirst()
@@ -64,14 +64,14 @@ public class CancelInvitationHandler extends BaseMessageHandler {
             guestGame.getInvitations().remove(guestInvitation);
         }
         hostGame.getInvitations().remove(invitation);
-        sendMessage(invitation.getInvitatorChannel(), hostGame,
-                OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitedPlayer());
+        //sendMessage(invitation.getInvitatorChannel(), hostGame,
+        //        OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitedPlayer());
     }
 
     private void cancelInvitationByGuest(Invitation invitation, Game guestGame) {
         Game hostGame = serverState.getHostedGames().get(invitation.getInvitatorChannel());
-        sendMessage(invitation.getInvitatorChannel(), hostGame,
-                OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitedPlayer());
+        //sendMessage(invitation.getInvitatorChannel(), hostGame,
+        //        OutputMessages.INVITATION_CANCELLED + ";" + invitation.getInvitedPlayer());
         Invitation hostInvitation = hostGame.getInvitations().stream()
                 .filter(i -> i.getInvitedPlayer().equals(invitation.getInvitedPlayer()))
                 .findFirst()
@@ -79,8 +79,8 @@ public class CancelInvitationHandler extends BaseMessageHandler {
         if (hostInvitation != null) {
             hostGame.getInvitations().remove(hostInvitation);
         }
-        sendMessage(invitation.getInvitedPlayerChannel(), guestGame,
-                OutputMessages.INVITATION_CANCELLED + ";" + hostGame.getOwnerName());
+        //sendMessage(invitation.getInvitedPlayerChannel(), guestGame,
+        //        OutputMessages.INVITATION_CANCELLED + ";" + hostGame.getOwnerName());
         guestGame.getInvitations().remove(invitation);
     }
 

@@ -40,4 +40,8 @@ public class UnityMockGuestPiesek extends UnityMocksBase {
         proxyServerClient.writeAndRead(0, mockFactory.invitationResult("mysio", "piesek",
                 GeometricFootballRequest.TeamInvitationDirection.FROM_PLAYER_TO_HOST, GeometricFootballRequest.TeamInvitationAction.REJECT));
     }
+    @Test
+    public void leaveGameByPiesek() throws Exception {
+        proxyServerClient.write(0, mockFactory.leaveTeam());
+    }
 }

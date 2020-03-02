@@ -58,7 +58,9 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         final Invitation newInvitation = Invitation.builder()
                                 .creationTime(new Date().getTime())
                                 .invitator(game.getOwnerName())
+                                .invitatorChannel(game.getChannel())
                                 .invitedPlayer(invitedPlayer.get().getOwnerName())
+                                .invitedPlayerChannel(invitedPlayer.get().getChannel())
                                 .preferredColor(teamInvitation.getPreferredColor())
                                 .build();
                         game.getInvitations().add(newInvitation);
@@ -101,6 +103,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         game.getPlayersInTeam().put(invitedPlayer.get().getChannel().id(), invitedPlayer.get());
                         invitedPlayer.get().setPlayerState(PlayerState.GAME_GUEST);
                         invitedPlayer.get().setGrantedColor(teamInvitation.getPreferredColor());
+                        invitedPlayer.get().setHostChannel(channel);
                         serverState.moveFromWaitingForGamesToPlayersInGame(invitedPlayer.get().getChannel());
                         GeometricFootballResponse.Response teamInfo = playersInTeamMessageCreator.createTeamInfo(game);
                         sendMessage(game.getChannel(), game, teamInfo);
@@ -108,6 +111,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                                 invitationResult(GeometricFootballResponse.InvitationResult.ACCEPTED, invitation.get()));
                         game.getPlayersInTeam().values().stream()
                                 .forEach(g -> sendMessage(g.getChannel(), g, teamInfo));
+                        //TODO: remove all invitations and send to hosts that this player rejects other invitations
                         break;
                 }
                 break;
@@ -142,7 +146,9 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         final Invitation newInvitation = Invitation.builder()
                                 .creationTime(new Date().getTime())
                                 .invitator(hostGame.getOwnerName())
+                                .invitatorChannel(hostGame.getChannel())
                                 .invitedPlayer(game.getOwnerName())
+                                .invitedPlayerChannel(game.getChannel())
                                 .preferredColor(teamInvitation.getPreferredColor())
                                 .build();
                         game.getInvitations().add(newInvitation);
@@ -160,6 +166,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         game.setPlayerState(PlayerState.GAME_GUEST);
                         game.setGrantedColor(hostInvitation.get().getPreferredColor());
                         game.getInvitations().remove(guestInvitation.get());
+                        game.setHostChannel(hostGame.getChannel());
                         serverState.moveFromWaitingForGamesToPlayersInGame(channel);
                         GeometricFootballResponse.Response invitationAccepted = invitationResult(GeometricFootballResponse.InvitationResult.INVITATION_ACCEPTED_BY_GUEST, guestInvitation.get());
                         sendMessage(hostGame.getChannel(), hostGame, invitationAccepted);
@@ -169,6 +176,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         sendMessage(channel, game, invitationAccepted);
                         hostGame.getPlayersInTeam().values().stream()
                                 .forEach(g -> sendMessage(g.getChannel(), g, teamInfo));
+                        //TODO: remove all invitations and send that this player had rejected invitations
                         break;
                     case REJECT:
                         if (!hostInvitation.isPresent() || !guestInvitation.isPresent()) {
@@ -245,7 +253,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
     }
 
     private GeometricFootballResponse.Response invitationResult(final GeometricFootballResponse.InvitationResult invitationResult,
-                                                                  final Invitation invitation) {
+                                                                 final Invitation invitation) {
         return GeometricFootballResponse.Response.newBuilder()
                 .setType(GeometricFootballResponse.ResponseType.INVITATION_RESULT)
                 .setTeamInvitationResponse(GeometricFootballResponse.TeamInvitationResponse.newBuilder()

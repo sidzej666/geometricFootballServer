@@ -31,7 +31,7 @@ public class ReadyForGameService  extends MessageSender {
         Game opponent = serverState.getTeamsWaitingForOpponents().get(opponentChannel);
         if (opponent != null) {
             serverState.getPlayersInGame().put(channel, game);
-            serverState.getPlayersInGame().put(opponent.getHostChannel(), opponent);
+            //serverState.getPlayersInGame().put(opponent.getHostChannel(), opponent);
             serverState.getTeamsWaitingForOpponents().remove(opponent.getHostChannel());
         } else {
             serverState.getTeamsWaitingForOpponents().put(channel, game);

@@ -30,9 +30,9 @@ public class JoinGameHandler extends BaseMessageHandler {
         hostGame.getInvitations().add(Invitation.builder()
                 .creationTime(new Date().getTime())
                 .invitator(hostGame.getOwnerName())
-                .invitatorChannel(hostChannel)
+                //.invitatorChannel(hostChannel)
                 .invitedPlayer(game.getOwnerName())
-                .invitedPlayerChannel(channel)
+                //.invitedPlayerChannel(channel)
                 .preferredColor(game.getPreferredColor())
                 .build());
         sendMessage(hostChannel, hostGame, OutputMessages.INVITATION + Constants.MESSAGE_SEPARATOR + game.getOwnerName()
@@ -40,9 +40,9 @@ public class JoinGameHandler extends BaseMessageHandler {
         game.getInvitations().add(Invitation.builder()
                 .creationTime(new Date().getTime())
                 .invitator(hostGame.getOwnerName())
-                .invitatorChannel(hostChannel)
+                //.invitatorChannel(hostChannel)
                 .invitedPlayer(game.getOwnerName())
-                .invitedPlayerChannel(channel)
+                //.invitedPlayerChannel(channel)
                 .preferredColor(game.getPreferredColor())
                 .build());
         game.setPlayerState(PlayerState.AWAITING_INVITATION_DECISION);

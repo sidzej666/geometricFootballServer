@@ -3,6 +3,7 @@ package catAndDogStudio.geometricfootballserver.infrastructure.netty;
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.GeometricService;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.LeaveGameService;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.MessageHandlingStrategy;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
@@ -21,6 +22,7 @@ public class GeometricFootballServerHandler extends SimpleChannelInboundHandler<
     private final ChannelGroup allClients;
     private final GeometricService geometricService;
     private final ServerState serverState;
+    private final LeaveGameService leaveGameService;
     Game game;
 
     @Override
@@ -36,8 +38,8 @@ public class GeometricFootballServerHandler extends SimpleChannelInboundHandler<
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         final Channel leavingCat = ctx.channel();
         log.info("handler removed: {}" + leavingCat.id());
-        serverState.removeGame(leavingCat.id());
-        // TODO: add leaving service here? :)
+        Game game = serverState.getGames().get(leavingCat.id());
+        leaveGameService.leaveGame(leavingCat, game, true);
     }
 
     @Override

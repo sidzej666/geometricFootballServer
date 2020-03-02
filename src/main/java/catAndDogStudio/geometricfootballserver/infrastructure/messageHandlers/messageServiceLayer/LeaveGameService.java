@@ -4,8 +4,8 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.MessageSender;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.OutputMessages;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.BaseMessageHandler;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
 import lombok.Getter;
@@ -21,8 +21,9 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class LeaveGameService extends MessageSender {
+public class LeaveGameService extends BaseMessageHandler {
     private final ServerState serverState;
+    private final ChannelGroup waitingForGames;
     private final ChannelGroup hosts;
     private final ChannelGroup playersInGames;
     @Getter
@@ -33,7 +34,7 @@ public class LeaveGameService extends MessageSender {
         if (game.getPlayerState() == PlayerState.GAME_HOST) {
             game.getInvitations().stream()
                     .forEach(i -> {
-                        sendHostLeft(i.getInvitedPlayerChannel(), game, serverState.getWaitingForGamesOld());
+                        //sendHostLeft(i.getInvitedPlayerChannel(), game, serverState.getWaitingForGamesOld());
                         Game guestGame = serverState.getWaitingForGamesOld().get(i);
                         Invitation invitation = guestGame.getInvitations().stream()
                                 .filter(inv -> inv.getInvitator().equals(game.getOwnerName()))
@@ -58,57 +59,75 @@ public class LeaveGameService extends MessageSender {
             game.getInvitations()
                     .forEach(i -> sendPlayerLeftToHostAndRemoveInvitation(i));
             game.getInvitations().clear();
+            waitingForGames.remove(channel.id());
         } else if (game.getPlayerState() == PlayerState.GAME_GUEST) {
-            //sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(channel, game);
+            sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(channel, game);
+            playersInGames.remove(channel.id());
         }
         if (!isDisconnection) {
             game.setPlayerState(PlayerState.AUTHENTICATED);
         }
-        serverState.getHostedGames().remove(channel);
-        serverState.getWaitingForGamesOld().remove(channel);
-        serverState.getTeamsWaitingForOpponents().remove(channel);
-        serverState.getPlayersInGame().remove(channel);
+        if (isDisconnection) {
+            serverState.getGames().remove(channel.id());
+        }
         //sendMessage(channel, game, OutputMessages.LEFT_FROM_GAME);
     }
 
     private void sendHostLeft(SelectableChannel invitedPlayerChannel, Game hostedGame,
                               Map<SelectableChannel, Game> channels) {
+        /*
         sendMessage(invitedPlayerChannel, channels.get(invitedPlayerChannel),
                 OutputMessages.HOST_LEFT + ";" + hostedGame.getOwnerName());
+
+         */
     }
 
-    private void sendPlayerLeftToHostAndRemoveInvitation(Invitation i) {
-        Game hostGame = serverState.getHostedGames().get(i.getInvitatorChannel());
+    private void sendPlayerLeftToHostAndRemoveInvitation(Invitation invitation) {
+        Game hostGame = serverState.getGames().get(invitation.getInvitatorChannel().id());
         if (hostGame == null) {
-            log.warn("invitation in host {} not removed, no such host in hostedGames", i.getInvitator());
+            log.warn("invitation in host {} not removed, no such host in hostedGames", invitation.getInvitator());
             return;
         }
         Invitation invitationToRemoveInHostGame = hostGame.getInvitations().stream()
-                .filter(inv -> inv.getInvitedPlayer().equals(i.getInvitedPlayer()))
+                .filter(inv -> inv.getInvitedPlayer().equals(invitation.getInvitedPlayer()))
                 .findFirst()
                 .orElse(null);
         if (invitationToRemoveInHostGame != null) {
             hostGame.getInvitations().remove(invitationToRemoveInHostGame);
         }
-        sendMessage(i.getInvitatorChannel(), hostGame, OutputMessages.PLAYER_LEFT + ";" + i.getInvitedPlayer());
+        sendMessage(hostGame.getChannel(), hostGame, invitationRejected(invitation));
     }
-    private void sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(SelectableChannel guestChannel, Game guestGame) {
-        Game hostGame = serverState.getHostedGames().get(guestGame.getHostChannel());
-        if (hostGame == null) {
-            hostGame = serverState.getTeamsWaitingForOpponents().get(guestGame.getHostChannel());
+    private void sendPlayerLeftToHostAndAllOtherPlayerInGameAndRemovePlayerFromGame(Channel guestChannel, Game guestGame) {
+        Game hostGame = serverState.getGames().get(guestGame.getHostChannel().id());
+        hostGame.getPlayersInTeam().remove(guestChannel.id());
+        final GeometricFootballResponse.Response playerLeft = playerLeft(guestGame.getOwnerName());
+        sendMessage(hostGame.getChannel(), hostGame, playerLeft);
+        for (Game teamMemberGame : hostGame.getPlayersInTeam().values()) {
+            sendMessage(teamMemberGame.getChannel(), teamMemberGame, playerLeft);
         }
-        if (hostGame == null) {
-            hostGame = serverState.getPlayersInGame().get(guestGame.getHostChannel());
-        }
-        if (hostGame == null) {
-            return;
-        }
-        SelectableChannel hostChannel = guestGame.getHostChannel();
-        hostGame.getPlayersInGame().remove(guestChannel);
-        sendMessage(hostChannel, hostGame, OutputMessages.PLAYER_LEFT + ";" + guestGame.getOwnerName());
-        for (SelectableChannel playerChannel : hostGame.getPlayersInGame().keySet()) {
-            Game playerGame = hostGame.getPlayersInGame().get(playerChannel);
-            sendMessage(playerChannel, playerGame, OutputMessages.PLAYER_LEFT + ";" + guestGame.getOwnerName());
-        }
+    }
+
+    private GeometricFootballResponse.Response playerLeft(final String guestName) {
+        return GeometricFootballResponse.Response.newBuilder()
+                .setType(GeometricFootballResponse.ResponseType.LEAVE_TEAM)
+                .setLeaveTeam(GeometricFootballResponse.LeaveTeamResponse.newBuilder()
+                        .setUsername(guestName)
+                        .setHostLeft(false)
+                        .build())
+                .build();
+    }
+
+    private GeometricFootballResponse.Response invitationRejected(final Invitation invitation) {
+        return GeometricFootballResponse.Response.newBuilder()
+                .setType(GeometricFootballResponse.ResponseType.INVITATION_RESULT)
+                .setTeamInvitationResponse(GeometricFootballResponse.TeamInvitationResponse.newBuilder()
+                        .setInvitationResult(GeometricFootballResponse.InvitationResult.INVITATION_REJECTED_BY_GUEST)
+                        .setMessage("invitation created")
+                        .setId(invitation.getInvitedPlayer())
+                        .setGameHostName(invitation.getInvitator())
+                        .setInvitedPlayer(invitation.getInvitedPlayer())
+                        .setGrantedColor(invitation.getPreferredColor())
+                        .build())
+                .build();
     }
 }

@@ -2,6 +2,7 @@ package catAndDogStudio.geometricfootballserver.infrastructure.netty;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.GeometricService;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.LeaveGameService;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -26,6 +27,7 @@ public class GeometricFootballServerInitializer extends ChannelInitializer<Socke
     private final ChannelGroup allClients;
     private final ServerState serverState;
     private final GeometricService geometricService;
+    private final LeaveGameService leaveGameService;
     @Value( "${timeoutInSeconds}" )
     private long readTimeout;
 
@@ -39,6 +41,6 @@ public class GeometricFootballServerInitializer extends ChannelInitializer<Socke
         channelPipeline.addLast(new ProtobufEncoder());
         channelPipeline.addLast(new ReadTimeoutHandler(readTimeout, TimeUnit.SECONDS));
 
-        channelPipeline.addLast(new GeometricFootballServerHandler(allClients, geometricService, serverState));
+        channelPipeline.addLast(new GeometricFootballServerHandler(allClients, geometricService, serverState, leaveGameService));
     }
 }

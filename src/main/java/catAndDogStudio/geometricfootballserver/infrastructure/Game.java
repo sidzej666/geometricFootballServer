@@ -2,9 +2,7 @@ package catAndDogStudio.geometricfootballserver.infrastructure;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.nio.channels.SelectableChannel;
@@ -20,7 +18,7 @@ public class Game {
     private final Map<ChannelId, Game> playersInTeam = new HashMap<>();
     private long lastHearthBeatTime;
     private Long readyForGameTime;
-    private SelectableChannel hostChannel;
+    private Channel hostChannel;
     private Channel channel;
     private String preferredColor;
     private String grantedColor;

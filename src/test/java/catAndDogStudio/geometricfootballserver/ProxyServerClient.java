@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 //@Configuration
@@ -32,6 +33,12 @@ public class ProxyServerClient {
         } catch (final InvalidProtocolBufferException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void write(int clientId, GeometricFootballRequest.Request request) {
+        final ResponseEntity<Void> result =
+                restTemplate.postForEntity(getUrl(clientId) + "/write",
+                        Message.builder().message(request.toByteArray()).build(),
+                        Void.class);
     }
     public GeometricFootballResponse.Response read(int clientId) {
         final Message result = restTemplate.postForObject(getUrl(clientId) + "/read",
