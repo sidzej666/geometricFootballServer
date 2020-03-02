@@ -11,7 +11,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-//@Configuration
 @Slf4j
 public class ProxyServerClient {
     @Value("${clients.proxyTestServer}")

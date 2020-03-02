@@ -5,6 +5,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.OutputMessages;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 @SpringBootTest
 @ActiveProfiles("testServer")
+@Ignore
 public class ClientTest {
 
     @Autowired

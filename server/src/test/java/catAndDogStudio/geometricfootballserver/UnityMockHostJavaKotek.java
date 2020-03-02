@@ -4,7 +4,7 @@ import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballReque
 import org.junit.Before;
 import org.junit.Test;
 
-public class UnickMockHostJavaKotek extends UnityMocksBase {
+public class UnityMockHostJavaKotek extends UnityMocksBase {
     @Test
     public void reset() throws Exception {
         resetClients();
@@ -49,5 +49,13 @@ public class UnickMockHostJavaKotek extends UnityMocksBase {
     @Test
     public void readFromJavaKotekClient() throws Exception {
         proxyServerClient.read(1);
+    }
+    @Test
+    public void leaveGame() throws Exception {
+        proxyServerClient.write(1, mockFactory.leaveTeam());
+    }
+    @Test
+    public void disconnect() throws Exception {
+        proxyServerClient.resetClient(1);
     }
 }

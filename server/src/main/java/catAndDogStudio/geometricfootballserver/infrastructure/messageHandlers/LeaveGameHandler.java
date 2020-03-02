@@ -20,7 +20,7 @@ public class LeaveGameHandler extends BaseMessageHandler {
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
-        leaveGameService.leaveGame(null, game, true);
+        leaveGameService.leaveGame(null, game, false);
     }
 
     @Override

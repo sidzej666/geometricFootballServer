@@ -12,20 +12,8 @@ import javax.annotation.PreDestroy;
 public class RunTestServer {
 
     @Autowired
-    private DogServer dogServer;
-    @Autowired
     private GeometricFootballServer geometricFootballServer;
     private Thread serverThread;
-
-    //@PostConstruct
-    public void startServerForTests() {
-        serverThread = new Thread() {
-            public void run(){
-                dogServer.start();
-            }
-        };
-        serverThread.start();
-    }
 
     @PostConstruct
     public void startGeometricServerForTests() {
@@ -39,6 +27,6 @@ public class RunTestServer {
 
     @PreDestroy
     public void killServerAfterTests() {
-        serverThread.interrupt();
+        //serverThread.interrupt();
     }
 }

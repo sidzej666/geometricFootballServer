@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package com.cat_and_dog_studio.geometric_football.protocol;
+
+option java_package = "com.cat_and_dog_studio.geometric_football.protocol";
+option java_outer_classname = "GeometricFootballRequest";
+
+enum RequestType {
+    MAU = 0;
+    AUTHENTICATION = 1;
+    DISCONNECT = 2;
+    HOST_GAME = 3;
+    AWAIT_GAME = 4;
+    GET_PLAYERS = 5;
+    PING = 6;
+    TEAM_INVITATION = 7;
+    LEAVE_TEAM = 8;
+    KICK_PLAYER = 9;
+}
+
+enum GetPlayersMode {
+    GAME_HOSTS = 0;
+    WAITING_FOR_GAMES = 1;
+}
+
+enum TeamInvitationDirection {
+    FROM_HOST_TO_PLAYER = 0;
+    FROM_PLAYER_TO_HOST = 1;
+}
+
+enum TeamInvitationAction {
+    ACCEPT = 0;
+    REJECT = 1;
+    CREATE = 2;
+}
+
+message Request {
+    RequestType type = 1;
+    Mau mau = 2;
+    Authentication authentication = 3;
+    Disconnect disconnect = 4;
+    HostGame hostGame = 5;
+    AwaitGame awaitGame = 6;
+    GetPlayers getPlayers = 7;
+    PingRequest pingRequest = 8;
+    TeamInvitation teamInvitation = 9;
+    LeaveTeam leaveTeam = 10;
+    KickPlayer kickPlayer = 11;
+}
+
+message Mau {
+    string catName = 1;
+    string mauSecret = 2;
+}
+
+message Authentication {
+    string username = 1;
+    string password = 2;
+}
+
+message Disconnect {
+    string message = 1;
+}
+
+message HostGame {
+    string username = 1;
+    string gameName = 2;
+    string hostColor = 3;
+}
+
+message AwaitGame {
+    string username = 1;
+    string preferredColor = 2;
+    string waitingMessage = 3;
+}
+
+message GetPlayers {
+    GetPlayersMode mode = 1;
+}
+
+message PingRequest {
+
+}
+
+message TeamInvitation {
+    TeamInvitationDirection teamInvitationDirection = 1;
+    TeamInvitationAction teamInvitationAction = 2;
+    string gameHostName = 3;
+    string invitedPlayer = 4;
+    string message = 5;
+    string preferredColor = 6;
+    string id = 7;
+}
+
+message LeaveTeam {
+
+}
+
+message KickPlayer {
+    string username = 1;
+}

@@ -82,4 +82,14 @@ public class ServerState {
         playersInGames.remove(channel);
         waitingForGames.add(channel);
     }
+
+    public void moveToWaitingForGames(Channel channel) {
+        hosts.remove(channel);
+        waitingForGames.add(channel);
+    }
+
+    public void moveToHosts(Channel channel) {
+        waitingForGames.remove(channel);
+        hosts.add(channel);
+    }
 }

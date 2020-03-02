@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package com.cat_and_dog_studio.geometric_football.protocol;
+
+option java_package = "com.cat_and_dog_studio.geometric_football.protocol";
+option java_outer_classname = "GeometricFootballResponse";
+
+enum ResponseType {
+    MAU = 0;
+    AUTHENTICATION = 1;
+    ERROR = 2;
+    DISCONNECT = 3;
+    GAME_HOSTED = 4;
+    AWAITING_FOR_GAME = 5;
+    GET_PLAYERS = 6;
+    INVITATION_RESULT = 7;
+    TEAM_PLAYERS = 8;
+    OPPONENT_TEAM_PLAYERS = 9;
+    LEAVE_TEAM = 10;
+    PLAYER_KICKED = 11;
+}
+
+enum GetPlayersMode {
+    GAME_HOSTS = 0;
+    WAITING_FOR_GAMES = 1;
+}
+
+enum InvitationResult {
+    ACCEPTED = 0;
+    REJECTED = 1;
+    CREATED = 2;
+    INVITATION_ACCEPTED_BY_GUEST = 3;
+    INVITATION_REJECTED_BY_GUEST = 4;
+}
+
+enum TeamPlayerType {
+    HOST = 0;
+    PLAYER = 1;
+    INVITATION = 2;
+}
+
+message PlayerData {
+    string name = 1;
+    string color = 2;
+}
+
+message TeamPlayerData {
+    string name = 1;
+    string color = 2;
+    TeamPlayerType teamPlayerType = 3;
+}
+
+message Response {
+    ResponseType type = 1;
+    MauResponse mauResponse = 2;
+    AuthenticationResponse authenticationResponse = 3;
+    ErrorResponse errorResponse = 4;
+    DisconnectResponse disconnectResponse = 5;
+    HostGameResponse hostGameResponse = 6;
+    AwaitGameResponse awaitGameResponse = 7;
+    GetPlayersResponse getPlayers = 8;
+    TeamInvitationResponse teamInvitationResponse = 9;
+    TeamPlayersResponse teamPlayers = 10;
+    LeaveTeamResponse leaveTeam = 11;
+    PlayerKickedResponse playerKicked = 12;
+}
+
+message MauResponse {
+    string catName = 1;
+    string mau = 2;
+}
+
+message AuthenticationResponse {
+    string username = 1;
+    string message = 2;
+}
+
+message ErrorResponse {
+    string message = 1;
+}
+
+message DisconnectResponse {
+    string message = 1;
+}
+
+message HostGameResponse {
+    string username = 1;
+    string gameName = 2;
+    string hostColor = 3;
+}
+
+message AwaitGameResponse {
+    string username = 1;
+    string waitingMessage = 2;
+    string preferredColor = 3;
+}
+
+message GetPlayersResponse {
+    GetPlayersMode mode = 1;
+    repeated PlayerData playerData = 2;
+}
+
+message TeamInvitationResponse {
+    InvitationResult invitationResult = 1;
+    string id = 2;
+    string message = 3;
+    string grantedColor = 4;
+    string gameHostName = 5;
+    string invitedPlayer = 6;
+}
+
+message TeamPlayersResponse {
+    repeated TeamPlayerData teamPlayerData = 1;
+}
+
+message LeaveTeamResponse {
+    string teamName = 1;
+    string username = 2;
+    bool hostLeft = 3;
+}
+
+message PlayerKickedResponse {
+    string username = 1;
+}

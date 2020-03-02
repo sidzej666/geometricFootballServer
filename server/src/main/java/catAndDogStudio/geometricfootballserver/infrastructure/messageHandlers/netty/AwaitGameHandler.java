@@ -3,11 +3,9 @@ package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.n
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.LeaveGameService;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
 import io.netty.channel.Channel;
-import io.netty.channel.group.ChannelGroup;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,7 +17,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class AwaitGameHandler extends BaseMessageHandler {
 
-    private final ChannelGroup waitingForGames;
     private final ServerState serverState;
 
     @Override
@@ -34,7 +31,7 @@ public class AwaitGameHandler extends BaseMessageHandler {
         game.setPlayerState(PlayerState.AWAITS_GAME);
         game.setPreferredColor(awaitGame.getPreferredColor());
         game.setWaitingComment(awaitGame.getWaitingMessage());
-        waitingForGames.add(channel);
+        serverState.moveToWaitingForGames(channel);
         sendMessage(channel, game, awaitGame(awaitGame));
     }
 
