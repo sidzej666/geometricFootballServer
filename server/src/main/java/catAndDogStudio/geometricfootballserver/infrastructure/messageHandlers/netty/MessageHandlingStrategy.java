@@ -25,6 +25,12 @@ public class MessageHandlingStrategy {
     private final TeamInvitationHandler teamInvitationHandler;
     private final KickPlayerHandler kickPlayerHandler;
     private final LeaveTeamHandler leaveTeamHandler;
+    private final SetTeamHandler setTeamHandler;
+    private final SetTeamTacticHandler setTeamTacticHandler;
+    private final SetTeamTacticMappingHandler setTeamTacticMappingHandler;
+    private final SetTeamPlayersHandler setTeamPlayersHandler;
+    private final SetTeamPlayersUsersMappingHandler setTeamPlayersUsersMappingHandler;
+    private final ReadyForGameHandler readyForGameHandler;
     private Map<RequestType, GeometricServerMessageHandler> handlers = new HashMap<>();
 
     @PostConstruct
@@ -37,6 +43,12 @@ public class MessageHandlingStrategy {
         handlers.put(RequestType.TEAM_INVITATION, teamInvitationHandler);
         handlers.put(RequestType.KICK_PLAYER, kickPlayerHandler);
         handlers.put(RequestType.LEAVE_TEAM, leaveTeamHandler);
+        handlers.put(RequestType.SET_TEAM, setTeamHandler);
+        handlers.put(RequestType.SET_TACTIC, setTeamTacticHandler);
+        handlers.put(RequestType.SET_TACTIC_MAPPING, setTeamTacticMappingHandler);
+        handlers.put(RequestType.SET_TEAM_PLAYERS, setTeamPlayersHandler);
+        handlers.put(RequestType.SET_TEAM_PLAYERS_USERS_MAPPING, setTeamPlayersUsersMappingHandler);
+        handlers.put(RequestType.READY_FOR_GAME, readyForGameHandler);
     }
 
     public void handleMessage(final Channel channel, final Game game,

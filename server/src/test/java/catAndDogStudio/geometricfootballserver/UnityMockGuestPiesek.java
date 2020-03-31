@@ -1,6 +1,7 @@
 package catAndDogStudio.geometricfootballserver;
 
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
+import org.junit.Before;
 import org.junit.Test;
 
 public class UnityMockGuestPiesek extends UnityMocksBase {
@@ -9,6 +10,11 @@ public class UnityMockGuestPiesek extends UnityMocksBase {
     public void reset() throws Exception {
         resetClients();
     }
+    @Before
+    public void clearPendingMessages() throws Exception {
+        proxyServerClient.clearPendingMessage(0);
+    }
+
     // piesek - GUEST
     @Test
     public void awaitGameByPiesek() throws Exception {

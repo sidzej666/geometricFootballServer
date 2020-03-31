@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "model.proto";
 
 package com.cat_and_dog_studio.geometric_football.protocol;
 
@@ -15,14 +16,22 @@ enum ResponseType {
     GET_PLAYERS = 6;
     INVITATION_RESULT = 7;
     TEAM_PLAYERS = 8;
-    OPPONENT_TEAM_PLAYERS = 9;
+    OPPONENT_FOUND = 9;
     LEAVE_TEAM = 10;
     PLAYER_KICKED = 11;
-}
-
-enum GetPlayersMode {
-    GAME_HOSTS = 0;
-    WAITING_FOR_GAMES = 1;
+    SET_TEAM = 12;
+    OK = 13;
+    SET_TACTIC = 14;
+    SET_TACTIC_MAPPING = 15;
+    SET_TEAM_PLAYERS = 16;
+    SET_TEAM_PLAYERS_USERS_MAPPING = 17;
+    READY_FOR_GAME = 18;
+    OPPONENT_PLAYERS = 19;
+    SET_OPPONENT_TEAM = 20;
+    SET_OPPONENT_TEAM_PLAYERS = 21;
+    SET_OPPONENT_TACTIC = 22;
+    SET_OPPONENT_TACTIC_MAPPING = 23;
+    SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING = 24;
 }
 
 enum InvitationResult {
@@ -63,6 +72,14 @@ message Response {
     TeamPlayersResponse teamPlayers = 10;
     LeaveTeamResponse leaveTeam = 11;
     PlayerKickedResponse playerKicked = 12;
+    Team team = 13;
+    OkResponse okResponse = 14;
+    Tactic tactic = 15;
+    TacticMapping tacticMapping = 16;
+    Players players = 17;
+    PlayerFootballerMappings playerFootballerMappings = 18;
+    ReadyForGame readyForGameResponse = 19;
+    OpponentFound opponentFound = 20;
 }
 
 message MauResponse {
@@ -121,4 +138,12 @@ message LeaveTeamResponse {
 
 message PlayerKickedResponse {
     string username = 1;
+}
+
+message OkResponse {
+    string message = 1;
+}
+
+message OpponentFound {
+    string name = 1;
 }

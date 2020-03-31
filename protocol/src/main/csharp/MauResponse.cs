@@ -25,77 +25,100 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJtYXUtcmVzcG9uc2UucHJvdG8SMmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8u",
-            "Z2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sIikKClBsYXllckRhdGESDAoE",
-            "bmFtZRgBIAEoCRINCgVjb2xvchgCIAEoCSKJAQoOVGVhbVBsYXllckRhdGES",
-            "DAoEbmFtZRgBIAEoCRINCgVjb2xvchgCIAEoCRJaCg50ZWFtUGxheWVyVHlw",
-            "ZRgDIAEoDjJCLmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zv",
-            "b3RiYWxsLnByb3RvY29sLlRlYW1QbGF5ZXJUeXBlIvwICghSZXNwb25zZRJO",
-            "CgR0eXBlGAEgASgOMkAuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRy",
-            "aWNfZm9vdGJhbGwucHJvdG9jb2wuUmVzcG9uc2VUeXBlElQKC21hdVJlc3Bv",
-            "bnNlGAIgASgLMj8uY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNf",
-            "Zm9vdGJhbGwucHJvdG9jb2wuTWF1UmVzcG9uc2USagoWYXV0aGVudGljYXRp",
-            "b25SZXNwb25zZRgDIAEoCzJKLmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2Vv",
-            "bWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLkF1dGhlbnRpY2F0aW9uUmVzcG9u",
-            "c2USWAoNZXJyb3JSZXNwb25zZRgEIAEoCzJBLmNvbS5jYXRfYW5kX2RvZ19z",
-            "dHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLkVycm9yUmVzcG9u",
-            "c2USYgoSZGlzY29ubmVjdFJlc3BvbnNlGAUgASgLMkYuY29tLmNhdF9hbmRf",
-            "ZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuRGlzY29u",
-            "bmVjdFJlc3BvbnNlEl4KEGhvc3RHYW1lUmVzcG9uc2UYBiABKAsyRC5jb20u",
+            "Z2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sGgttb2RlbC5wcm90byIpCgpQ",
+            "bGF5ZXJEYXRhEgwKBG5hbWUYASABKAkSDQoFY29sb3IYAiABKAkiiQEKDlRl",
+            "YW1QbGF5ZXJEYXRhEgwKBG5hbWUYASABKAkSDQoFY29sb3IYAiABKAkSWgoO",
+            "dGVhbVBsYXllclR5cGUYAyABKA4yQi5jb20uY2F0X2FuZF9kb2dfc3R1ZGlv",
+            "Lmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5UZWFtUGxheWVyVHlwZSK2",
+            "DgoIUmVzcG9uc2USTgoEdHlwZRgBIAEoDjJALmNvbS5jYXRfYW5kX2RvZ19z",
+            "dHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLlJlc3BvbnNlVHlw",
+            "ZRJUCgttYXVSZXNwb25zZRgCIAEoCzI/LmNvbS5jYXRfYW5kX2RvZ19zdHVk",
+            "aW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLk1hdVJlc3BvbnNlEmoK",
+            "FmF1dGhlbnRpY2F0aW9uUmVzcG9uc2UYAyABKAsySi5jb20uY2F0X2FuZF9k",
+            "b2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5BdXRoZW50",
+            "aWNhdGlvblJlc3BvbnNlElgKDWVycm9yUmVzcG9uc2UYBCABKAsyQS5jb20u",
             "Y2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2Nv",
-            "bC5Ib3N0R2FtZVJlc3BvbnNlEmAKEWF3YWl0R2FtZVJlc3BvbnNlGAcgASgL",
-            "MkUuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwu",
-            "cHJvdG9jb2wuQXdhaXRHYW1lUmVzcG9uc2USWgoKZ2V0UGxheWVycxgIIAEo",
-            "CzJGLmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxs",
-            "LnByb3RvY29sLkdldFBsYXllcnNSZXNwb25zZRJqChZ0ZWFtSW52aXRhdGlv",
-            "blJlc3BvbnNlGAkgASgLMkouY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9t",
-            "ZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuVGVhbUludml0YXRpb25SZXNwb25z",
-            "ZRJcCgt0ZWFtUGxheWVycxgKIAEoCzJHLmNvbS5jYXRfYW5kX2RvZ19zdHVk",
-            "aW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLlRlYW1QbGF5ZXJzUmVz",
-            "cG9uc2USWAoJbGVhdmVUZWFtGAsgASgLMkUuY29tLmNhdF9hbmRfZG9nX3N0",
-            "dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuTGVhdmVUZWFtUmVz",
-            "cG9uc2USXgoMcGxheWVyS2lja2VkGAwgASgLMkguY29tLmNhdF9hbmRfZG9n",
-            "X3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuUGxheWVyS2lj",
-            "a2VkUmVzcG9uc2UiKwoLTWF1UmVzcG9uc2USDwoHY2F0TmFtZRgBIAEoCRIL",
-            "CgNtYXUYAiABKAkiOwoWQXV0aGVudGljYXRpb25SZXNwb25zZRIQCgh1c2Vy",
-            "bmFtZRgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIiAKDUVycm9yUmVzcG9uc2US",
-            "DwoHbWVzc2FnZRgBIAEoCSIlChJEaXNjb25uZWN0UmVzcG9uc2USDwoHbWVz",
-            "c2FnZRgBIAEoCSJJChBIb3N0R2FtZVJlc3BvbnNlEhAKCHVzZXJuYW1lGAEg",
-            "ASgJEhAKCGdhbWVOYW1lGAIgASgJEhEKCWhvc3RDb2xvchgDIAEoCSJVChFB",
-            "d2FpdEdhbWVSZXNwb25zZRIQCgh1c2VybmFtZRgBIAEoCRIWCg53YWl0aW5n",
-            "TWVzc2FnZRgCIAEoCRIWCg5wcmVmZXJyZWRDb2xvchgDIAEoCSK6AQoSR2V0",
-            "UGxheWVyc1Jlc3BvbnNlElAKBG1vZGUYASABKA4yQi5jb20uY2F0X2FuZF9k",
-            "b2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5HZXRQbGF5",
-            "ZXJzTW9kZRJSCgpwbGF5ZXJEYXRhGAIgAygLMj4uY29tLmNhdF9hbmRfZG9n",
-            "X3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuUGxheWVyRGF0",
-            "YSLYAQoWVGVhbUludml0YXRpb25SZXNwb25zZRJeChBpbnZpdGF0aW9uUmVz",
-            "dWx0GAEgASgOMkQuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNf",
-            "Zm9vdGJhbGwucHJvdG9jb2wuSW52aXRhdGlvblJlc3VsdBIKCgJpZBgCIAEo",
-            "CRIPCgdtZXNzYWdlGAMgASgJEhQKDGdyYW50ZWRDb2xvchgEIAEoCRIUCgxn",
-            "YW1lSG9zdE5hbWUYBSABKAkSFQoNaW52aXRlZFBsYXllchgGIAEoCSJxChNU",
-            "ZWFtUGxheWVyc1Jlc3BvbnNlEloKDnRlYW1QbGF5ZXJEYXRhGAEgAygLMkIu",
-            "Y29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJv",
-            "dG9jb2wuVGVhbVBsYXllckRhdGEiSQoRTGVhdmVUZWFtUmVzcG9uc2USEAoI",
-            "dGVhbU5hbWUYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSEAoIaG9zdExlZnQY",
-            "AyABKAgiKAoUUGxheWVyS2lja2VkUmVzcG9uc2USEAoIdXNlcm5hbWUYASAB",
-            "KAkq5gEKDFJlc3BvbnNlVHlwZRIHCgNNQVUQABISCg5BVVRIRU5USUNBVElP",
-            "ThABEgkKBUVSUk9SEAISDgoKRElTQ09OTkVDVBADEg8KC0dBTUVfSE9TVEVE",
-            "EAQSFQoRQVdBSVRJTkdfRk9SX0dBTUUQBRIPCgtHRVRfUExBWUVSUxAGEhUK",
-            "EUlOVklUQVRJT05fUkVTVUxUEAcSEAoMVEVBTV9QTEFZRVJTEAgSGQoVT1BQ",
-            "T05FTlRfVEVBTV9QTEFZRVJTEAkSDgoKTEVBVkVfVEVBTRAKEhEKDVBMQVlF",
-            "Ul9LSUNLRUQQCyo3Cg5HZXRQbGF5ZXJzTW9kZRIOCgpHQU1FX0hPU1RTEAAS",
-            "FQoRV0FJVElOR19GT1JfR0FNRVMQASp/ChBJbnZpdGF0aW9uUmVzdWx0EgwK",
-            "CEFDQ0VQVEVEEAASDAoIUkVKRUNURUQQARILCgdDUkVBVEVEEAISIAocSU5W",
-            "SVRBVElPTl9BQ0NFUFRFRF9CWV9HVUVTVBADEiAKHElOVklUQVRJT05fUkVK",
-            "RUNURURfQllfR1VFU1QQBCo2Cg5UZWFtUGxheWVyVHlwZRIICgRIT1NUEAAS",
-            "CgoGUExBWUVSEAESDgoKSU5WSVRBVElPThACQk8KMmNvbS5jYXRfYW5kX2Rv",
-            "Z19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sQhlHZW9tZXRy",
-            "aWNGb290YmFsbFJlc3BvbnNlYgZwcm90bzM="));
+            "bC5FcnJvclJlc3BvbnNlEmIKEmRpc2Nvbm5lY3RSZXNwb25zZRgFIAEoCzJG",
+            "LmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnBy",
+            "b3RvY29sLkRpc2Nvbm5lY3RSZXNwb25zZRJeChBob3N0R2FtZVJlc3BvbnNl",
+            "GAYgASgLMkQuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9v",
+            "dGJhbGwucHJvdG9jb2wuSG9zdEdhbWVSZXNwb25zZRJgChFhd2FpdEdhbWVS",
+            "ZXNwb25zZRgHIAEoCzJFLmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0",
+            "cmljX2Zvb3RiYWxsLnByb3RvY29sLkF3YWl0R2FtZVJlc3BvbnNlEloKCmdl",
+            "dFBsYXllcnMYCCABKAsyRi5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21l",
+            "dHJpY19mb290YmFsbC5wcm90b2NvbC5HZXRQbGF5ZXJzUmVzcG9uc2USagoW",
+            "dGVhbUludml0YXRpb25SZXNwb25zZRgJIAEoCzJKLmNvbS5jYXRfYW5kX2Rv",
+            "Z19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLlRlYW1JbnZp",
+            "dGF0aW9uUmVzcG9uc2USXAoLdGVhbVBsYXllcnMYCiABKAsyRy5jb20uY2F0",
+            "X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5U",
+            "ZWFtUGxheWVyc1Jlc3BvbnNlElgKCWxlYXZlVGVhbRgLIAEoCzJFLmNvbS5j",
+            "YXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29s",
+            "LkxlYXZlVGVhbVJlc3BvbnNlEl4KDHBsYXllcktpY2tlZBgMIAEoCzJILmNv",
+            "bS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3Rv",
+            "Y29sLlBsYXllcktpY2tlZFJlc3BvbnNlEkYKBHRlYW0YDSABKAsyOC5jb20u",
+            "Y2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2Nv",
+            "bC5UZWFtElIKCm9rUmVzcG9uc2UYDiABKAsyPi5jb20uY2F0X2FuZF9kb2df",
+            "c3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5Pa1Jlc3BvbnNl",
+            "EkoKBnRhY3RpYxgPIAEoCzI6LmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2Vv",
+            "bWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLlRhY3RpYxJYCg10YWN0aWNNYXBw",
+            "aW5nGBAgASgLMkEuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNf",
+            "Zm9vdGJhbGwucHJvdG9jb2wuVGFjdGljTWFwcGluZxJMCgdwbGF5ZXJzGBEg",
+            "ASgLMjsuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJh",
+            "bGwucHJvdG9jb2wuUGxheWVycxJuChhwbGF5ZXJGb290YmFsbGVyTWFwcGlu",
+            "Z3MYEiABKAsyTC5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19m",
+            "b290YmFsbC5wcm90b2NvbC5QbGF5ZXJGb290YmFsbGVyTWFwcGluZ3MSXgoU",
+            "cmVhZHlGb3JHYW1lUmVzcG9uc2UYEyABKAsyQC5jb20uY2F0X2FuZF9kb2df",
+            "c3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5SZWFkeUZvckdh",
+            "bWUSWAoNb3Bwb25lbnRGb3VuZBgUIAEoCzJBLmNvbS5jYXRfYW5kX2RvZ19z",
+            "dHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLk9wcG9uZW50Rm91",
+            "bmQiKwoLTWF1UmVzcG9uc2USDwoHY2F0TmFtZRgBIAEoCRILCgNtYXUYAiAB",
+            "KAkiOwoWQXV0aGVudGljYXRpb25SZXNwb25zZRIQCgh1c2VybmFtZRgBIAEo",
+            "CRIPCgdtZXNzYWdlGAIgASgJIiAKDUVycm9yUmVzcG9uc2USDwoHbWVzc2Fn",
+            "ZRgBIAEoCSIlChJEaXNjb25uZWN0UmVzcG9uc2USDwoHbWVzc2FnZRgBIAEo",
+            "CSJJChBIb3N0R2FtZVJlc3BvbnNlEhAKCHVzZXJuYW1lGAEgASgJEhAKCGdh",
+            "bWVOYW1lGAIgASgJEhEKCWhvc3RDb2xvchgDIAEoCSJVChFBd2FpdEdhbWVS",
+            "ZXNwb25zZRIQCgh1c2VybmFtZRgBIAEoCRIWCg53YWl0aW5nTWVzc2FnZRgC",
+            "IAEoCRIWCg5wcmVmZXJyZWRDb2xvchgDIAEoCSK6AQoSR2V0UGxheWVyc1Jl",
+            "c3BvbnNlElAKBG1vZGUYASABKA4yQi5jb20uY2F0X2FuZF9kb2dfc3R1ZGlv",
+            "Lmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5HZXRQbGF5ZXJzTW9kZRJS",
+            "CgpwbGF5ZXJEYXRhGAIgAygLMj4uY29tLmNhdF9hbmRfZG9nX3N0dWRpby5n",
+            "ZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuUGxheWVyRGF0YSLYAQoWVGVh",
+            "bUludml0YXRpb25SZXNwb25zZRJeChBpbnZpdGF0aW9uUmVzdWx0GAEgASgO",
+            "MkQuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwu",
+            "cHJvdG9jb2wuSW52aXRhdGlvblJlc3VsdBIKCgJpZBgCIAEoCRIPCgdtZXNz",
+            "YWdlGAMgASgJEhQKDGdyYW50ZWRDb2xvchgEIAEoCRIUCgxnYW1lSG9zdE5h",
+            "bWUYBSABKAkSFQoNaW52aXRlZFBsYXllchgGIAEoCSJxChNUZWFtUGxheWVy",
+            "c1Jlc3BvbnNlEloKDnRlYW1QbGF5ZXJEYXRhGAEgAygLMkIuY29tLmNhdF9h",
+            "bmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuVGVh",
+            "bVBsYXllckRhdGEiSQoRTGVhdmVUZWFtUmVzcG9uc2USEAoIdGVhbU5hbWUY",
+            "ASABKAkSEAoIdXNlcm5hbWUYAiABKAkSEAoIaG9zdExlZnQYAyABKAgiKAoU",
+            "UGxheWVyS2lja2VkUmVzcG9uc2USEAoIdXNlcm5hbWUYASABKAkiHQoKT2tS",
+            "ZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIh0KDU9wcG9uZW50Rm91bmQSDAoE",
+            "bmFtZRgBIAEoCSqeBAoMUmVzcG9uc2VUeXBlEgcKA01BVRAAEhIKDkFVVEhF",
+            "TlRJQ0FUSU9OEAESCQoFRVJST1IQAhIOCgpESVNDT05ORUNUEAMSDwoLR0FN",
+            "RV9IT1NURUQQBBIVChFBV0FJVElOR19GT1JfR0FNRRAFEg8KC0dFVF9QTEFZ",
+            "RVJTEAYSFQoRSU5WSVRBVElPTl9SRVNVTFQQBxIQCgxURUFNX1BMQVlFUlMQ",
+            "CBISCg5PUFBPTkVOVF9GT1VORBAJEg4KCkxFQVZFX1RFQU0QChIRCg1QTEFZ",
+            "RVJfS0lDS0VEEAsSDAoIU0VUX1RFQU0QDBIGCgJPSxANEg4KClNFVF9UQUNU",
+            "SUMQDhIWChJTRVRfVEFDVElDX01BUFBJTkcQDxIUChBTRVRfVEVBTV9QTEFZ",
+            "RVJTEBASIgoeU0VUX1RFQU1fUExBWUVSU19VU0VSU19NQVBQSU5HEBESEgoO",
+            "UkVBRFlfRk9SX0dBTUUQEhIUChBPUFBPTkVOVF9QTEFZRVJTEBMSFQoRU0VU",
+            "X09QUE9ORU5UX1RFQU0QFBIdChlTRVRfT1BQT05FTlRfVEVBTV9QTEFZRVJT",
+            "EBUSFwoTU0VUX09QUE9ORU5UX1RBQ1RJQxAWEh8KG1NFVF9PUFBPTkVOVF9U",
+            "QUNUSUNfTUFQUElORxAXEisKJ1NFVF9PUFBPTkVOVF9URUFNX1BMQVlFUlNf",
+            "VVNFUlNfTUFQUElORxAYKn8KEEludml0YXRpb25SZXN1bHQSDAoIQUNDRVBU",
+            "RUQQABIMCghSRUpFQ1RFRBABEgsKB0NSRUFURUQQAhIgChxJTlZJVEFUSU9O",
+            "X0FDQ0VQVEVEX0JZX0dVRVNUEAMSIAocSU5WSVRBVElPTl9SRUpFQ1RFRF9C",
+            "WV9HVUVTVBAEKjYKDlRlYW1QbGF5ZXJUeXBlEggKBEhPU1QQABIKCgZQTEFZ",
+            "RVIQARIOCgpJTlZJVEFUSU9OEAJCTwoyY29tLmNhdF9hbmRfZG9nX3N0dWRp",
+            "by5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2xCGUdlb21ldHJpY0Zvb3Ri",
+            "YWxsUmVzcG9uc2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.ResponseType), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.GetPlayersMode), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.InvitationResult), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamPlayerType), }, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::FileDescriptor[] { global::Com.CatAndDogStudio.GeometricFootball.Protocol.ModelReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.ResponseType), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.InvitationResult), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamPlayerType), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerData), global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerData.Parser, new[]{ "Name", "Color" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamPlayerData), global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamPlayerData.Parser, new[]{ "Name", "Color", "TeamPlayerType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Response), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Response.Parser, new[]{ "Type", "MauResponse", "AuthenticationResponse", "ErrorResponse", "DisconnectResponse", "HostGameResponse", "AwaitGameResponse", "GetPlayers", "TeamInvitationResponse", "TeamPlayers", "LeaveTeam", "PlayerKicked" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Response), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Response.Parser, new[]{ "Type", "MauResponse", "AuthenticationResponse", "ErrorResponse", "DisconnectResponse", "HostGameResponse", "AwaitGameResponse", "GetPlayers", "TeamInvitationResponse", "TeamPlayers", "LeaveTeam", "PlayerKicked", "Team", "OkResponse", "Tactic", "TacticMapping", "Players", "PlayerFootballerMappings", "ReadyForGameResponse", "OpponentFound" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.MauResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.MauResponse.Parser, new[]{ "CatName", "Mau" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.AuthenticationResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.AuthenticationResponse.Parser, new[]{ "Username", "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.ErrorResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.ErrorResponse.Parser, new[]{ "Message" }, null, null, null),
@@ -106,7 +129,9 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamInvitationResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamInvitationResponse.Parser, new[]{ "InvitationResult", "Id", "Message", "GrantedColor", "GameHostName", "InvitedPlayer" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamPlayersResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamPlayersResponse.Parser, new[]{ "TeamPlayerData" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.LeaveTeamResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.LeaveTeamResponse.Parser, new[]{ "TeamName", "Username", "HostLeft" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerKickedResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerKickedResponse.Parser, new[]{ "Username" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerKickedResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerKickedResponse.Parser, new[]{ "Username" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.OkResponse), global::Com.CatAndDogStudio.GeometricFootball.Protocol.OkResponse.Parser, new[]{ "Message" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.OpponentFound), global::Com.CatAndDogStudio.GeometricFootball.Protocol.OpponentFound.Parser, new[]{ "Name" }, null, null, null)
           }));
     }
     #endregion
@@ -123,14 +148,22 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
     [pbr::OriginalName("GET_PLAYERS")] GetPlayers = 6,
     [pbr::OriginalName("INVITATION_RESULT")] InvitationResult = 7,
     [pbr::OriginalName("TEAM_PLAYERS")] TeamPlayers = 8,
-    [pbr::OriginalName("OPPONENT_TEAM_PLAYERS")] OpponentTeamPlayers = 9,
+    [pbr::OriginalName("OPPONENT_FOUND")] OpponentFound = 9,
     [pbr::OriginalName("LEAVE_TEAM")] LeaveTeam = 10,
     [pbr::OriginalName("PLAYER_KICKED")] PlayerKicked = 11,
-  }
-
-  public enum GetPlayersMode {
-    [pbr::OriginalName("GAME_HOSTS")] GameHosts = 0,
-    [pbr::OriginalName("WAITING_FOR_GAMES")] WaitingForGames = 1,
+    [pbr::OriginalName("SET_TEAM")] SetTeam = 12,
+    [pbr::OriginalName("OK")] Ok = 13,
+    [pbr::OriginalName("SET_TACTIC")] SetTactic = 14,
+    [pbr::OriginalName("SET_TACTIC_MAPPING")] SetTacticMapping = 15,
+    [pbr::OriginalName("SET_TEAM_PLAYERS")] SetTeamPlayers = 16,
+    [pbr::OriginalName("SET_TEAM_PLAYERS_USERS_MAPPING")] SetTeamPlayersUsersMapping = 17,
+    [pbr::OriginalName("READY_FOR_GAME")] ReadyForGame = 18,
+    [pbr::OriginalName("OPPONENT_PLAYERS")] OpponentPlayers = 19,
+    [pbr::OriginalName("SET_OPPONENT_TEAM")] SetOpponentTeam = 20,
+    [pbr::OriginalName("SET_OPPONENT_TEAM_PLAYERS")] SetOpponentTeamPlayers = 21,
+    [pbr::OriginalName("SET_OPPONENT_TACTIC")] SetOpponentTactic = 22,
+    [pbr::OriginalName("SET_OPPONENT_TACTIC_MAPPING")] SetOpponentTacticMapping = 23,
+    [pbr::OriginalName("SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING")] SetOpponentTeamPlayersUsersMapping = 24,
   }
 
   public enum InvitationResult {
@@ -529,6 +562,14 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       teamPlayers_ = other.teamPlayers_ != null ? other.teamPlayers_.Clone() : null;
       leaveTeam_ = other.leaveTeam_ != null ? other.leaveTeam_.Clone() : null;
       playerKicked_ = other.playerKicked_ != null ? other.playerKicked_.Clone() : null;
+      team_ = other.team_ != null ? other.team_.Clone() : null;
+      okResponse_ = other.okResponse_ != null ? other.okResponse_.Clone() : null;
+      tactic_ = other.tactic_ != null ? other.tactic_.Clone() : null;
+      tacticMapping_ = other.tacticMapping_ != null ? other.tacticMapping_.Clone() : null;
+      players_ = other.players_ != null ? other.players_.Clone() : null;
+      playerFootballerMappings_ = other.playerFootballerMappings_ != null ? other.playerFootballerMappings_.Clone() : null;
+      readyForGameResponse_ = other.readyForGameResponse_ != null ? other.readyForGameResponse_.Clone() : null;
+      opponentFound_ = other.opponentFound_ != null ? other.opponentFound_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -669,6 +710,94 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       }
     }
 
+    /// <summary>Field number for the "team" field.</summary>
+    public const int TeamFieldNumber = 13;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team team_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team Team {
+      get { return team_; }
+      set {
+        team_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "okResponse" field.</summary>
+    public const int OkResponseFieldNumber = 14;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.OkResponse okResponse_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.OkResponse OkResponse {
+      get { return okResponse_; }
+      set {
+        okResponse_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tactic" field.</summary>
+    public const int TacticFieldNumber = 15;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic tactic_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic Tactic {
+      get { return tactic_; }
+      set {
+        tactic_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tacticMapping" field.</summary>
+    public const int TacticMappingFieldNumber = 16;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping tacticMapping_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping TacticMapping {
+      get { return tacticMapping_; }
+      set {
+        tacticMapping_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "players" field.</summary>
+    public const int PlayersFieldNumber = 17;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players players_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players Players {
+      get { return players_; }
+      set {
+        players_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "playerFootballerMappings" field.</summary>
+    public const int PlayerFootballerMappingsFieldNumber = 18;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings playerFootballerMappings_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings PlayerFootballerMappings {
+      get { return playerFootballerMappings_; }
+      set {
+        playerFootballerMappings_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "readyForGameResponse" field.</summary>
+    public const int ReadyForGameResponseFieldNumber = 19;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame readyForGameResponse_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame ReadyForGameResponse {
+      get { return readyForGameResponse_; }
+      set {
+        readyForGameResponse_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "opponentFound" field.</summary>
+    public const int OpponentFoundFieldNumber = 20;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.OpponentFound opponentFound_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.OpponentFound OpponentFound {
+      get { return opponentFound_; }
+      set {
+        opponentFound_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Response);
@@ -694,6 +823,14 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       if (!object.Equals(TeamPlayers, other.TeamPlayers)) return false;
       if (!object.Equals(LeaveTeam, other.LeaveTeam)) return false;
       if (!object.Equals(PlayerKicked, other.PlayerKicked)) return false;
+      if (!object.Equals(Team, other.Team)) return false;
+      if (!object.Equals(OkResponse, other.OkResponse)) return false;
+      if (!object.Equals(Tactic, other.Tactic)) return false;
+      if (!object.Equals(TacticMapping, other.TacticMapping)) return false;
+      if (!object.Equals(Players, other.Players)) return false;
+      if (!object.Equals(PlayerFootballerMappings, other.PlayerFootballerMappings)) return false;
+      if (!object.Equals(ReadyForGameResponse, other.ReadyForGameResponse)) return false;
+      if (!object.Equals(OpponentFound, other.OpponentFound)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -712,6 +849,14 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       if (teamPlayers_ != null) hash ^= TeamPlayers.GetHashCode();
       if (leaveTeam_ != null) hash ^= LeaveTeam.GetHashCode();
       if (playerKicked_ != null) hash ^= PlayerKicked.GetHashCode();
+      if (team_ != null) hash ^= Team.GetHashCode();
+      if (okResponse_ != null) hash ^= OkResponse.GetHashCode();
+      if (tactic_ != null) hash ^= Tactic.GetHashCode();
+      if (tacticMapping_ != null) hash ^= TacticMapping.GetHashCode();
+      if (players_ != null) hash ^= Players.GetHashCode();
+      if (playerFootballerMappings_ != null) hash ^= PlayerFootballerMappings.GetHashCode();
+      if (readyForGameResponse_ != null) hash ^= ReadyForGameResponse.GetHashCode();
+      if (opponentFound_ != null) hash ^= OpponentFound.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -773,6 +918,38 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
         output.WriteRawTag(98);
         output.WriteMessage(PlayerKicked);
       }
+      if (team_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Team);
+      }
+      if (okResponse_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(OkResponse);
+      }
+      if (tactic_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Tactic);
+      }
+      if (tacticMapping_ != null) {
+        output.WriteRawTag(130, 1);
+        output.WriteMessage(TacticMapping);
+      }
+      if (players_ != null) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(Players);
+      }
+      if (playerFootballerMappings_ != null) {
+        output.WriteRawTag(146, 1);
+        output.WriteMessage(PlayerFootballerMappings);
+      }
+      if (readyForGameResponse_ != null) {
+        output.WriteRawTag(154, 1);
+        output.WriteMessage(ReadyForGameResponse);
+      }
+      if (opponentFound_ != null) {
+        output.WriteRawTag(162, 1);
+        output.WriteMessage(OpponentFound);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -816,6 +993,30 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       }
       if (playerKicked_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerKicked);
+      }
+      if (team_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Team);
+      }
+      if (okResponse_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OkResponse);
+      }
+      if (tactic_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tactic);
+      }
+      if (tacticMapping_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(TacticMapping);
+      }
+      if (players_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Players);
+      }
+      if (playerFootballerMappings_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PlayerFootballerMappings);
+      }
+      if (readyForGameResponse_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReadyForGameResponse);
+      }
+      if (opponentFound_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(OpponentFound);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -896,6 +1097,54 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
           PlayerKicked = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerKickedResponse();
         }
         PlayerKicked.MergeFrom(other.PlayerKicked);
+      }
+      if (other.team_ != null) {
+        if (team_ == null) {
+          Team = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team();
+        }
+        Team.MergeFrom(other.Team);
+      }
+      if (other.okResponse_ != null) {
+        if (okResponse_ == null) {
+          OkResponse = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.OkResponse();
+        }
+        OkResponse.MergeFrom(other.OkResponse);
+      }
+      if (other.tactic_ != null) {
+        if (tactic_ == null) {
+          Tactic = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic();
+        }
+        Tactic.MergeFrom(other.Tactic);
+      }
+      if (other.tacticMapping_ != null) {
+        if (tacticMapping_ == null) {
+          TacticMapping = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping();
+        }
+        TacticMapping.MergeFrom(other.TacticMapping);
+      }
+      if (other.players_ != null) {
+        if (players_ == null) {
+          Players = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players();
+        }
+        Players.MergeFrom(other.Players);
+      }
+      if (other.playerFootballerMappings_ != null) {
+        if (playerFootballerMappings_ == null) {
+          PlayerFootballerMappings = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings();
+        }
+        PlayerFootballerMappings.MergeFrom(other.PlayerFootballerMappings);
+      }
+      if (other.readyForGameResponse_ != null) {
+        if (readyForGameResponse_ == null) {
+          ReadyForGameResponse = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame();
+        }
+        ReadyForGameResponse.MergeFrom(other.ReadyForGameResponse);
+      }
+      if (other.opponentFound_ != null) {
+        if (opponentFound_ == null) {
+          OpponentFound = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.OpponentFound();
+        }
+        OpponentFound.MergeFrom(other.OpponentFound);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -987,6 +1236,62 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
               PlayerKicked = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerKickedResponse();
             }
             input.ReadMessage(PlayerKicked);
+            break;
+          }
+          case 106: {
+            if (team_ == null) {
+              Team = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team();
+            }
+            input.ReadMessage(Team);
+            break;
+          }
+          case 114: {
+            if (okResponse_ == null) {
+              OkResponse = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.OkResponse();
+            }
+            input.ReadMessage(OkResponse);
+            break;
+          }
+          case 122: {
+            if (tactic_ == null) {
+              Tactic = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic();
+            }
+            input.ReadMessage(Tactic);
+            break;
+          }
+          case 130: {
+            if (tacticMapping_ == null) {
+              TacticMapping = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping();
+            }
+            input.ReadMessage(TacticMapping);
+            break;
+          }
+          case 138: {
+            if (players_ == null) {
+              Players = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players();
+            }
+            input.ReadMessage(Players);
+            break;
+          }
+          case 146: {
+            if (playerFootballerMappings_ == null) {
+              PlayerFootballerMappings = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings();
+            }
+            input.ReadMessage(PlayerFootballerMappings);
+            break;
+          }
+          case 154: {
+            if (readyForGameResponse_ == null) {
+              ReadyForGameResponse = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame();
+            }
+            input.ReadMessage(ReadyForGameResponse);
+            break;
+          }
+          case 162: {
+            if (opponentFound_ == null) {
+              OpponentFound = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.OpponentFound();
+            }
+            input.ReadMessage(OpponentFound);
             break;
           }
         }
@@ -2782,6 +3087,264 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
             break;
           case 10: {
             Username = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class OkResponse : pb::IMessage<OkResponse> {
+    private static readonly pb::MessageParser<OkResponse> _parser = new pb::MessageParser<OkResponse>(() => new OkResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<OkResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.CatAndDogStudio.GeometricFootball.Protocol.MauResponseReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OkResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OkResponse(OkResponse other) : this() {
+      message_ = other.message_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OkResponse Clone() {
+      return new OkResponse(this);
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 1;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as OkResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(OkResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Message != other.Message) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Message.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Message);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(OkResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class OpponentFound : pb::IMessage<OpponentFound> {
+    private static readonly pb::MessageParser<OpponentFound> _parser = new pb::MessageParser<OpponentFound>(() => new OpponentFound());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<OpponentFound> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.CatAndDogStudio.GeometricFootball.Protocol.MauResponseReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OpponentFound() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OpponentFound(OpponentFound other) : this() {
+      name_ = other.name_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OpponentFound Clone() {
+      return new OpponentFound(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as OpponentFound);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(OpponentFound other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(OpponentFound other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
             break;
           }
         }

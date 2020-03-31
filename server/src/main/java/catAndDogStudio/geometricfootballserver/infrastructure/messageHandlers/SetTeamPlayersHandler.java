@@ -13,7 +13,7 @@ import java.nio.channels.SelectableChannel;
 import java.util.EnumSet;
 import java.util.Set;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
 public class SetTeamPlayersHandler extends BaseMessageHandler {
@@ -30,7 +30,7 @@ public class SetTeamPlayersHandler extends BaseMessageHandler {
                 players.append(Constants.MESSAGE_SEPARATOR);
             }
         }
-        game.setPlayers(players.toString());
+        //game.setPlayers(players.toString());
         game.getPlayersInGame().keySet().stream()
                 .forEach(c -> sendTeam(c, game.getPlayersInGame().get(c), game));
     }

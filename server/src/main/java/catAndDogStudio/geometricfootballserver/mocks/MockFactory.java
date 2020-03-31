@@ -1,6 +1,7 @@
 package catAndDogStudio.geometricfootballserver.mocks;
 
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
+import com.cat_and_dog_studio.geometric_football.protocol.Model;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -49,7 +50,7 @@ public class MockFactory {
                 .build();
     }
 
-    public GeometricFootballRequest.Request getPlayers(final GeometricFootballRequest.GetPlayersMode getPlayersMode) {
+    public GeometricFootballRequest.Request getPlayers(final Model.GetPlayersMode getPlayersMode) {
         return GeometricFootballRequest.Request.newBuilder()
                 .setType(GeometricFootballRequest.RequestType.GET_PLAYERS)
                 .setGetPlayers(GeometricFootballRequest.GetPlayers.newBuilder()
@@ -118,6 +119,24 @@ public class MockFactory {
         return GeometricFootballRequest.Request.newBuilder()
                 .setType(GeometricFootballRequest.RequestType.LEAVE_TEAM)
                 .setLeaveTeam(GeometricFootballRequest.LeaveTeam.newBuilder()
+                        .build())
+                .build();
+    }
+
+    public GeometricFootballRequest.Request readyForGame() {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.READY_FOR_GAME)
+                .setReadyForGame(Model.ReadyForGame.newBuilder()
+                        .setReady(true)
+                        .build())
+                .build();
+    }
+
+    public GeometricFootballRequest.Request goBackToHostingGame() {
+        return GeometricFootballRequest.Request.newBuilder()
+                .setType(GeometricFootballRequest.RequestType.READY_FOR_GAME)
+                .setReadyForGame(Model.ReadyForGame.newBuilder()
+                        .setReady(false)
                         .build())
                 .build();
     }

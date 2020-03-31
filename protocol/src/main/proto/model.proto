@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package com.cat_and_dog_studio.geometric_football.protocol;
+
+option java_package = "com.cat_and_dog_studio.geometric_football.protocol";
+option java_outer_classname = "Model";
+
+message Team {
+    string name = 1;
+    string league = 2;
+    string selectedTactic = 3;
+    string icon = 4;
+    string uniqueId = 5;
+    repeated string players = 6;
+}
+
+enum GetPlayersMode {
+    GAME_HOSTS = 0;
+    WAITING_FOR_GAMES = 1;
+}
+
+enum PlayerPosition {
+    GK = 0;
+    CB = 1;
+    LB = 2;
+    LWB = 3;
+    RB = 4;
+    RWB = 5;
+    DM = 6;
+    CM = 7;
+    AM = 8;
+    LM = 9;
+    LW = 10;
+    RM = 11;
+    RW = 12;
+    CF = 13;
+}
+
+message MainSquadPosition {
+    string playerSlotId = 1;
+    string playerId = 2;
+}
+
+message TacticMapping {
+    string tacticId = 1;
+    repeated string subs = 2;
+    repeated string reserves = 3;
+    repeated MainSquadPosition mainSquad = 4;
+}
+
+message Tactic {
+    string uniqueId = 1;
+    string name = 2;
+    int32 order = 3;
+    repeated PlayerSlot playerSlots = 4;
+}
+
+message PlayerSlot {
+    string id = 1;
+    float positionX = 2;
+    float positionY = 3;
+    string name = 4;
+}
+
+message PlayerParameters {
+    string uniqueId = 1;
+    PlayerPosition position = 2;
+    string team = 3;
+    string firstName = 4;
+    string lastName = 5;
+    string nickname = 6;
+    int32 age = 7;
+    int32 height = 8;
+    int32 width = 9;
+    int32 pace = 10;
+    int32 passing = 11;
+    int32 shotAccuracy = 12;
+    int32 shotStrength = 13;
+    int32 heading = 14;
+    int32 tackling = 15;
+    int32 sliding = 16;
+    int32 stamina = 17;
+    int32 blocking = 18;
+    int32 dribbling = 19;
+    int32 ballControl = 20;
+    int32 marking = 21;
+    int32 agility = 22;
+    int32 strength = 23;
+    int32 jumping = 24;
+    int32 handling = 25;
+    int32 reflex = 26;
+}
+
+message Players {
+    repeated PlayerParameters players = 1;
+}
+
+message PlayerFootballerMappings {
+    repeated PlayerOwner playerOwners = 1;
+}
+
+message PlayerOwner {
+    string userName = 1;
+    string playerId = 2;
+    string color = 3;
+}
+
+message ReadyForGame {
+    bool ready = 1;
+}

@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.nio.channels.SelectableChannel;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -20,6 +21,8 @@ public class ServerState {
     private final ChannelGroup waitingForGames;
     private final ChannelGroup hosts;
     private final ChannelGroup playersInGames;
+    private final ChannelGroup waitingForOpponents;
+    private final ChannelGroup activeGames;
 
     @Getter
     private final Map<ChannelId, Game> games = new HashMap<>();
@@ -73,6 +76,12 @@ public class ServerState {
                 .filter(g -> g.getOwnerName().equals(username))
                 .findFirst();
     }
+    public Optional<Game> findOpponent(final ChannelId myChannelId) {
+        return waitingForOpponents.stream()
+                .filter(c -> !c.id().equals(myChannelId))
+                .map(c -> games.get(c.id()))
+                .min(Comparator.comparing(oc -> oc.getReadyForGameTime()));
+    }
     public void moveFromWaitingForGamesToPlayersInGame(Channel channel) {
         waitingForGames.remove(channel);
         playersInGames.add(channel);
@@ -91,5 +100,25 @@ public class ServerState {
     public void moveToHosts(Channel channel) {
         waitingForGames.remove(channel);
         hosts.add(channel);
+    }
+
+    public void moveFromHostToWaitingForOpponents(Channel channel) {
+        hosts.remove(channel);
+        waitingForOpponents.add(channel);
+    }
+
+    public void moveFromWaitingForOpponentsToHosts(Channel channel) {
+        waitingForOpponents.remove(channel);
+        hosts.add(channel);
+    }
+
+    public void moveFromWaitingForOpponentsToActiveGames(Channel channel) {
+        waitingForOpponents.remove(channel);
+        activeGames.add(channel);
+    }
+
+    public void moveFromActiveGameToWaitingForOpponents(Channel channel) {
+        activeGames.remove(channel);
+        waitingForOpponents.add(channel);
     }
 }

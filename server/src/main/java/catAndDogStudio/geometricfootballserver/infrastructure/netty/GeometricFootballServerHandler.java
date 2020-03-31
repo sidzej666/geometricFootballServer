@@ -39,7 +39,9 @@ public class GeometricFootballServerHandler extends SimpleChannelInboundHandler<
         final Channel leavingCat = ctx.channel();
         log.info("handler removed: {}" + leavingCat.id());
         Game game = serverState.getGames().get(leavingCat.id());
-        leaveGameService.leaveGame(leavingCat, game, true);
+        if (game != null) {
+            leaveGameService.leaveGame(leavingCat, game, true);
+        }
     }
 
     @Override

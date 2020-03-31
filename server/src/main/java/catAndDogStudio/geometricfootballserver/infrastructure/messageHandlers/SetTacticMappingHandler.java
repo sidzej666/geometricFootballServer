@@ -13,7 +13,7 @@ import java.nio.channels.SelectableChannel;
 import java.util.EnumSet;
 import java.util.Set;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
 public class SetTacticMappingHandler extends BaseMessageHandler{
@@ -24,7 +24,7 @@ public class SetTacticMappingHandler extends BaseMessageHandler{
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {
         final String tacticMapping = splittedMessage[1];
-        game.setTacticMapping(tacticMapping);
+        //game.setTacticMapping(tacticMapping);
         game.getPlayersInGame().keySet().stream()
                 .forEach(c -> sendTactic(c, game.getPlayersInGame().get(c), game));
     }

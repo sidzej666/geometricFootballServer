@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "model.proto";
 
 package com.cat_and_dog_studio.geometric_football.protocol;
 
@@ -16,11 +17,12 @@ enum RequestType {
     TEAM_INVITATION = 7;
     LEAVE_TEAM = 8;
     KICK_PLAYER = 9;
-}
-
-enum GetPlayersMode {
-    GAME_HOSTS = 0;
-    WAITING_FOR_GAMES = 1;
+    SET_TEAM = 10;
+    SET_TACTIC = 11;
+    SET_TACTIC_MAPPING = 12;
+    SET_TEAM_PLAYERS = 13;
+    SET_TEAM_PLAYERS_USERS_MAPPING = 14;
+    READY_FOR_GAME = 15;
 }
 
 enum TeamInvitationDirection {
@@ -46,6 +48,12 @@ message Request {
     TeamInvitation teamInvitation = 9;
     LeaveTeam leaveTeam = 10;
     KickPlayer kickPlayer = 11;
+    Team team = 12;
+    Tactic tactic = 13;
+    TacticMapping tacticMapping = 14;
+    Players players = 15;
+    PlayerFootballerMappings playerFootballerMappings = 16;
+    ReadyForGame readyForGame = 17;
 }
 
 message Mau {

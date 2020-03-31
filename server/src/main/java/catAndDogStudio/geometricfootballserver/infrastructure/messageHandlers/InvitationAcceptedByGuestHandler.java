@@ -60,7 +60,7 @@ public class InvitationAcceptedByGuestHandler extends BaseMessageHandler {
         sendMessage(guestChannel, guestGame, OutputMessages.INVITATION_ACCEPTED_BY_GUEST + ";" +
                 hostInvitation.getInvitator() + ";" + guestGame.getOwnerName());
         sendMessage(guestChannel, guestGame, playersInTeamMessageCreator.message(hostGame, OutputMessages.TEAM_PLAYERS));
-        teamInfoMessageCreator.sendAllAvailableTeamInfo(hostGame, guestChannel, guestGame);
+        teamInfoMessageCreator.sendAllAvailableTeamInfo(guestGame, hostGame, false, true);
     }
 
     private void sendInvitationAcceptedToGameHostAndChangeHostState(SelectableChannel hostChannel, Game hostGame,

@@ -13,7 +13,7 @@ import java.nio.channels.SelectableChannel;
 import java.util.EnumSet;
 import java.util.Set;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
 public class SetTeamPlayersUsersMappingHandler extends BaseMessageHandler {
@@ -27,14 +27,14 @@ public class SetTeamPlayersUsersMappingHandler extends BaseMessageHandler {
             final String[] playerIdAndUserName = splittedMessage[i].split(Constants.SUB_MESSAGE_SEPARATOR_FOR_IDS);
             final String playerId = playerIdAndUserName[0];
             final String userName = playerIdAndUserName[1];
-            game.getPlayersUsersMapping().put(playerId, userName);
+            //game.getPlayersUsersMapping().put(playerId, userName);
         }
         game.getPlayersInGame().keySet().stream()
                 .forEach(c -> sendPlayerUsersMapping(c, game.getPlayersInGame().get(c), game));
     }
 
     private void sendPlayerUsersMapping(SelectableChannel c, Game guestGame, Game hostGame) {
-        sendMessage(c, guestGame, teamInfoMessageCreator.teamPlayersUsersMapping(hostGame, OutputMessages.TEAM_PLAYERS_USERS_MAPPING));
+        //sendMessage(c, guestGame, teamInfoMessageCreator.teamPlayersUsersMapping(hostGame, OutputMessages.TEAM_PLAYERS_USERS_MAPPING));
     }
 
     @Override

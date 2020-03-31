@@ -5,6 +5,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
+import com.cat_and_dog_studio.geometric_football.protocol.Model;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
 import lombok.RequiredArgsConstructor;
@@ -39,10 +40,10 @@ public class GetPlayersHandler extends BaseMessageHandler {
                                  final GeometricFootballRequest.Request request) {
         final GeometricFootballRequest.GetPlayers getPlayers = request.getGetPlayers();
         final GeometricFootballResponse.Response response;
-        if (getPlayers.getMode() == GeometricFootballRequest.GetPlayersMode.GAME_HOSTS) {
-            response = players(GeometricFootballResponse.GetPlayersMode.GAME_HOSTS, hosts);
-        } else if (getPlayers.getMode() == GeometricFootballRequest.GetPlayersMode.WAITING_FOR_GAMES) {
-            response = players(GeometricFootballResponse.GetPlayersMode.WAITING_FOR_GAMES, waitingForGames);
+        if (getPlayers.getMode() == Model.GetPlayersMode.GAME_HOSTS) {
+            response = players(Model.GetPlayersMode.GAME_HOSTS, hosts);
+        } else if (getPlayers.getMode() == Model.GetPlayersMode.WAITING_FOR_GAMES) {
+            response = players(Model.GetPlayersMode.WAITING_FOR_GAMES, waitingForGames);
         } else {
             return;
         }
@@ -50,7 +51,7 @@ public class GetPlayersHandler extends BaseMessageHandler {
         sendMessage(channel, game, response);
     }
 
-    private GeometricFootballResponse.Response players(final GeometricFootballResponse.GetPlayersMode getPlayersMode,
+    private GeometricFootballResponse.Response players(final Model.GetPlayersMode getPlayersMode,
                                                        final ChannelGroup channelGroup) {
         final List<GeometricFootballResponse.PlayerData> playerData = channelGroup.stream()
                 .map(channel -> channel.id())
@@ -68,7 +69,7 @@ public class GetPlayersHandler extends BaseMessageHandler {
     }
 
     private GeometricFootballResponse.GetPlayersResponse buildGetPlayers(final List<GeometricFootballResponse.PlayerData> playerData,
-                                                                 final GeometricFootballResponse.GetPlayersMode getPlayersMode) {
+                                                                 final Model.GetPlayersMode getPlayersMode) {
         final GeometricFootballResponse.GetPlayersResponse.Builder builder = GeometricFootballResponse.GetPlayersResponse.newBuilder()
                 .setMode(getPlayersMode);
         for(int i = 0; i < playerData.size(); i++) {
@@ -77,10 +78,10 @@ public class GetPlayersHandler extends BaseMessageHandler {
         return builder.build();
     }
 
-    private String getColor(final Game game, final GeometricFootballResponse.GetPlayersMode getPlayersMode) {
-        if (getPlayersMode == GeometricFootballResponse.GetPlayersMode.GAME_HOSTS) {
+    private String getColor(final Game game, final Model.GetPlayersMode getPlayersMode) {
+        if (getPlayersMode == Model.GetPlayersMode.GAME_HOSTS) {
             return game.getGrantedColor();
-        } else if (getPlayersMode == GeometricFootballResponse.GetPlayersMode.WAITING_FOR_GAMES) {
+        } else if (getPlayersMode == Model.GetPlayersMode.WAITING_FOR_GAMES) {
             return game.getPreferredColor();
         }
         return game.getPreferredColor();

@@ -40,7 +40,7 @@ public class KickPlayerHandler extends BaseMessageHandler {
         game.getPlayersInTeam().remove(playerToKick.getChannel().id());
         serverState.moveFromPlayersInGamesToWaitingForGame(playerToKick.getChannel());
         GeometricFootballResponse.Response playerKickedOut = playerToKickOut(kickPlayerReqeust.getUsername());
-        GeometricFootballResponse.Response teamPlayers = playersInTeamMessageCreator.createTeamInfo(game);
+        GeometricFootballResponse.Response teamPlayers = playersInTeamMessageCreator.createTeamInfo(game, false, true);
         sendPlayerKickedOutAndTeamInfo(game, playerKickedOut, teamPlayers);
         sendMessage(playerToKick.getChannel(), playerToKick, playerKickedOut);
         game.getPlayersInTeam().values().stream()

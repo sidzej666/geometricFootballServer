@@ -57,6 +57,11 @@ public class LeaveGameService extends BaseMessageHandler {
                         g.setPlayerState(PlayerState.AWAITS_GAME);
                     });
             game.getPlayersInGame().clear();
+            game.setTeam(null);
+            game.setTactic(null);
+            game.setTacticMapping(null);
+            game.setPlayers(null);
+            game.getPlayerFootballerMappings().clear();
             hosts.remove(channel.id());
         } else if (game.getPlayerState() == PlayerState.AWAITS_GAME
                 || game.getPlayerState() == PlayerState.AWAITING_INVITATION_DECISION) {

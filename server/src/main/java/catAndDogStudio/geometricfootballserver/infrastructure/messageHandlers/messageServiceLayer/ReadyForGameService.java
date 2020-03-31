@@ -3,61 +3,54 @@ package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.m
 import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.MessageSender;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.OutputMessages;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.PlayersInTeamMessageCreator;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.TeamInfoMessageCreator;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.netty.BaseMessageHandler;
+import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.nio.channels.SelectableChannel;
-import java.util.Comparator;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class ReadyForGameService  extends MessageSender {
+public class ReadyForGameService  extends BaseMessageHandler {
     private final ServerState serverState;
     private final TeamInfoMessageCreator teamInfoMessageCreator;
-    private final PlayersInTeamMessageCreator playersInTeamMessageCreator;
     private final ActiveGameService activeGameFactory;
 
-    public void transitionServerStateAndFindOpponent(SelectableChannel channel, Game game) {
-        serverState.getHostedGames().remove(channel);
-        SelectableChannel opponentChannel = serverState.getTeamsWaitingForOpponents().keySet().stream()
-                .min(Comparator.comparing(oc -> serverState.getTeamsWaitingForOpponents().get(oc).getReadyForGameTime()))
-                .orElse(null);
-        Game opponent = serverState.getTeamsWaitingForOpponents().get(opponentChannel);
-        if (opponent != null) {
-            serverState.getPlayersInGame().put(channel, game);
-            //serverState.getPlayersInGame().put(opponent.getHostChannel(), opponent);
-            serverState.getTeamsWaitingForOpponents().remove(opponent.getHostChannel());
-        } else {
-            serverState.getTeamsWaitingForOpponents().put(channel, game);
+    public void ifPossibleFindOpponentAndTransitionToInGame(final Game game) {
+        final Optional<Game> opponent = serverState.findOpponent(game.getChannel().id());
+        if (!opponent.isPresent()) {
             return;
         }
+        serverState.moveFromWaitingForOpponentsToActiveGames(opponent.get().getChannel());
+        serverState.moveFromWaitingForOpponentsToActiveGames(game.getChannel());
         game.setPlayerState(PlayerState.PLAYING);
-        opponent.setPlayerState(PlayerState.PLAYING);
-        sentOpponentData(game, channel, opponent);
-        sentOpponentData(opponent, opponentChannel, game);
-        activeGameFactory.createActiveGameAndSetUpGameObjects(game, opponent);
-
-    }
-    public void goBackToTeamCreationServerTransition(SelectableChannel channel, Game game) {
-        serverState.getHostedGames().put(channel, game);
-        serverState.getTeamsWaitingForOpponents().remove(channel);
+        opponent.get().setPlayerState(PlayerState.PLAYING);
+        sentOpponentData(game, opponent.get());
+        sentOpponentData(opponent.get(), game);
+        //TODO?
+        activeGameFactory.createActiveGameAndSetUpGameObjects(game, opponent.get());
     }
 
-    private void sentOpponentData(Game targetGame, SelectableChannel targetGameChannel, Game opponent) {
-        sendOpponentDataToSingleChannel(opponent, targetGameChannel, targetGame);
-        targetGame.getPlayersInGame().keySet()
-                .stream()
-                .forEach(k -> sendOpponentDataToSingleChannel(opponent, k, targetGame.getPlayersInGame().get(k)));
+    private void sentOpponentData(final Game game, final Game opponent) {
+        sendOpponentDataToSingleChannel(game, opponent);
+        game.getPlayersInTeam().values()
+                .forEach(playerInGame -> sendOpponentDataToSingleChannel(playerInGame, opponent));
     }
-    private void sendOpponentDataToSingleChannel(Game opponent, SelectableChannel targetGameChannel, Game targetGame) {
-        sendMessage(targetGameChannel, targetGame, playersInTeamMessageCreator.message(opponent, OutputMessages.OPPONENT_TEAM_PLAYERS));
-        sendMessage(targetGameChannel, targetGame, OutputMessages.getOpponentFoundMessage(opponent.getOwnerName()));
-        teamInfoMessageCreator.sendAllAvailableOpponentTeamInfo(opponent, targetGameChannel, targetGame);
+    private void sendOpponentDataToSingleChannel(final Game game, final Game opponent) {
+        sendMessage(game.getChannel(), game, opponentFound(opponent));
+        teamInfoMessageCreator.sendAllAvailableTeamInfo(game, opponent, true, false);
+    }
+
+    private GeometricFootballResponse.Response opponentFound(final Game opponent) {
+        return GeometricFootballResponse.Response.newBuilder()
+                .setType(GeometricFootballResponse.ResponseType.OPPONENT_FOUND)
+                .setOpponentFound(GeometricFootballResponse.OpponentFound.newBuilder()
+                        .setName(opponent.getOwnerName())
+                        .build())
+                .build();
     }
 }

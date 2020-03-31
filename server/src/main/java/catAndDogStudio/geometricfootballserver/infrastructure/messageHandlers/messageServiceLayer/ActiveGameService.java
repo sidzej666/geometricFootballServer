@@ -18,9 +18,9 @@ public class ActiveGameService {
     private final PlayerObjectFactory playerObjectFactory;
 
     public void createActiveGameAndSetUpGameObjects(Game game, Game opponent) {
-        final ActiveGame activeGame = new ActiveGame();
+        //final ActiveGame activeGame = new ActiveGame();
         // search players and players mappings to set up footballers
-        final List<JsonFootballer> jsonFootballerList = playerObjectFactory.construct(game.getPlayers());
-        activeGame.getFootballers();
+        //final List<JsonFootballer> jsonFootballerList = playerObjectFactory.construct(game.getPlayers());
+        //activeGame.getFootballers();
     }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.EnumSet;
 import java.util.Set;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
 public class GoBackToTeamCreationHandler extends BaseMessageHandler {
@@ -25,7 +25,7 @@ public class GoBackToTeamCreationHandler extends BaseMessageHandler {
         sendGoBackToTeamCreationMessageMessage(channel, game);
         game.getPlayersInGame().keySet().stream()
                 .forEach(k -> sendGoBackToTeamCreationMessageMessage(k, game.getPlayersInGame().get(k)));
-        readyForGameService.goBackToTeamCreationServerTransition(channel, game);
+        //readyForGameService.goBackToTeamCreationServerTransition(channel, game);
     }
 
     private void sendGoBackToTeamCreationMessageMessage(SelectableChannel channel, Game game) {

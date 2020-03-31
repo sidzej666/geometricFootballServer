@@ -4,7 +4,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.InvitationsBusinessLogic;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.InvitationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class InvitationRejectedByHostHandler extends BaseMessageHandler{
     private final ServerState serverState;
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.GAME_HOST);
-    private final InvitationsBusinessLogic invitationsBusinessLogic;
+    private final InvitationService invitationService;
 
     @Override
     protected void messageAction(SelectableChannel channel, Game game, String[] splittedMessage) {

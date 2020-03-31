@@ -39,7 +39,8 @@ public class PlayersInTeamMessageCreator {
         return stringBuilder.toString();
     }
 
-    public GeometricFootballResponse.Response createTeamInfo(final Game game) {
+    public GeometricFootballResponse.Response createTeamInfo(final Game game, final boolean opponent,
+                                                             final boolean withInvitations) {
         final GeometricFootballResponse.TeamPlayersResponse.Builder teamPlayers = GeometricFootballResponse.TeamPlayersResponse.newBuilder();
         teamPlayers.addTeamPlayerData(0, createTeamPlayer(game, GeometricFootballResponse.TeamPlayerType.HOST));
         int i = 1;
@@ -47,12 +48,15 @@ public class PlayersInTeamMessageCreator {
             teamPlayers.addTeamPlayerData(i, createTeamPlayer(playerInGame, GeometricFootballResponse.TeamPlayerType.PLAYER));
             i++;
         }
-        for(final Invitation invitation : game.getInvitations()) {
-            teamPlayers.addTeamPlayerData(i, createTeamPlayer(invitation, GeometricFootballResponse.TeamPlayerType.INVITATION));
-            i++;
+        if (withInvitations) {
+            for(final Invitation invitation : game.getInvitations()) {
+                teamPlayers.addTeamPlayerData(i, createTeamPlayer(invitation, GeometricFootballResponse.TeamPlayerType.INVITATION));
+                i++;
+            }
         }
         return GeometricFootballResponse.Response.newBuilder()
-                .setType(GeometricFootballResponse.ResponseType.TEAM_PLAYERS)
+                .setType(opponent ? GeometricFootballResponse.ResponseType.OPPONENT_PLAYERS
+                        : GeometricFootballResponse.ResponseType.TEAM_PLAYERS)
                 .setTeamPlayers(teamPlayers.build())
                 .build();
     }

@@ -33,4 +33,14 @@ public class GeometricFootballServerConfiguration {
     ChannelGroup playersInGames()  {
         return new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     }
+
+    @Bean
+    ChannelGroup waitingForOpponents() {
+        return new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    }
+
+    @Bean
+    ChannelGroup activeGames() {
+        return new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    }
 }

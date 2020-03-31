@@ -4,6 +4,7 @@ import catAndDogStudio.geometricfootballserver.infrastructure.Game;
 import catAndDogStudio.geometricfootballserver.infrastructure.Invitation;
 import catAndDogStudio.geometricfootballserver.infrastructure.PlayerState;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
+import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.InvitationService;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.PlayersInTeamMessageCreator;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
@@ -21,6 +22,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
 
     private final ServerState serverState;
     private final PlayersInTeamMessageCreator playersInTeamMessageCreator;
+    private final InvitationService invitationService;
 
     @Override
     protected Set<PlayerState> getPossibleStates() {
@@ -41,10 +43,10 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                 final Optional<Invitation> invitation = findHostInvitation(game.getInvitations(), teamInvitation);
                 final Optional<Game> invitedPlayer = serverState.findWaitingPlayer(teamInvitation.getInvitedPlayer());
                 if (!invitedPlayer.isPresent()) {
-                    sendMessage(channel, game, rejectedByPlayer("invitedPlayer does not exists", teamInvitation));
+                    sendMessage(channel, game, invitationService.rejectedByPlayer("invitedPlayer does not exists", teamInvitation.getId()));
                     return;
                 }
-                final Optional<Invitation> playerInvitation = findGuestInvitation(invitedPlayer.get().getInvitations(), teamInvitation);
+                final Optional<Invitation> playerInvitation = invitationService.findGuestInvitation(invitedPlayer.get().getInvitations(), teamInvitation.getGameHostName());
                 switch (teamInvitation.getTeamInvitationAction()) {
                     case CREATE:
                         if (invitation.isPresent()) {
@@ -52,7 +54,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                             return;
                         }
                         if (invitedPlayer.get().getPlayerState() != PlayerState.AWAITS_GAME) {
-                            sendMessage(channel, game, rejectedByPlayer("invitedPlayer does not longer awaits game", teamInvitation));
+                            sendMessage(channel, game, invitationService.rejectedByPlayer("invitedPlayer does not longer awaits game", teamInvitation.getId()));
                             return;
                         }
                         final Invitation newInvitation = Invitation.builder()
@@ -73,20 +75,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                             sendMessage(channel, game, error("invitation not found"));
                             return;
                         }
-                        if (invitedPlayer.get().getPlayerState() != PlayerState.AWAITS_GAME
-                            && invitedPlayer.get().getPlayerState() != PlayerState.AWAITING_INVITATION_DECISION) {
-                            sendMessage(channel, game, rejectedByPlayer("invitedPlayer does not longer awaits game or invitation decision", teamInvitation));
-                            return;
-                        }
-                        if (playerInvitation.isPresent()) {
-                            invitedPlayer.get().getInvitations().remove(playerInvitation.get());
-;                        }
-                        game.getInvitations().remove(invitation.get());
-                        if (invitedPlayer.get().getPlayerState() == PlayerState.AWAITING_INVITATION_DECISION) {
-                            invitedPlayer.get().setPlayerState(PlayerState.AWAITS_GAME);
-                        }
-                        sendMessage(invitedPlayer.get().getChannel(), invitedPlayer.get(), rejectedByHost("rejected by host", teamInvitation));
-                        sendMessage(channel, game, rejectedByHost("rejected by host", teamInvitation));
+                        invitationService.cancelInvitation(invitation.get(), game, true);
                         break;
                     case ACCEPT:
                         if (!invitation.isPresent() || !playerInvitation.isPresent()) {
@@ -95,7 +84,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         }
                         if (invitedPlayer.get().getPlayerState() != PlayerState.AWAITS_GAME
                                 && invitedPlayer.get().getPlayerState() != PlayerState.AWAITING_INVITATION_DECISION) {
-                            sendMessage(channel, game, rejectedByPlayer("invitedPlayer does not longer awaits game or invitation decision", teamInvitation));
+                            sendMessage(channel, game, invitationService.rejectedByPlayer("invitedPlayer does not longer awaits game or invitation decision", teamInvitation.getId()));
                             return;
                         }
                         invitedPlayer.get().getInvitations().remove(playerInvitation.get());
@@ -105,7 +94,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         invitedPlayer.get().setGrantedColor(teamInvitation.getPreferredColor());
                         invitedPlayer.get().setHostChannel(channel);
                         serverState.moveFromWaitingForGamesToPlayersInGame(invitedPlayer.get().getChannel());
-                        GeometricFootballResponse.Response teamInfo = playersInTeamMessageCreator.createTeamInfo(game);
+                        GeometricFootballResponse.Response teamInfo = playersInTeamMessageCreator.createTeamInfo(game, false, true);
                         sendMessage(game.getChannel(), game, teamInfo);
                         sendMessage(invitedPlayer.get().getChannel(), invitedPlayer.get(),
                                 invitationResult(GeometricFootballResponse.InvitationResult.ACCEPTED, invitation.get()));
@@ -123,12 +112,12 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                 }
                 final Optional<Game> host = serverState.findHostPlayer(teamInvitation.getGameHostName());
                 if (!host.isPresent()) {
-                    sendMessage(channel, game, rejectedByPlayer("host does not exists", teamInvitation));
+                    sendMessage(channel, game, invitationService.rejectedByPlayer("host does not exists", teamInvitation.getId()));
                     return;
                 }
                 final Game hostGame = host.get();
                 final Optional<Invitation> hostInvitation = findHostInvitation(hostGame.getInvitations(), teamInvitation);
-                final Optional<Invitation> guestInvitation = findGuestInvitation(game.getInvitations(), teamInvitation);
+                final Optional<Invitation> guestInvitation = invitationService.findGuestInvitation(game.getInvitations(), teamInvitation.getGameHostName());
                 switch (teamInvitation.getTeamInvitationAction()) {
                     case CREATE:
                         if (game.getPlayerState() != PlayerState.AWAITS_GAME) {
@@ -171,7 +160,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         GeometricFootballResponse.Response invitationAccepted = invitationResult(GeometricFootballResponse.InvitationResult.INVITATION_ACCEPTED_BY_GUEST, guestInvitation.get());
                         sendMessage(hostGame.getChannel(), hostGame, invitationAccepted);
                         hostGame.getPlayersInTeam().put(channel.id(), game);
-                        GeometricFootballResponse.Response teamInfo = playersInTeamMessageCreator.createTeamInfo(hostGame);
+                        GeometricFootballResponse.Response teamInfo = playersInTeamMessageCreator.createTeamInfo(hostGame, false, true);
                         sendMessage(hostGame.getChannel(), hostGame, teamInfo);
                         sendMessage(channel, game, invitationAccepted);
                         hostGame.getPlayersInTeam().values().stream()
@@ -205,25 +194,6 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                 .findFirst();
     }
 
-    private Optional<Invitation> findGuestInvitation(final List<Invitation> invitations,
-                                                    final GeometricFootballRequest.TeamInvitation teamInvitation) {
-        return invitations.stream()
-                .filter(invitation -> invitation.getInvitator().equals(teamInvitation.getGameHostName()))
-                .findFirst();
-    }
-
-    private GeometricFootballResponse.Response rejectedByPlayer(final String message,
-                                                                final GeometricFootballRequest.TeamInvitation teamInvitation) {
-        return GeometricFootballResponse.Response.newBuilder()
-                .setType(GeometricFootballResponse.ResponseType.INVITATION_RESULT)
-                .setTeamInvitationResponse(GeometricFootballResponse.TeamInvitationResponse.newBuilder()
-                        .setInvitationResult(GeometricFootballResponse.InvitationResult.REJECTED)
-                        .setMessage(message)
-                        .setId(teamInvitation.getId())
-                        .build())
-                .build();
-    }
-
     private GeometricFootballResponse.Response invitationCreated(final Game host,
                                                                  final GeometricFootballRequest.TeamInvitation teamInvitation) {
         return GeometricFootballResponse.Response.newBuilder()
@@ -233,20 +203,6 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         .setMessage("invitation created")
                         .setId(teamInvitation.getId())
                         .setGameHostName(host.getOwnerName())
-                        .setInvitedPlayer(teamInvitation.getInvitedPlayer())
-                        .build())
-                .build();
-    }
-
-    private GeometricFootballResponse.Response rejectedByHost(final String message,
-                                                                final GeometricFootballRequest.TeamInvitation teamInvitation) {
-        return GeometricFootballResponse.Response.newBuilder()
-                .setType(GeometricFootballResponse.ResponseType.INVITATION_RESULT)
-                .setTeamInvitationResponse(GeometricFootballResponse.TeamInvitationResponse.newBuilder()
-                        .setInvitationResult(GeometricFootballResponse.InvitationResult.REJECTED)
-                        .setMessage(message)
-                        .setId(teamInvitation.getGameHostName())
-                        .setGameHostName(teamInvitation.getGameHostName())
                         .setInvitedPlayer(teamInvitation.getInvitedPlayer())
                         .build())
                 .build();

@@ -56,9 +56,9 @@ public final class GeometricFootballResponse {
      */
     TEAM_PLAYERS(8),
     /**
-     * <code>OPPONENT_TEAM_PLAYERS = 9;</code>
+     * <code>OPPONENT_FOUND = 9;</code>
      */
-    OPPONENT_TEAM_PLAYERS(9),
+    OPPONENT_FOUND(9),
     /**
      * <code>LEAVE_TEAM = 10;</code>
      */
@@ -67,6 +67,58 @@ public final class GeometricFootballResponse {
      * <code>PLAYER_KICKED = 11;</code>
      */
     PLAYER_KICKED(11),
+    /**
+     * <code>SET_TEAM = 12;</code>
+     */
+    SET_TEAM(12),
+    /**
+     * <code>OK = 13;</code>
+     */
+    OK(13),
+    /**
+     * <code>SET_TACTIC = 14;</code>
+     */
+    SET_TACTIC(14),
+    /**
+     * <code>SET_TACTIC_MAPPING = 15;</code>
+     */
+    SET_TACTIC_MAPPING(15),
+    /**
+     * <code>SET_TEAM_PLAYERS = 16;</code>
+     */
+    SET_TEAM_PLAYERS(16),
+    /**
+     * <code>SET_TEAM_PLAYERS_USERS_MAPPING = 17;</code>
+     */
+    SET_TEAM_PLAYERS_USERS_MAPPING(17),
+    /**
+     * <code>READY_FOR_GAME = 18;</code>
+     */
+    READY_FOR_GAME(18),
+    /**
+     * <code>OPPONENT_PLAYERS = 19;</code>
+     */
+    OPPONENT_PLAYERS(19),
+    /**
+     * <code>SET_OPPONENT_TEAM = 20;</code>
+     */
+    SET_OPPONENT_TEAM(20),
+    /**
+     * <code>SET_OPPONENT_TEAM_PLAYERS = 21;</code>
+     */
+    SET_OPPONENT_TEAM_PLAYERS(21),
+    /**
+     * <code>SET_OPPONENT_TACTIC = 22;</code>
+     */
+    SET_OPPONENT_TACTIC(22),
+    /**
+     * <code>SET_OPPONENT_TACTIC_MAPPING = 23;</code>
+     */
+    SET_OPPONENT_TACTIC_MAPPING(23),
+    /**
+     * <code>SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING = 24;</code>
+     */
+    SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING(24),
     UNRECOGNIZED(-1),
     ;
 
@@ -107,9 +159,9 @@ public final class GeometricFootballResponse {
      */
     public static final int TEAM_PLAYERS_VALUE = 8;
     /**
-     * <code>OPPONENT_TEAM_PLAYERS = 9;</code>
+     * <code>OPPONENT_FOUND = 9;</code>
      */
-    public static final int OPPONENT_TEAM_PLAYERS_VALUE = 9;
+    public static final int OPPONENT_FOUND_VALUE = 9;
     /**
      * <code>LEAVE_TEAM = 10;</code>
      */
@@ -118,6 +170,58 @@ public final class GeometricFootballResponse {
      * <code>PLAYER_KICKED = 11;</code>
      */
     public static final int PLAYER_KICKED_VALUE = 11;
+    /**
+     * <code>SET_TEAM = 12;</code>
+     */
+    public static final int SET_TEAM_VALUE = 12;
+    /**
+     * <code>OK = 13;</code>
+     */
+    public static final int OK_VALUE = 13;
+    /**
+     * <code>SET_TACTIC = 14;</code>
+     */
+    public static final int SET_TACTIC_VALUE = 14;
+    /**
+     * <code>SET_TACTIC_MAPPING = 15;</code>
+     */
+    public static final int SET_TACTIC_MAPPING_VALUE = 15;
+    /**
+     * <code>SET_TEAM_PLAYERS = 16;</code>
+     */
+    public static final int SET_TEAM_PLAYERS_VALUE = 16;
+    /**
+     * <code>SET_TEAM_PLAYERS_USERS_MAPPING = 17;</code>
+     */
+    public static final int SET_TEAM_PLAYERS_USERS_MAPPING_VALUE = 17;
+    /**
+     * <code>READY_FOR_GAME = 18;</code>
+     */
+    public static final int READY_FOR_GAME_VALUE = 18;
+    /**
+     * <code>OPPONENT_PLAYERS = 19;</code>
+     */
+    public static final int OPPONENT_PLAYERS_VALUE = 19;
+    /**
+     * <code>SET_OPPONENT_TEAM = 20;</code>
+     */
+    public static final int SET_OPPONENT_TEAM_VALUE = 20;
+    /**
+     * <code>SET_OPPONENT_TEAM_PLAYERS = 21;</code>
+     */
+    public static final int SET_OPPONENT_TEAM_PLAYERS_VALUE = 21;
+    /**
+     * <code>SET_OPPONENT_TACTIC = 22;</code>
+     */
+    public static final int SET_OPPONENT_TACTIC_VALUE = 22;
+    /**
+     * <code>SET_OPPONENT_TACTIC_MAPPING = 23;</code>
+     */
+    public static final int SET_OPPONENT_TACTIC_MAPPING_VALUE = 23;
+    /**
+     * <code>SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING = 24;</code>
+     */
+    public static final int SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING_VALUE = 24;
 
 
     public final int getNumber() {
@@ -153,9 +257,22 @@ public final class GeometricFootballResponse {
         case 6: return GET_PLAYERS;
         case 7: return INVITATION_RESULT;
         case 8: return TEAM_PLAYERS;
-        case 9: return OPPONENT_TEAM_PLAYERS;
+        case 9: return OPPONENT_FOUND;
         case 10: return LEAVE_TEAM;
         case 11: return PLAYER_KICKED;
+        case 12: return SET_TEAM;
+        case 13: return OK;
+        case 14: return SET_TACTIC;
+        case 15: return SET_TACTIC_MAPPING;
+        case 16: return SET_TEAM_PLAYERS;
+        case 17: return SET_TEAM_PLAYERS_USERS_MAPPING;
+        case 18: return READY_FOR_GAME;
+        case 19: return OPPONENT_PLAYERS;
+        case 20: return SET_OPPONENT_TEAM;
+        case 21: return SET_OPPONENT_TEAM_PLAYERS;
+        case 22: return SET_OPPONENT_TACTIC;
+        case 23: return SET_OPPONENT_TACTIC_MAPPING;
+        case 24: return SET_OPPONENT_TEAM_PLAYERS_USERS_MAPPING;
         default: return null;
       }
     }
@@ -206,110 +323,6 @@ public final class GeometricFootballResponse {
     }
 
     // @@protoc_insertion_point(enum_scope:com.cat_and_dog_studio.geometric_football.protocol.ResponseType)
-  }
-
-  /**
-   * Protobuf enum {@code com.cat_and_dog_studio.geometric_football.protocol.GetPlayersMode}
-   */
-  public enum GetPlayersMode
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>GAME_HOSTS = 0;</code>
-     */
-    GAME_HOSTS(0),
-    /**
-     * <code>WAITING_FOR_GAMES = 1;</code>
-     */
-    WAITING_FOR_GAMES(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>GAME_HOSTS = 0;</code>
-     */
-    public static final int GAME_HOSTS_VALUE = 0;
-    /**
-     * <code>WAITING_FOR_GAMES = 1;</code>
-     */
-    public static final int WAITING_FOR_GAMES_VALUE = 1;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static GetPlayersMode valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static GetPlayersMode forNumber(int value) {
-      switch (value) {
-        case 0: return GAME_HOSTS;
-        case 1: return WAITING_FOR_GAMES;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<GetPlayersMode>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        GetPlayersMode> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<GetPlayersMode>() {
-            public GetPlayersMode findValueByNumber(int number) {
-              return GetPlayersMode.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.getDescriptor().getEnumTypes().get(1);
-    }
-
-    private static final GetPlayersMode[] VALUES = values();
-
-    public static GetPlayersMode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private GetPlayersMode(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:com.cat_and_dog_studio.geometric_football.protocol.GetPlayersMode)
   }
 
   /**
@@ -417,7 +430,7 @@ public final class GeometricFootballResponse {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.getDescriptor().getEnumTypes().get(2);
+      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final InvitationResult[] VALUES = values();
@@ -530,7 +543,7 @@ public final class GeometricFootballResponse {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.getDescriptor().getEnumTypes().get(3);
+      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final TeamPlayerType[] VALUES = values();
@@ -2268,6 +2281,126 @@ public final class GeometricFootballResponse {
      * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerKickedResponse playerKicked = 12;</code>
      */
     com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.PlayerKickedResponseOrBuilder getPlayerKickedOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+     * @return Whether the team field is set.
+     */
+    boolean hasTeam();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+     * @return The team.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.Team getTeam();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.TeamOrBuilder getTeamOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+     * @return Whether the okResponse field is set.
+     */
+    boolean hasOkResponse();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+     * @return The okResponse.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse getOkResponse();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder getOkResponseOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+     * @return Whether the tactic field is set.
+     */
+    boolean hasTactic();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+     * @return The tactic.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic getTactic();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.TacticOrBuilder getTacticOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+     * @return Whether the tacticMapping field is set.
+     */
+    boolean hasTacticMapping();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+     * @return The tacticMapping.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping getTacticMapping();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMappingOrBuilder getTacticMappingOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+     * @return Whether the players field is set.
+     */
+    boolean hasPlayers();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+     * @return The players.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.Players getPlayers();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.PlayersOrBuilder getPlayersOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+     * @return Whether the playerFootballerMappings field is set.
+     */
+    boolean hasPlayerFootballerMappings();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+     * @return The playerFootballerMappings.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings getPlayerFootballerMappings();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappingsOrBuilder getPlayerFootballerMappingsOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+     * @return Whether the readyForGameResponse field is set.
+     */
+    boolean hasReadyForGameResponse();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+     * @return The readyForGameResponse.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame getReadyForGameResponse();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGameOrBuilder getReadyForGameResponseOrBuilder();
+
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+     * @return Whether the opponentFound field is set.
+     */
+    boolean hasOpponentFound();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+     * @return The opponentFound.
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound getOpponentFound();
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+     */
+    com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder getOpponentFoundOrBuilder();
   }
   /**
    * Protobuf type {@code com.cat_and_dog_studio.geometric_football.protocol.Response}
@@ -2460,6 +2593,110 @@ public final class GeometricFootballResponse {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(playerKicked_);
                 playerKicked_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 106: {
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Team.Builder subBuilder = null;
+              if (team_ != null) {
+                subBuilder = team_.toBuilder();
+              }
+              team_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.Model.Team.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(team_);
+                team_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 114: {
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder subBuilder = null;
+              if (okResponse_ != null) {
+                subBuilder = okResponse_.toBuilder();
+              }
+              okResponse_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(okResponse_);
+                okResponse_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 122: {
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.Builder subBuilder = null;
+              if (tactic_ != null) {
+                subBuilder = tactic_.toBuilder();
+              }
+              tactic_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tactic_);
+                tactic_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 130: {
+              com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.Builder subBuilder = null;
+              if (tacticMapping_ != null) {
+                subBuilder = tacticMapping_.toBuilder();
+              }
+              tacticMapping_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(tacticMapping_);
+                tacticMapping_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 138: {
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Players.Builder subBuilder = null;
+              if (players_ != null) {
+                subBuilder = players_.toBuilder();
+              }
+              players_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.Model.Players.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(players_);
+                players_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 146: {
+              com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.Builder subBuilder = null;
+              if (playerFootballerMappings_ != null) {
+                subBuilder = playerFootballerMappings_.toBuilder();
+              }
+              playerFootballerMappings_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(playerFootballerMappings_);
+                playerFootballerMappings_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 154: {
+              com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.Builder subBuilder = null;
+              if (readyForGameResponse_ != null) {
+                subBuilder = readyForGameResponse_.toBuilder();
+              }
+              readyForGameResponse_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(readyForGameResponse_);
+                readyForGameResponse_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 162: {
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder subBuilder = null;
+              if (opponentFound_ != null) {
+                subBuilder = opponentFound_.toBuilder();
+              }
+              opponentFound_ = input.readMessage(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(opponentFound_);
+                opponentFound_ = subBuilder.buildPartial();
               }
 
               break;
@@ -2768,6 +3005,190 @@ public final class GeometricFootballResponse {
       return getPlayerKicked();
     }
 
+    public static final int TEAM_FIELD_NUMBER = 13;
+    private com.cat_and_dog_studio.geometric_football.protocol.Model.Team team_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+     * @return Whether the team field is set.
+     */
+    public boolean hasTeam() {
+      return team_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+     * @return The team.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.Team getTeam() {
+      return team_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.Team.getDefaultInstance() : team_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.TeamOrBuilder getTeamOrBuilder() {
+      return getTeam();
+    }
+
+    public static final int OKRESPONSE_FIELD_NUMBER = 14;
+    private com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse okResponse_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+     * @return Whether the okResponse field is set.
+     */
+    public boolean hasOkResponse() {
+      return okResponse_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+     * @return The okResponse.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse getOkResponse() {
+      return okResponse_ == null ? com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.getDefaultInstance() : okResponse_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder getOkResponseOrBuilder() {
+      return getOkResponse();
+    }
+
+    public static final int TACTIC_FIELD_NUMBER = 15;
+    private com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic tactic_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+     * @return Whether the tactic field is set.
+     */
+    public boolean hasTactic() {
+      return tactic_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+     * @return The tactic.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic getTactic() {
+      return tactic_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.getDefaultInstance() : tactic_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticOrBuilder getTacticOrBuilder() {
+      return getTactic();
+    }
+
+    public static final int TACTICMAPPING_FIELD_NUMBER = 16;
+    private com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping tacticMapping_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+     * @return Whether the tacticMapping field is set.
+     */
+    public boolean hasTacticMapping() {
+      return tacticMapping_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+     * @return The tacticMapping.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping getTacticMapping() {
+      return tacticMapping_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.getDefaultInstance() : tacticMapping_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMappingOrBuilder getTacticMappingOrBuilder() {
+      return getTacticMapping();
+    }
+
+    public static final int PLAYERS_FIELD_NUMBER = 17;
+    private com.cat_and_dog_studio.geometric_football.protocol.Model.Players players_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+     * @return Whether the players field is set.
+     */
+    public boolean hasPlayers() {
+      return players_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+     * @return The players.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.Players getPlayers() {
+      return players_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.Players.getDefaultInstance() : players_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayersOrBuilder getPlayersOrBuilder() {
+      return getPlayers();
+    }
+
+    public static final int PLAYERFOOTBALLERMAPPINGS_FIELD_NUMBER = 18;
+    private com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings playerFootballerMappings_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+     * @return Whether the playerFootballerMappings field is set.
+     */
+    public boolean hasPlayerFootballerMappings() {
+      return playerFootballerMappings_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+     * @return The playerFootballerMappings.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings getPlayerFootballerMappings() {
+      return playerFootballerMappings_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.getDefaultInstance() : playerFootballerMappings_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappingsOrBuilder getPlayerFootballerMappingsOrBuilder() {
+      return getPlayerFootballerMappings();
+    }
+
+    public static final int READYFORGAMERESPONSE_FIELD_NUMBER = 19;
+    private com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame readyForGameResponse_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+     * @return Whether the readyForGameResponse field is set.
+     */
+    public boolean hasReadyForGameResponse() {
+      return readyForGameResponse_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+     * @return The readyForGameResponse.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame getReadyForGameResponse() {
+      return readyForGameResponse_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.getDefaultInstance() : readyForGameResponse_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGameOrBuilder getReadyForGameResponseOrBuilder() {
+      return getReadyForGameResponse();
+    }
+
+    public static final int OPPONENTFOUND_FIELD_NUMBER = 20;
+    private com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound opponentFound_;
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+     * @return Whether the opponentFound field is set.
+     */
+    public boolean hasOpponentFound() {
+      return opponentFound_ != null;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+     * @return The opponentFound.
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound getOpponentFound() {
+      return opponentFound_ == null ? com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.getDefaultInstance() : opponentFound_;
+    }
+    /**
+     * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+     */
+    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder getOpponentFoundOrBuilder() {
+      return getOpponentFound();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2817,6 +3238,30 @@ public final class GeometricFootballResponse {
       }
       if (playerKicked_ != null) {
         output.writeMessage(12, getPlayerKicked());
+      }
+      if (team_ != null) {
+        output.writeMessage(13, getTeam());
+      }
+      if (okResponse_ != null) {
+        output.writeMessage(14, getOkResponse());
+      }
+      if (tactic_ != null) {
+        output.writeMessage(15, getTactic());
+      }
+      if (tacticMapping_ != null) {
+        output.writeMessage(16, getTacticMapping());
+      }
+      if (players_ != null) {
+        output.writeMessage(17, getPlayers());
+      }
+      if (playerFootballerMappings_ != null) {
+        output.writeMessage(18, getPlayerFootballerMappings());
+      }
+      if (readyForGameResponse_ != null) {
+        output.writeMessage(19, getReadyForGameResponse());
+      }
+      if (opponentFound_ != null) {
+        output.writeMessage(20, getOpponentFound());
       }
       unknownFields.writeTo(output);
     }
@@ -2874,6 +3319,38 @@ public final class GeometricFootballResponse {
       if (playerKicked_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, getPlayerKicked());
+      }
+      if (team_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getTeam());
+      }
+      if (okResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, getOkResponse());
+      }
+      if (tactic_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getTactic());
+      }
+      if (tacticMapping_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getTacticMapping());
+      }
+      if (players_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getPlayers());
+      }
+      if (playerFootballerMappings_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getPlayerFootballerMappings());
+      }
+      if (readyForGameResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getReadyForGameResponse());
+      }
+      if (opponentFound_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getOpponentFound());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2946,6 +3423,46 @@ public final class GeometricFootballResponse {
         if (!getPlayerKicked()
             .equals(other.getPlayerKicked())) return false;
       }
+      if (hasTeam() != other.hasTeam()) return false;
+      if (hasTeam()) {
+        if (!getTeam()
+            .equals(other.getTeam())) return false;
+      }
+      if (hasOkResponse() != other.hasOkResponse()) return false;
+      if (hasOkResponse()) {
+        if (!getOkResponse()
+            .equals(other.getOkResponse())) return false;
+      }
+      if (hasTactic() != other.hasTactic()) return false;
+      if (hasTactic()) {
+        if (!getTactic()
+            .equals(other.getTactic())) return false;
+      }
+      if (hasTacticMapping() != other.hasTacticMapping()) return false;
+      if (hasTacticMapping()) {
+        if (!getTacticMapping()
+            .equals(other.getTacticMapping())) return false;
+      }
+      if (hasPlayers() != other.hasPlayers()) return false;
+      if (hasPlayers()) {
+        if (!getPlayers()
+            .equals(other.getPlayers())) return false;
+      }
+      if (hasPlayerFootballerMappings() != other.hasPlayerFootballerMappings()) return false;
+      if (hasPlayerFootballerMappings()) {
+        if (!getPlayerFootballerMappings()
+            .equals(other.getPlayerFootballerMappings())) return false;
+      }
+      if (hasReadyForGameResponse() != other.hasReadyForGameResponse()) return false;
+      if (hasReadyForGameResponse()) {
+        if (!getReadyForGameResponse()
+            .equals(other.getReadyForGameResponse())) return false;
+      }
+      if (hasOpponentFound() != other.hasOpponentFound()) return false;
+      if (hasOpponentFound()) {
+        if (!getOpponentFound()
+            .equals(other.getOpponentFound())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3002,6 +3519,38 @@ public final class GeometricFootballResponse {
       if (hasPlayerKicked()) {
         hash = (37 * hash) + PLAYERKICKED_FIELD_NUMBER;
         hash = (53 * hash) + getPlayerKicked().hashCode();
+      }
+      if (hasTeam()) {
+        hash = (37 * hash) + TEAM_FIELD_NUMBER;
+        hash = (53 * hash) + getTeam().hashCode();
+      }
+      if (hasOkResponse()) {
+        hash = (37 * hash) + OKRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getOkResponse().hashCode();
+      }
+      if (hasTactic()) {
+        hash = (37 * hash) + TACTIC_FIELD_NUMBER;
+        hash = (53 * hash) + getTactic().hashCode();
+      }
+      if (hasTacticMapping()) {
+        hash = (37 * hash) + TACTICMAPPING_FIELD_NUMBER;
+        hash = (53 * hash) + getTacticMapping().hashCode();
+      }
+      if (hasPlayers()) {
+        hash = (37 * hash) + PLAYERS_FIELD_NUMBER;
+        hash = (53 * hash) + getPlayers().hashCode();
+      }
+      if (hasPlayerFootballerMappings()) {
+        hash = (37 * hash) + PLAYERFOOTBALLERMAPPINGS_FIELD_NUMBER;
+        hash = (53 * hash) + getPlayerFootballerMappings().hashCode();
+      }
+      if (hasReadyForGameResponse()) {
+        hash = (37 * hash) + READYFORGAMERESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getReadyForGameResponse().hashCode();
+      }
+      if (hasOpponentFound()) {
+        hash = (37 * hash) + OPPONENTFOUND_FIELD_NUMBER;
+        hash = (53 * hash) + getOpponentFound().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3204,6 +3753,54 @@ public final class GeometricFootballResponse {
           playerKicked_ = null;
           playerKickedBuilder_ = null;
         }
+        if (teamBuilder_ == null) {
+          team_ = null;
+        } else {
+          team_ = null;
+          teamBuilder_ = null;
+        }
+        if (okResponseBuilder_ == null) {
+          okResponse_ = null;
+        } else {
+          okResponse_ = null;
+          okResponseBuilder_ = null;
+        }
+        if (tacticBuilder_ == null) {
+          tactic_ = null;
+        } else {
+          tactic_ = null;
+          tacticBuilder_ = null;
+        }
+        if (tacticMappingBuilder_ == null) {
+          tacticMapping_ = null;
+        } else {
+          tacticMapping_ = null;
+          tacticMappingBuilder_ = null;
+        }
+        if (playersBuilder_ == null) {
+          players_ = null;
+        } else {
+          players_ = null;
+          playersBuilder_ = null;
+        }
+        if (playerFootballerMappingsBuilder_ == null) {
+          playerFootballerMappings_ = null;
+        } else {
+          playerFootballerMappings_ = null;
+          playerFootballerMappingsBuilder_ = null;
+        }
+        if (readyForGameResponseBuilder_ == null) {
+          readyForGameResponse_ = null;
+        } else {
+          readyForGameResponse_ = null;
+          readyForGameResponseBuilder_ = null;
+        }
+        if (opponentFoundBuilder_ == null) {
+          opponentFound_ = null;
+        } else {
+          opponentFound_ = null;
+          opponentFoundBuilder_ = null;
+        }
         return this;
       }
 
@@ -3285,6 +3882,46 @@ public final class GeometricFootballResponse {
           result.playerKicked_ = playerKicked_;
         } else {
           result.playerKicked_ = playerKickedBuilder_.build();
+        }
+        if (teamBuilder_ == null) {
+          result.team_ = team_;
+        } else {
+          result.team_ = teamBuilder_.build();
+        }
+        if (okResponseBuilder_ == null) {
+          result.okResponse_ = okResponse_;
+        } else {
+          result.okResponse_ = okResponseBuilder_.build();
+        }
+        if (tacticBuilder_ == null) {
+          result.tactic_ = tactic_;
+        } else {
+          result.tactic_ = tacticBuilder_.build();
+        }
+        if (tacticMappingBuilder_ == null) {
+          result.tacticMapping_ = tacticMapping_;
+        } else {
+          result.tacticMapping_ = tacticMappingBuilder_.build();
+        }
+        if (playersBuilder_ == null) {
+          result.players_ = players_;
+        } else {
+          result.players_ = playersBuilder_.build();
+        }
+        if (playerFootballerMappingsBuilder_ == null) {
+          result.playerFootballerMappings_ = playerFootballerMappings_;
+        } else {
+          result.playerFootballerMappings_ = playerFootballerMappingsBuilder_.build();
+        }
+        if (readyForGameResponseBuilder_ == null) {
+          result.readyForGameResponse_ = readyForGameResponse_;
+        } else {
+          result.readyForGameResponse_ = readyForGameResponseBuilder_.build();
+        }
+        if (opponentFoundBuilder_ == null) {
+          result.opponentFound_ = opponentFound_;
+        } else {
+          result.opponentFound_ = opponentFoundBuilder_.build();
         }
         onBuilt();
         return result;
@@ -3369,6 +4006,30 @@ public final class GeometricFootballResponse {
         }
         if (other.hasPlayerKicked()) {
           mergePlayerKicked(other.getPlayerKicked());
+        }
+        if (other.hasTeam()) {
+          mergeTeam(other.getTeam());
+        }
+        if (other.hasOkResponse()) {
+          mergeOkResponse(other.getOkResponse());
+        }
+        if (other.hasTactic()) {
+          mergeTactic(other.getTactic());
+        }
+        if (other.hasTacticMapping()) {
+          mergeTacticMapping(other.getTacticMapping());
+        }
+        if (other.hasPlayers()) {
+          mergePlayers(other.getPlayers());
+        }
+        if (other.hasPlayerFootballerMappings()) {
+          mergePlayerFootballerMappings(other.getPlayerFootballerMappings());
+        }
+        if (other.hasReadyForGameResponse()) {
+          mergeReadyForGameResponse(other.getReadyForGameResponse());
+        }
+        if (other.hasOpponentFound()) {
+          mergeOpponentFound(other.getOpponentFound());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4758,6 +5419,958 @@ public final class GeometricFootballResponse {
           playerKicked_ = null;
         }
         return playerKickedBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.Model.Team team_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Team, com.cat_and_dog_studio.geometric_football.protocol.Model.Team.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TeamOrBuilder> teamBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       * @return Whether the team field is set.
+       */
+      public boolean hasTeam() {
+        return teamBuilder_ != null || team_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       * @return The team.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.Team getTeam() {
+        if (teamBuilder_ == null) {
+          return team_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.Team.getDefaultInstance() : team_;
+        } else {
+          return teamBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      public Builder setTeam(com.cat_and_dog_studio.geometric_football.protocol.Model.Team value) {
+        if (teamBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          team_ = value;
+          onChanged();
+        } else {
+          teamBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      public Builder setTeam(
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Team.Builder builderForValue) {
+        if (teamBuilder_ == null) {
+          team_ = builderForValue.build();
+          onChanged();
+        } else {
+          teamBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      public Builder mergeTeam(com.cat_and_dog_studio.geometric_football.protocol.Model.Team value) {
+        if (teamBuilder_ == null) {
+          if (team_ != null) {
+            team_ =
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Team.newBuilder(team_).mergeFrom(value).buildPartial();
+          } else {
+            team_ = value;
+          }
+          onChanged();
+        } else {
+          teamBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      public Builder clearTeam() {
+        if (teamBuilder_ == null) {
+          team_ = null;
+          onChanged();
+        } else {
+          team_ = null;
+          teamBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.Team.Builder getTeamBuilder() {
+        
+        onChanged();
+        return getTeamFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.TeamOrBuilder getTeamOrBuilder() {
+        if (teamBuilder_ != null) {
+          return teamBuilder_.getMessageOrBuilder();
+        } else {
+          return team_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Team.getDefaultInstance() : team_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Team team = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Team, com.cat_and_dog_studio.geometric_football.protocol.Model.Team.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TeamOrBuilder> 
+          getTeamFieldBuilder() {
+        if (teamBuilder_ == null) {
+          teamBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Team, com.cat_and_dog_studio.geometric_football.protocol.Model.Team.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TeamOrBuilder>(
+                  getTeam(),
+                  getParentForChildren(),
+                  isClean());
+          team_ = null;
+        }
+        return teamBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse okResponse_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder> okResponseBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       * @return Whether the okResponse field is set.
+       */
+      public boolean hasOkResponse() {
+        return okResponseBuilder_ != null || okResponse_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       * @return The okResponse.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse getOkResponse() {
+        if (okResponseBuilder_ == null) {
+          return okResponse_ == null ? com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.getDefaultInstance() : okResponse_;
+        } else {
+          return okResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      public Builder setOkResponse(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse value) {
+        if (okResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          okResponse_ = value;
+          onChanged();
+        } else {
+          okResponseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      public Builder setOkResponse(
+          com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder builderForValue) {
+        if (okResponseBuilder_ == null) {
+          okResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          okResponseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      public Builder mergeOkResponse(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse value) {
+        if (okResponseBuilder_ == null) {
+          if (okResponse_ != null) {
+            okResponse_ =
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.newBuilder(okResponse_).mergeFrom(value).buildPartial();
+          } else {
+            okResponse_ = value;
+          }
+          onChanged();
+        } else {
+          okResponseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      public Builder clearOkResponse() {
+        if (okResponseBuilder_ == null) {
+          okResponse_ = null;
+          onChanged();
+        } else {
+          okResponse_ = null;
+          okResponseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder getOkResponseBuilder() {
+        
+        onChanged();
+        return getOkResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder getOkResponseOrBuilder() {
+        if (okResponseBuilder_ != null) {
+          return okResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return okResponse_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.getDefaultInstance() : okResponse_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OkResponse okResponse = 14;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder> 
+          getOkResponseFieldBuilder() {
+        if (okResponseBuilder_ == null) {
+          okResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder>(
+                  getOkResponse(),
+                  getParentForChildren(),
+                  isClean());
+          okResponse_ = null;
+        }
+        return okResponseBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic tactic_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic, com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticOrBuilder> tacticBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       * @return Whether the tactic field is set.
+       */
+      public boolean hasTactic() {
+        return tacticBuilder_ != null || tactic_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       * @return The tactic.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic getTactic() {
+        if (tacticBuilder_ == null) {
+          return tactic_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.getDefaultInstance() : tactic_;
+        } else {
+          return tacticBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      public Builder setTactic(com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic value) {
+        if (tacticBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tactic_ = value;
+          onChanged();
+        } else {
+          tacticBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      public Builder setTactic(
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.Builder builderForValue) {
+        if (tacticBuilder_ == null) {
+          tactic_ = builderForValue.build();
+          onChanged();
+        } else {
+          tacticBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      public Builder mergeTactic(com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic value) {
+        if (tacticBuilder_ == null) {
+          if (tactic_ != null) {
+            tactic_ =
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.newBuilder(tactic_).mergeFrom(value).buildPartial();
+          } else {
+            tactic_ = value;
+          }
+          onChanged();
+        } else {
+          tacticBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      public Builder clearTactic() {
+        if (tacticBuilder_ == null) {
+          tactic_ = null;
+          onChanged();
+        } else {
+          tactic_ = null;
+          tacticBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.Builder getTacticBuilder() {
+        
+        onChanged();
+        return getTacticFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticOrBuilder getTacticOrBuilder() {
+        if (tacticBuilder_ != null) {
+          return tacticBuilder_.getMessageOrBuilder();
+        } else {
+          return tactic_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.getDefaultInstance() : tactic_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Tactic tactic = 15;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic, com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticOrBuilder> 
+          getTacticFieldBuilder() {
+        if (tacticBuilder_ == null) {
+          tacticBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic, com.cat_and_dog_studio.geometric_football.protocol.Model.Tactic.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticOrBuilder>(
+                  getTactic(),
+                  getParentForChildren(),
+                  isClean());
+          tactic_ = null;
+        }
+        return tacticBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping tacticMapping_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMappingOrBuilder> tacticMappingBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       * @return Whether the tacticMapping field is set.
+       */
+      public boolean hasTacticMapping() {
+        return tacticMappingBuilder_ != null || tacticMapping_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       * @return The tacticMapping.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping getTacticMapping() {
+        if (tacticMappingBuilder_ == null) {
+          return tacticMapping_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.getDefaultInstance() : tacticMapping_;
+        } else {
+          return tacticMappingBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      public Builder setTacticMapping(com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping value) {
+        if (tacticMappingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tacticMapping_ = value;
+          onChanged();
+        } else {
+          tacticMappingBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      public Builder setTacticMapping(
+          com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.Builder builderForValue) {
+        if (tacticMappingBuilder_ == null) {
+          tacticMapping_ = builderForValue.build();
+          onChanged();
+        } else {
+          tacticMappingBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      public Builder mergeTacticMapping(com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping value) {
+        if (tacticMappingBuilder_ == null) {
+          if (tacticMapping_ != null) {
+            tacticMapping_ =
+              com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.newBuilder(tacticMapping_).mergeFrom(value).buildPartial();
+          } else {
+            tacticMapping_ = value;
+          }
+          onChanged();
+        } else {
+          tacticMappingBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      public Builder clearTacticMapping() {
+        if (tacticMappingBuilder_ == null) {
+          tacticMapping_ = null;
+          onChanged();
+        } else {
+          tacticMapping_ = null;
+          tacticMappingBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.Builder getTacticMappingBuilder() {
+        
+        onChanged();
+        return getTacticMappingFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMappingOrBuilder getTacticMappingOrBuilder() {
+        if (tacticMappingBuilder_ != null) {
+          return tacticMappingBuilder_.getMessageOrBuilder();
+        } else {
+          return tacticMapping_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.getDefaultInstance() : tacticMapping_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.TacticMapping tacticMapping = 16;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMappingOrBuilder> 
+          getTacticMappingFieldBuilder() {
+        if (tacticMappingBuilder_ == null) {
+          tacticMappingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMapping.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.TacticMappingOrBuilder>(
+                  getTacticMapping(),
+                  getParentForChildren(),
+                  isClean());
+          tacticMapping_ = null;
+        }
+        return tacticMappingBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.Model.Players players_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Players, com.cat_and_dog_studio.geometric_football.protocol.Model.Players.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayersOrBuilder> playersBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       * @return Whether the players field is set.
+       */
+      public boolean hasPlayers() {
+        return playersBuilder_ != null || players_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       * @return The players.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.Players getPlayers() {
+        if (playersBuilder_ == null) {
+          return players_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.Players.getDefaultInstance() : players_;
+        } else {
+          return playersBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      public Builder setPlayers(com.cat_and_dog_studio.geometric_football.protocol.Model.Players value) {
+        if (playersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          players_ = value;
+          onChanged();
+        } else {
+          playersBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      public Builder setPlayers(
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Players.Builder builderForValue) {
+        if (playersBuilder_ == null) {
+          players_ = builderForValue.build();
+          onChanged();
+        } else {
+          playersBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      public Builder mergePlayers(com.cat_and_dog_studio.geometric_football.protocol.Model.Players value) {
+        if (playersBuilder_ == null) {
+          if (players_ != null) {
+            players_ =
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Players.newBuilder(players_).mergeFrom(value).buildPartial();
+          } else {
+            players_ = value;
+          }
+          onChanged();
+        } else {
+          playersBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      public Builder clearPlayers() {
+        if (playersBuilder_ == null) {
+          players_ = null;
+          onChanged();
+        } else {
+          players_ = null;
+          playersBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.Players.Builder getPlayersBuilder() {
+        
+        onChanged();
+        return getPlayersFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayersOrBuilder getPlayersOrBuilder() {
+        if (playersBuilder_ != null) {
+          return playersBuilder_.getMessageOrBuilder();
+        } else {
+          return players_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Players.getDefaultInstance() : players_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.Players players = 17;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.Players, com.cat_and_dog_studio.geometric_football.protocol.Model.Players.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayersOrBuilder> 
+          getPlayersFieldBuilder() {
+        if (playersBuilder_ == null) {
+          playersBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.Model.Players, com.cat_and_dog_studio.geometric_football.protocol.Model.Players.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayersOrBuilder>(
+                  getPlayers(),
+                  getParentForChildren(),
+                  isClean());
+          players_ = null;
+        }
+        return playersBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings playerFootballerMappings_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappingsOrBuilder> playerFootballerMappingsBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       * @return Whether the playerFootballerMappings field is set.
+       */
+      public boolean hasPlayerFootballerMappings() {
+        return playerFootballerMappingsBuilder_ != null || playerFootballerMappings_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       * @return The playerFootballerMappings.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings getPlayerFootballerMappings() {
+        if (playerFootballerMappingsBuilder_ == null) {
+          return playerFootballerMappings_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.getDefaultInstance() : playerFootballerMappings_;
+        } else {
+          return playerFootballerMappingsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      public Builder setPlayerFootballerMappings(com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings value) {
+        if (playerFootballerMappingsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          playerFootballerMappings_ = value;
+          onChanged();
+        } else {
+          playerFootballerMappingsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      public Builder setPlayerFootballerMappings(
+          com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.Builder builderForValue) {
+        if (playerFootballerMappingsBuilder_ == null) {
+          playerFootballerMappings_ = builderForValue.build();
+          onChanged();
+        } else {
+          playerFootballerMappingsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      public Builder mergePlayerFootballerMappings(com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings value) {
+        if (playerFootballerMappingsBuilder_ == null) {
+          if (playerFootballerMappings_ != null) {
+            playerFootballerMappings_ =
+              com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.newBuilder(playerFootballerMappings_).mergeFrom(value).buildPartial();
+          } else {
+            playerFootballerMappings_ = value;
+          }
+          onChanged();
+        } else {
+          playerFootballerMappingsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      public Builder clearPlayerFootballerMappings() {
+        if (playerFootballerMappingsBuilder_ == null) {
+          playerFootballerMappings_ = null;
+          onChanged();
+        } else {
+          playerFootballerMappings_ = null;
+          playerFootballerMappingsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.Builder getPlayerFootballerMappingsBuilder() {
+        
+        onChanged();
+        return getPlayerFootballerMappingsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappingsOrBuilder getPlayerFootballerMappingsOrBuilder() {
+        if (playerFootballerMappingsBuilder_ != null) {
+          return playerFootballerMappingsBuilder_.getMessageOrBuilder();
+        } else {
+          return playerFootballerMappings_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.getDefaultInstance() : playerFootballerMappings_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.PlayerFootballerMappings playerFootballerMappings = 18;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappingsOrBuilder> 
+          getPlayerFootballerMappingsFieldBuilder() {
+        if (playerFootballerMappingsBuilder_ == null) {
+          playerFootballerMappingsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappings.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.PlayerFootballerMappingsOrBuilder>(
+                  getPlayerFootballerMappings(),
+                  getParentForChildren(),
+                  isClean());
+          playerFootballerMappings_ = null;
+        }
+        return playerFootballerMappingsBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame readyForGameResponse_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame, com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGameOrBuilder> readyForGameResponseBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       * @return Whether the readyForGameResponse field is set.
+       */
+      public boolean hasReadyForGameResponse() {
+        return readyForGameResponseBuilder_ != null || readyForGameResponse_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       * @return The readyForGameResponse.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame getReadyForGameResponse() {
+        if (readyForGameResponseBuilder_ == null) {
+          return readyForGameResponse_ == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.getDefaultInstance() : readyForGameResponse_;
+        } else {
+          return readyForGameResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      public Builder setReadyForGameResponse(com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame value) {
+        if (readyForGameResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          readyForGameResponse_ = value;
+          onChanged();
+        } else {
+          readyForGameResponseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      public Builder setReadyForGameResponse(
+          com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.Builder builderForValue) {
+        if (readyForGameResponseBuilder_ == null) {
+          readyForGameResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          readyForGameResponseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      public Builder mergeReadyForGameResponse(com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame value) {
+        if (readyForGameResponseBuilder_ == null) {
+          if (readyForGameResponse_ != null) {
+            readyForGameResponse_ =
+              com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.newBuilder(readyForGameResponse_).mergeFrom(value).buildPartial();
+          } else {
+            readyForGameResponse_ = value;
+          }
+          onChanged();
+        } else {
+          readyForGameResponseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      public Builder clearReadyForGameResponse() {
+        if (readyForGameResponseBuilder_ == null) {
+          readyForGameResponse_ = null;
+          onChanged();
+        } else {
+          readyForGameResponse_ = null;
+          readyForGameResponseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.Builder getReadyForGameResponseBuilder() {
+        
+        onChanged();
+        return getReadyForGameResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGameOrBuilder getReadyForGameResponseOrBuilder() {
+        if (readyForGameResponseBuilder_ != null) {
+          return readyForGameResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return readyForGameResponse_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.getDefaultInstance() : readyForGameResponse_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.ReadyForGame readyForGameResponse = 19;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame, com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGameOrBuilder> 
+          getReadyForGameResponseFieldBuilder() {
+        if (readyForGameResponseBuilder_ == null) {
+          readyForGameResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame, com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGame.Builder, com.cat_and_dog_studio.geometric_football.protocol.Model.ReadyForGameOrBuilder>(
+                  getReadyForGameResponse(),
+                  getParentForChildren(),
+                  isClean());
+          readyForGameResponse_ = null;
+        }
+        return readyForGameResponseBuilder_;
+      }
+
+      private com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound opponentFound_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder> opponentFoundBuilder_;
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       * @return Whether the opponentFound field is set.
+       */
+      public boolean hasOpponentFound() {
+        return opponentFoundBuilder_ != null || opponentFound_ != null;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       * @return The opponentFound.
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound getOpponentFound() {
+        if (opponentFoundBuilder_ == null) {
+          return opponentFound_ == null ? com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.getDefaultInstance() : opponentFound_;
+        } else {
+          return opponentFoundBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      public Builder setOpponentFound(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound value) {
+        if (opponentFoundBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          opponentFound_ = value;
+          onChanged();
+        } else {
+          opponentFoundBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      public Builder setOpponentFound(
+          com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder builderForValue) {
+        if (opponentFoundBuilder_ == null) {
+          opponentFound_ = builderForValue.build();
+          onChanged();
+        } else {
+          opponentFoundBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      public Builder mergeOpponentFound(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound value) {
+        if (opponentFoundBuilder_ == null) {
+          if (opponentFound_ != null) {
+            opponentFound_ =
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.newBuilder(opponentFound_).mergeFrom(value).buildPartial();
+          } else {
+            opponentFound_ = value;
+          }
+          onChanged();
+        } else {
+          opponentFoundBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      public Builder clearOpponentFound() {
+        if (opponentFoundBuilder_ == null) {
+          opponentFound_ = null;
+          onChanged();
+        } else {
+          opponentFound_ = null;
+          opponentFoundBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder getOpponentFoundBuilder() {
+        
+        onChanged();
+        return getOpponentFoundFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder getOpponentFoundOrBuilder() {
+        if (opponentFoundBuilder_ != null) {
+          return opponentFoundBuilder_.getMessageOrBuilder();
+        } else {
+          return opponentFound_ == null ?
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.getDefaultInstance() : opponentFound_;
+        }
+      }
+      /**
+       * <code>.com.cat_and_dog_studio.geometric_football.protocol.OpponentFound opponentFound = 20;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder> 
+          getOpponentFoundFieldBuilder() {
+        if (opponentFoundBuilder_ == null) {
+          opponentFoundBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder>(
+                  getOpponentFound(),
+                  getParentForChildren(),
+                  isClean());
+          opponentFound_ = null;
+        }
+        return opponentFoundBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9109,7 +10722,7 @@ public final class GeometricFootballResponse {
      * <code>.com.cat_and_dog_studio.geometric_football.protocol.GetPlayersMode mode = 1;</code>
      * @return The mode.
      */
-    com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode getMode();
+    com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode getMode();
 
     /**
      * <code>repeated .com.cat_and_dog_studio.geometric_football.protocol.PlayerData playerData = 2;</code>
@@ -9246,10 +10859,10 @@ public final class GeometricFootballResponse {
      * <code>.com.cat_and_dog_studio.geometric_football.protocol.GetPlayersMode mode = 1;</code>
      * @return The mode.
      */
-    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode getMode() {
+    public com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode getMode() {
       @SuppressWarnings("deprecation")
-      com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode result = com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode.valueOf(mode_);
-      return result == null ? com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode.UNRECOGNIZED : result;
+      com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode result = com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode.valueOf(mode_);
+      return result == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode.UNRECOGNIZED : result;
     }
 
     public static final int PLAYERDATA_FIELD_NUMBER = 2;
@@ -9301,7 +10914,7 @@ public final class GeometricFootballResponse {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (mode_ != com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode.GAME_HOSTS.getNumber()) {
+      if (mode_ != com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode.GAME_HOSTS.getNumber()) {
         output.writeEnum(1, mode_);
       }
       for (int i = 0; i < playerData_.size(); i++) {
@@ -9316,7 +10929,7 @@ public final class GeometricFootballResponse {
       if (size != -1) return size;
 
       size = 0;
-      if (mode_ != com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode.GAME_HOSTS.getNumber()) {
+      if (mode_ != com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode.GAME_HOSTS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, mode_);
       }
@@ -9667,17 +11280,17 @@ public final class GeometricFootballResponse {
        * <code>.com.cat_and_dog_studio.geometric_football.protocol.GetPlayersMode mode = 1;</code>
        * @return The mode.
        */
-      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode getMode() {
+      public com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode getMode() {
         @SuppressWarnings("deprecation")
-        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode result = com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode.valueOf(mode_);
-        return result == null ? com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode.UNRECOGNIZED : result;
+        com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode result = com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode.valueOf(mode_);
+        return result == null ? com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode.UNRECOGNIZED : result;
       }
       /**
        * <code>.com.cat_and_dog_studio.geometric_football.protocol.GetPlayersMode mode = 1;</code>
        * @param value The mode to set.
        * @return This builder for chaining.
        */
-      public Builder setMode(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.GetPlayersMode value) {
+      public Builder setMode(com.cat_and_dog_studio.geometric_football.protocol.Model.GetPlayersMode value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -13389,6 +15002,1138 @@ public final class GeometricFootballResponse {
 
   }
 
+  public interface OkResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.cat_and_dog_studio.geometric_football.protocol.OkResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string message = 1;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * Protobuf type {@code com.cat_and_dog_studio.geometric_football.protocol.OkResponse}
+   */
+  public  static final class OkResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.cat_and_dog_studio.geometric_football.protocol.OkResponse)
+      OkResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use OkResponse.newBuilder() to construct.
+    private OkResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private OkResponse() {
+      message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OkResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OkResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.class, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder.class);
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>string message = 1;</code>
+     * @return The message.
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
+     */
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse)) {
+        return super.equals(obj);
+      }
+      com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse other = (com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse) obj;
+
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.cat_and_dog_studio.geometric_football.protocol.OkResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.cat_and_dog_studio.geometric_football.protocol.OkResponse)
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.class, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.Builder.class);
+      }
+
+      // Construct using com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        message_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse getDefaultInstanceForType() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse build() {
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse buildPartial() {
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse result = new com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse(this);
+        result.message_ = message_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse) {
+          return mergeFrom((com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse other) {
+        if (other == com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse.getDefaultInstance()) return this;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 1;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.cat_and_dog_studio.geometric_football.protocol.OkResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.cat_and_dog_studio.geometric_football.protocol.OkResponse)
+    private static final com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse();
+    }
+
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<OkResponse>
+        PARSER = new com.google.protobuf.AbstractParser<OkResponse>() {
+      @java.lang.Override
+      public OkResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OkResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<OkResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OkResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OkResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface OpponentFoundOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.cat_and_dog_studio.geometric_football.protocol.OpponentFound)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+  }
+  /**
+   * Protobuf type {@code com.cat_and_dog_studio.geometric_football.protocol.OpponentFound}
+   */
+  public  static final class OpponentFound extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.cat_and_dog_studio.geometric_football.protocol.OpponentFound)
+      OpponentFoundOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use OpponentFound.newBuilder() to construct.
+    private OpponentFound(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private OpponentFound() {
+      name_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new OpponentFound();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OpponentFound(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.class, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound)) {
+        return super.equals(obj);
+      }
+      com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound other = (com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound) obj;
+
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.cat_and_dog_studio.geometric_football.protocol.OpponentFound}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.cat_and_dog_studio.geometric_football.protocol.OpponentFound)
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFoundOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.class, com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.Builder.class);
+      }
+
+      // Construct using com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_descriptor;
+      }
+
+      @java.lang.Override
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound getDefaultInstanceForType() {
+        return com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound build() {
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound buildPartial() {
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound result = new com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound(this);
+        result.name_ = name_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound) {
+          return mergeFrom((com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound other) {
+        if (other == com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.cat_and_dog_studio.geometric_football.protocol.OpponentFound)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.cat_and_dog_studio.geometric_football.protocol.OpponentFound)
+    private static final com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound();
+    }
+
+    public static com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<OpponentFound>
+        PARSER = new com.google.protobuf.AbstractParser<OpponentFound>() {
+      @java.lang.Override
+      public OpponentFound parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OpponentFound(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<OpponentFound> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OpponentFound> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse.OpponentFound getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_cat_and_dog_studio_geometric_football_protocol_PlayerData_descriptor;
   private static final 
@@ -13459,6 +16204,16 @@ public final class GeometricFootballResponse {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_cat_and_dog_studio_geometric_football_protocol_PlayerKickedResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -13469,83 +16224,110 @@ public final class GeometricFootballResponse {
   static {
     java.lang.String[] descriptorData = {
       "\n\022mau-response.proto\0222com.cat_and_dog_st" +
-      "udio.geometric_football.protocol\")\n\nPlay" +
-      "erData\022\014\n\004name\030\001 \001(\t\022\r\n\005color\030\002 \001(\t\"\211\001\n\016" +
-      "TeamPlayerData\022\014\n\004name\030\001 \001(\t\022\r\n\005color\030\002 " +
-      "\001(\t\022Z\n\016teamPlayerType\030\003 \001(\0162B.com.cat_an" +
-      "d_dog_studio.geometric_football.protocol" +
-      ".TeamPlayerType\"\374\010\n\010Response\022N\n\004type\030\001 \001" +
-      "(\0162@.com.cat_and_dog_studio.geometric_fo" +
-      "otball.protocol.ResponseType\022T\n\013mauRespo" +
-      "nse\030\002 \001(\0132?.com.cat_and_dog_studio.geome" +
-      "tric_football.protocol.MauResponse\022j\n\026au" +
-      "thenticationResponse\030\003 \001(\0132J.com.cat_and" +
-      "_dog_studio.geometric_football.protocol." +
-      "AuthenticationResponse\022X\n\rerrorResponse\030" +
-      "\004 \001(\0132A.com.cat_and_dog_studio.geometric" +
-      "_football.protocol.ErrorResponse\022b\n\022disc" +
-      "onnectResponse\030\005 \001(\0132F.com.cat_and_dog_s" +
-      "tudio.geometric_football.protocol.Discon" +
-      "nectResponse\022^\n\020hostGameResponse\030\006 \001(\0132D" +
+      "udio.geometric_football.protocol\032\013model." +
+      "proto\")\n\nPlayerData\022\014\n\004name\030\001 \001(\t\022\r\n\005col" +
+      "or\030\002 \001(\t\"\211\001\n\016TeamPlayerData\022\014\n\004name\030\001 \001(" +
+      "\t\022\r\n\005color\030\002 \001(\t\022Z\n\016teamPlayerType\030\003 \001(\016" +
+      "2B.com.cat_and_dog_studio.geometric_foot" +
+      "ball.protocol.TeamPlayerType\"\266\016\n\010Respons" +
+      "e\022N\n\004type\030\001 \001(\0162@.com.cat_and_dog_studio" +
+      ".geometric_football.protocol.ResponseTyp" +
+      "e\022T\n\013mauResponse\030\002 \001(\0132?.com.cat_and_dog" +
+      "_studio.geometric_football.protocol.MauR" +
+      "esponse\022j\n\026authenticationResponse\030\003 \001(\0132" +
+      "J.com.cat_and_dog_studio.geometric_footb" +
+      "all.protocol.AuthenticationResponse\022X\n\re" +
+      "rrorResponse\030\004 \001(\0132A.com.cat_and_dog_stu" +
+      "dio.geometric_football.protocol.ErrorRes" +
+      "ponse\022b\n\022disconnectResponse\030\005 \001(\0132F.com." +
+      "cat_and_dog_studio.geometric_football.pr" +
+      "otocol.DisconnectResponse\022^\n\020hostGameRes" +
+      "ponse\030\006 \001(\0132D.com.cat_and_dog_studio.geo" +
+      "metric_football.protocol.HostGameRespons" +
+      "e\022`\n\021awaitGameResponse\030\007 \001(\0132E.com.cat_a" +
+      "nd_dog_studio.geometric_football.protoco" +
+      "l.AwaitGameResponse\022Z\n\ngetPlayers\030\010 \001(\0132" +
+      "F.com.cat_and_dog_studio.geometric_footb" +
+      "all.protocol.GetPlayersResponse\022j\n\026teamI" +
+      "nvitationResponse\030\t \001(\0132J.com.cat_and_do" +
+      "g_studio.geometric_football.protocol.Tea" +
+      "mInvitationResponse\022\\\n\013teamPlayers\030\n \001(\013" +
+      "2G.com.cat_and_dog_studio.geometric_foot" +
+      "ball.protocol.TeamPlayersResponse\022X\n\tlea" +
+      "veTeam\030\013 \001(\0132E.com.cat_and_dog_studio.ge" +
+      "ometric_football.protocol.LeaveTeamRespo" +
+      "nse\022^\n\014playerKicked\030\014 \001(\0132H.com.cat_and_" +
+      "dog_studio.geometric_football.protocol.P" +
+      "layerKickedResponse\022F\n\004team\030\r \001(\01328.com." +
+      "cat_and_dog_studio.geometric_football.pr" +
+      "otocol.Team\022R\n\nokResponse\030\016 \001(\0132>.com.ca" +
+      "t_and_dog_studio.geometric_football.prot" +
+      "ocol.OkResponse\022J\n\006tactic\030\017 \001(\0132:.com.ca" +
+      "t_and_dog_studio.geometric_football.prot" +
+      "ocol.Tactic\022X\n\rtacticMapping\030\020 \001(\0132A.com" +
+      ".cat_and_dog_studio.geometric_football.p" +
+      "rotocol.TacticMapping\022L\n\007players\030\021 \001(\0132;" +
       ".com.cat_and_dog_studio.geometric_footba" +
-      "ll.protocol.HostGameResponse\022`\n\021awaitGam" +
-      "eResponse\030\007 \001(\0132E.com.cat_and_dog_studio" +
-      ".geometric_football.protocol.AwaitGameRe" +
-      "sponse\022Z\n\ngetPlayers\030\010 \001(\0132F.com.cat_and" +
-      "_dog_studio.geometric_football.protocol." +
-      "GetPlayersResponse\022j\n\026teamInvitationResp" +
-      "onse\030\t \001(\0132J.com.cat_and_dog_studio.geom" +
-      "etric_football.protocol.TeamInvitationRe" +
-      "sponse\022\\\n\013teamPlayers\030\n \001(\0132G.com.cat_an" +
-      "d_dog_studio.geometric_football.protocol" +
-      ".TeamPlayersResponse\022X\n\tleaveTeam\030\013 \001(\0132" +
-      "E.com.cat_and_dog_studio.geometric_footb" +
-      "all.protocol.LeaveTeamResponse\022^\n\014player" +
-      "Kicked\030\014 \001(\0132H.com.cat_and_dog_studio.ge" +
-      "ometric_football.protocol.PlayerKickedRe" +
-      "sponse\"+\n\013MauResponse\022\017\n\007catName\030\001 \001(\t\022\013" +
-      "\n\003mau\030\002 \001(\t\";\n\026AuthenticationResponse\022\020\n" +
-      "\010username\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\" \n\rErro" +
-      "rResponse\022\017\n\007message\030\001 \001(\t\"%\n\022Disconnect" +
-      "Response\022\017\n\007message\030\001 \001(\t\"I\n\020HostGameRes" +
-      "ponse\022\020\n\010username\030\001 \001(\t\022\020\n\010gameName\030\002 \001(" +
-      "\t\022\021\n\thostColor\030\003 \001(\t\"U\n\021AwaitGameRespons" +
-      "e\022\020\n\010username\030\001 \001(\t\022\026\n\016waitingMessage\030\002 " +
-      "\001(\t\022\026\n\016preferredColor\030\003 \001(\t\"\272\001\n\022GetPlaye" +
-      "rsResponse\022P\n\004mode\030\001 \001(\0162B.com.cat_and_d" +
-      "og_studio.geometric_football.protocol.Ge" +
-      "tPlayersMode\022R\n\nplayerData\030\002 \003(\0132>.com.c" +
-      "at_and_dog_studio.geometric_football.pro" +
-      "tocol.PlayerData\"\330\001\n\026TeamInvitationRespo" +
-      "nse\022^\n\020invitationResult\030\001 \001(\0162D.com.cat_" +
-      "and_dog_studio.geometric_football.protoc" +
-      "ol.InvitationResult\022\n\n\002id\030\002 \001(\t\022\017\n\007messa" +
-      "ge\030\003 \001(\t\022\024\n\014grantedColor\030\004 \001(\t\022\024\n\014gameHo" +
-      "stName\030\005 \001(\t\022\025\n\rinvitedPlayer\030\006 \001(\t\"q\n\023T" +
-      "eamPlayersResponse\022Z\n\016teamPlayerData\030\001 \003" +
-      "(\0132B.com.cat_and_dog_studio.geometric_fo" +
-      "otball.protocol.TeamPlayerData\"I\n\021LeaveT" +
-      "eamResponse\022\020\n\010teamName\030\001 \001(\t\022\020\n\010usernam" +
-      "e\030\002 \001(\t\022\020\n\010hostLeft\030\003 \001(\010\"(\n\024PlayerKicke" +
-      "dResponse\022\020\n\010username\030\001 \001(\t*\346\001\n\014Response" +
-      "Type\022\007\n\003MAU\020\000\022\022\n\016AUTHENTICATION\020\001\022\t\n\005ERR" +
-      "OR\020\002\022\016\n\nDISCONNECT\020\003\022\017\n\013GAME_HOSTED\020\004\022\025\n" +
-      "\021AWAITING_FOR_GAME\020\005\022\017\n\013GET_PLAYERS\020\006\022\025\n" +
-      "\021INVITATION_RESULT\020\007\022\020\n\014TEAM_PLAYERS\020\010\022\031" +
-      "\n\025OPPONENT_TEAM_PLAYERS\020\t\022\016\n\nLEAVE_TEAM\020" +
-      "\n\022\021\n\rPLAYER_KICKED\020\013*7\n\016GetPlayersMode\022\016" +
-      "\n\nGAME_HOSTS\020\000\022\025\n\021WAITING_FOR_GAMES\020\001*\177\n" +
-      "\020InvitationResult\022\014\n\010ACCEPTED\020\000\022\014\n\010REJEC" +
-      "TED\020\001\022\013\n\007CREATED\020\002\022 \n\034INVITATION_ACCEPTE" +
-      "D_BY_GUEST\020\003\022 \n\034INVITATION_REJECTED_BY_G" +
-      "UEST\020\004*6\n\016TeamPlayerType\022\010\n\004HOST\020\000\022\n\n\006PL" +
-      "AYER\020\001\022\016\n\nINVITATION\020\002BO\n2com.cat_and_do" +
-      "g_studio.geometric_football.protocolB\031Ge" +
-      "ometricFootballResponseb\006proto3"
+      "ll.protocol.Players\022n\n\030playerFootballerM" +
+      "appings\030\022 \001(\0132L.com.cat_and_dog_studio.g" +
+      "eometric_football.protocol.PlayerFootbal" +
+      "lerMappings\022^\n\024readyForGameResponse\030\023 \001(" +
+      "\0132@.com.cat_and_dog_studio.geometric_foo" +
+      "tball.protocol.ReadyForGame\022X\n\ropponentF" +
+      "ound\030\024 \001(\0132A.com.cat_and_dog_studio.geom" +
+      "etric_football.protocol.OpponentFound\"+\n" +
+      "\013MauResponse\022\017\n\007catName\030\001 \001(\t\022\013\n\003mau\030\002 \001" +
+      "(\t\";\n\026AuthenticationResponse\022\020\n\010username" +
+      "\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\" \n\rErrorResponse" +
+      "\022\017\n\007message\030\001 \001(\t\"%\n\022DisconnectResponse\022" +
+      "\017\n\007message\030\001 \001(\t\"I\n\020HostGameResponse\022\020\n\010" +
+      "username\030\001 \001(\t\022\020\n\010gameName\030\002 \001(\t\022\021\n\thost" +
+      "Color\030\003 \001(\t\"U\n\021AwaitGameResponse\022\020\n\010user" +
+      "name\030\001 \001(\t\022\026\n\016waitingMessage\030\002 \001(\t\022\026\n\016pr" +
+      "eferredColor\030\003 \001(\t\"\272\001\n\022GetPlayersRespons" +
+      "e\022P\n\004mode\030\001 \001(\0162B.com.cat_and_dog_studio" +
+      ".geometric_football.protocol.GetPlayersM" +
+      "ode\022R\n\nplayerData\030\002 \003(\0132>.com.cat_and_do" +
+      "g_studio.geometric_football.protocol.Pla" +
+      "yerData\"\330\001\n\026TeamInvitationResponse\022^\n\020in" +
+      "vitationResult\030\001 \001(\0162D.com.cat_and_dog_s" +
+      "tudio.geometric_football.protocol.Invita" +
+      "tionResult\022\n\n\002id\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\022" +
+      "\024\n\014grantedColor\030\004 \001(\t\022\024\n\014gameHostName\030\005 " +
+      "\001(\t\022\025\n\rinvitedPlayer\030\006 \001(\t\"q\n\023TeamPlayer" +
+      "sResponse\022Z\n\016teamPlayerData\030\001 \003(\0132B.com." +
+      "cat_and_dog_studio.geometric_football.pr" +
+      "otocol.TeamPlayerData\"I\n\021LeaveTeamRespon" +
+      "se\022\020\n\010teamName\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022\020" +
+      "\n\010hostLeft\030\003 \001(\010\"(\n\024PlayerKickedResponse" +
+      "\022\020\n\010username\030\001 \001(\t\"\035\n\nOkResponse\022\017\n\007mess" +
+      "age\030\001 \001(\t\"\035\n\rOpponentFound\022\014\n\004name\030\001 \001(\t" +
+      "*\236\004\n\014ResponseType\022\007\n\003MAU\020\000\022\022\n\016AUTHENTICA" +
+      "TION\020\001\022\t\n\005ERROR\020\002\022\016\n\nDISCONNECT\020\003\022\017\n\013GAM" +
+      "E_HOSTED\020\004\022\025\n\021AWAITING_FOR_GAME\020\005\022\017\n\013GET" +
+      "_PLAYERS\020\006\022\025\n\021INVITATION_RESULT\020\007\022\020\n\014TEA" +
+      "M_PLAYERS\020\010\022\022\n\016OPPONENT_FOUND\020\t\022\016\n\nLEAVE" +
+      "_TEAM\020\n\022\021\n\rPLAYER_KICKED\020\013\022\014\n\010SET_TEAM\020\014" +
+      "\022\006\n\002OK\020\r\022\016\n\nSET_TACTIC\020\016\022\026\n\022SET_TACTIC_M" +
+      "APPING\020\017\022\024\n\020SET_TEAM_PLAYERS\020\020\022\"\n\036SET_TE" +
+      "AM_PLAYERS_USERS_MAPPING\020\021\022\022\n\016READY_FOR_" +
+      "GAME\020\022\022\024\n\020OPPONENT_PLAYERS\020\023\022\025\n\021SET_OPPO" +
+      "NENT_TEAM\020\024\022\035\n\031SET_OPPONENT_TEAM_PLAYERS" +
+      "\020\025\022\027\n\023SET_OPPONENT_TACTIC\020\026\022\037\n\033SET_OPPON" +
+      "ENT_TACTIC_MAPPING\020\027\022+\n\'SET_OPPONENT_TEA" +
+      "M_PLAYERS_USERS_MAPPING\020\030*\177\n\020InvitationR" +
+      "esult\022\014\n\010ACCEPTED\020\000\022\014\n\010REJECTED\020\001\022\013\n\007CRE" +
+      "ATED\020\002\022 \n\034INVITATION_ACCEPTED_BY_GUEST\020\003" +
+      "\022 \n\034INVITATION_REJECTED_BY_GUEST\020\004*6\n\016Te" +
+      "amPlayerType\022\010\n\004HOST\020\000\022\n\n\006PLAYER\020\001\022\016\n\nIN" +
+      "VITATION\020\002BO\n2com.cat_and_dog_studio.geo" +
+      "metric_football.protocolB\031GeometricFootb" +
+      "allResponseb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.cat_and_dog_studio.geometric_football.protocol.Model.getDescriptor(),
         });
     internal_static_com_cat_and_dog_studio_geometric_football_protocol_PlayerData_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -13564,7 +16346,7 @@ public final class GeometricFootballResponse {
     internal_static_com_cat_and_dog_studio_geometric_football_protocol_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_cat_and_dog_studio_geometric_football_protocol_Response_descriptor,
-        new java.lang.String[] { "Type", "MauResponse", "AuthenticationResponse", "ErrorResponse", "DisconnectResponse", "HostGameResponse", "AwaitGameResponse", "GetPlayers", "TeamInvitationResponse", "TeamPlayers", "LeaveTeam", "PlayerKicked", });
+        new java.lang.String[] { "Type", "MauResponse", "AuthenticationResponse", "ErrorResponse", "DisconnectResponse", "HostGameResponse", "AwaitGameResponse", "GetPlayers", "TeamInvitationResponse", "TeamPlayers", "LeaveTeam", "PlayerKicked", "Team", "OkResponse", "Tactic", "TacticMapping", "Players", "PlayerFootballerMappings", "ReadyForGameResponse", "OpponentFound", });
     internal_static_com_cat_and_dog_studio_geometric_football_protocol_MauResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_cat_and_dog_studio_geometric_football_protocol_MauResponse_fieldAccessorTable = new
@@ -13631,6 +16413,19 @@ public final class GeometricFootballResponse {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_cat_and_dog_studio_geometric_football_protocol_PlayerKickedResponse_descriptor,
         new java.lang.String[] { "Username", });
+    internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_cat_and_dog_studio_geometric_football_protocol_OkResponse_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_cat_and_dog_studio_geometric_football_protocol_OpponentFound_descriptor,
+        new java.lang.String[] { "Name", });
+    com.cat_and_dog_studio.geometric_football.protocol.Model.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

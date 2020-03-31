@@ -1,24 +1,21 @@
 package catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers;
 
 import catAndDogStudio.geometricfootballserver.infrastructure.*;
-import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageCreators.InvitationsBusinessLogic;
 import catAndDogStudio.geometricfootballserver.infrastructure.messageHandlers.messageServiceLayer.ReadyForGameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.nio.channels.SelectableChannel;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.Set;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
 public class ReadyForGameHandler  extends BaseMessageHandler{
     private final ServerState serverState;
     private final Set<PlayerState> allowedStates = EnumSet.of(PlayerState.GAME_HOST);
-    private final InvitationsBusinessLogic invitationsBusinessLogic;
     private final ReadyForGameService readyForGameService;
 
     @Override
@@ -32,7 +29,7 @@ public class ReadyForGameHandler  extends BaseMessageHandler{
         game.getInvitations().forEach(i -> cancelInvitation(i, game));
         game.getInvitations().clear();
         waitForOpponents(channel, game);
-        readyForGameService.transitionServerStateAndFindOpponent(channel, game);
+        //readyForGameService.transitionServerStateAndFindOpponent(channel, game);
     }
 
     private void waitForOpponents(SelectableChannel channel, Game game) {
@@ -46,8 +43,8 @@ public class ReadyForGameHandler  extends BaseMessageHandler{
     private void cancelInvitation(Invitation i, Game ownerGame) {
         SelectableChannel invitedPlayerChannel = serverState.getWaitingPlayer(i.getInvitedPlayer());
         Game invitedPlayerGame = serverState.getWaitingForGamesOld().get(invitedPlayerChannel);
-        invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(ownerGame.getOwnerName(),
-                invitedPlayerGame, invitedPlayerChannel);
+        //invitationsBusinessLogic.sendPlayerInvitationRejectedAndTransitionGuestState(ownerGame.getOwnerName(),
+        //        invitedPlayerGame, invitedPlayerChannel);
     }
 
     private void sendReadyForGameTransitionMessage(SelectableChannel channel, Game game) {
@@ -61,7 +58,7 @@ public class ReadyForGameHandler  extends BaseMessageHandler{
         if (game.getPlayers() == null) {
             return "players not set";
         }
-        if (game.getPlayersUsersMapping() == null || game.getPlayersUsersMapping().isEmpty()) {
+        if (game.getPlayerFootballerMappings().isEmpty()) {
             return "players-users mapping not set";
         }
         if (game.getTactic() == null) {

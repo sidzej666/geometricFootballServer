@@ -1,5 +1,6 @@
 package catAndDogStudio.geometricfootballserver.infrastructure;
 
+import com.cat_and_dog_studio.geometric_football.protocol.Model;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import lombok.Getter;
@@ -24,11 +25,11 @@ public class Game {
     private String grantedColor;
     private String gameName;
     private String waitingComment;
-    private String tactic;
-    private String tacticMapping;
-    private String players;
-    private String team;
-    private Map<String, String> playersUsersMapping = new HashMap<>();
+    private Model.Team team;
+    private Model.TacticMapping tacticMapping;
+    private Model.Tactic tactic;
+    private Model.Players players;
+    private Map<String, Model.PlayerOwner> playerFootballerMappings = new HashMap<>();
     private String partialMessage;
     private ActiveGame activeGame;
 

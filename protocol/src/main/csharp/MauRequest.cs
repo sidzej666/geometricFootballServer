@@ -25,59 +25,72 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFtYXUtcmVxdWVzdC5wcm90bxIyY29tLmNhdF9hbmRfZG9nX3N0dWRpby5n",
-            "ZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2winAcKB1JlcXVlc3QSTQoEdHlw",
-            "ZRgBIAEoDjI/LmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zv",
-            "b3RiYWxsLnByb3RvY29sLlJlcXVlc3RUeXBlEkQKA21hdRgCIAEoCzI3LmNv",
-            "bS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3Rv",
-            "Y29sLk1hdRJaCg5hdXRoZW50aWNhdGlvbhgDIAEoCzJCLmNvbS5jYXRfYW5k",
-            "X2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLkF1dGhl",
-            "bnRpY2F0aW9uElIKCmRpc2Nvbm5lY3QYBCABKAsyPi5jb20uY2F0X2FuZF9k",
-            "b2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5EaXNjb25u",
-            "ZWN0Ek4KCGhvc3RHYW1lGAUgASgLMjwuY29tLmNhdF9hbmRfZG9nX3N0dWRp",
-            "by5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuSG9zdEdhbWUSUAoJYXdh",
-            "aXRHYW1lGAYgASgLMj0uY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRy",
-            "aWNfZm9vdGJhbGwucHJvdG9jb2wuQXdhaXRHYW1lElIKCmdldFBsYXllcnMY",
-            "ByABKAsyPi5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290",
-            "YmFsbC5wcm90b2NvbC5HZXRQbGF5ZXJzElQKC3BpbmdSZXF1ZXN0GAggASgL",
-            "Mj8uY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwu",
-            "cHJvdG9jb2wuUGluZ1JlcXVlc3QSWgoOdGVhbUludml0YXRpb24YCSABKAsy",
+            "ZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2waC21vZGVsLnByb3RvIqALCgdS",
+            "ZXF1ZXN0Ek0KBHR5cGUYASABKA4yPy5jb20uY2F0X2FuZF9kb2dfc3R1ZGlv",
+            "Lmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5SZXF1ZXN0VHlwZRJECgNt",
+            "YXUYAiABKAsyNy5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19m",
+            "b290YmFsbC5wcm90b2NvbC5NYXUSWgoOYXV0aGVudGljYXRpb24YAyABKAsy",
             "Qi5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5w",
-            "cm90b2NvbC5UZWFtSW52aXRhdGlvbhJQCglsZWF2ZVRlYW0YCiABKAsyPS5j",
-            "b20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90",
-            "b2NvbC5MZWF2ZVRlYW0SUgoKa2lja1BsYXllchgLIAEoCzI+LmNvbS5jYXRf",
-            "YW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLktp",
-            "Y2tQbGF5ZXIiKQoDTWF1Eg8KB2NhdE5hbWUYASABKAkSEQoJbWF1U2VjcmV0",
-            "GAIgASgJIjQKDkF1dGhlbnRpY2F0aW9uEhAKCHVzZXJuYW1lGAEgASgJEhAK",
-            "CHBhc3N3b3JkGAIgASgJIh0KCkRpc2Nvbm5lY3QSDwoHbWVzc2FnZRgBIAEo",
-            "CSJBCghIb3N0R2FtZRIQCgh1c2VybmFtZRgBIAEoCRIQCghnYW1lTmFtZRgC",
-            "IAEoCRIRCglob3N0Q29sb3IYAyABKAkiTQoJQXdhaXRHYW1lEhAKCHVzZXJu",
-            "YW1lGAEgASgJEhYKDnByZWZlcnJlZENvbG9yGAIgASgJEhYKDndhaXRpbmdN",
-            "ZXNzYWdlGAMgASgJIl4KCkdldFBsYXllcnMSUAoEbW9kZRgBIAEoDjJCLmNv",
-            "bS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3Rv",
-            "Y29sLkdldFBsYXllcnNNb2RlIg0KC1BpbmdSZXF1ZXN0IsgCCg5UZWFtSW52",
-            "aXRhdGlvbhJsChd0ZWFtSW52aXRhdGlvbkRpcmVjdGlvbhgBIAEoDjJLLmNv",
-            "bS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3Rv",
-            "Y29sLlRlYW1JbnZpdGF0aW9uRGlyZWN0aW9uEmYKFHRlYW1JbnZpdGF0aW9u",
-            "QWN0aW9uGAIgASgOMkguY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRy",
-            "aWNfZm9vdGJhbGwucHJvdG9jb2wuVGVhbUludml0YXRpb25BY3Rpb24SFAoM",
-            "Z2FtZUhvc3ROYW1lGAMgASgJEhUKDWludml0ZWRQbGF5ZXIYBCABKAkSDwoH",
-            "bWVzc2FnZRgFIAEoCRIWCg5wcmVmZXJyZWRDb2xvchgGIAEoCRIKCgJpZBgH",
-            "IAEoCSILCglMZWF2ZVRlYW0iHgoKS2lja1BsYXllchIQCgh1c2VybmFtZRgB",
-            "IAEoCSqqAQoLUmVxdWVzdFR5cGUSBwoDTUFVEAASEgoOQVVUSEVOVElDQVRJ",
-            "T04QARIOCgpESVNDT05ORUNUEAISDQoJSE9TVF9HQU1FEAMSDgoKQVdBSVRf",
-            "R0FNRRAEEg8KC0dFVF9QTEFZRVJTEAUSCAoEUElORxAGEhMKD1RFQU1fSU5W",
-            "SVRBVElPThAHEg4KCkxFQVZFX1RFQU0QCBIPCgtLSUNLX1BMQVlFUhAJKjcK",
-            "DkdldFBsYXllcnNNb2RlEg4KCkdBTUVfSE9TVFMQABIVChFXQUlUSU5HX0ZP",
-            "Ul9HQU1FUxABKksKF1RlYW1JbnZpdGF0aW9uRGlyZWN0aW9uEhcKE0ZST01f",
-            "SE9TVF9UT19QTEFZRVIQABIXChNGUk9NX1BMQVlFUl9UT19IT1NUEAEqOgoU",
-            "VGVhbUludml0YXRpb25BY3Rpb24SCgoGQUNDRVBUEAASCgoGUkVKRUNUEAES",
-            "CgoGQ1JFQVRFEAJCTgoyY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRy",
-            "aWNfZm9vdGJhbGwucHJvdG9jb2xCGEdlb21ldHJpY0Zvb3RiYWxsUmVxdWVz",
-            "dGIGcHJvdG8z"));
+            "cm90b2NvbC5BdXRoZW50aWNhdGlvbhJSCgpkaXNjb25uZWN0GAQgASgLMj4u",
+            "Y29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9vdGJhbGwucHJv",
+            "dG9jb2wuRGlzY29ubmVjdBJOCghob3N0R2FtZRgFIAEoCzI8LmNvbS5jYXRf",
+            "YW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLkhv",
+            "c3RHYW1lElAKCWF3YWl0R2FtZRgGIAEoCzI9LmNvbS5jYXRfYW5kX2RvZ19z",
+            "dHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLkF3YWl0R2FtZRJS",
+            "CgpnZXRQbGF5ZXJzGAcgASgLMj4uY29tLmNhdF9hbmRfZG9nX3N0dWRpby5n",
+            "ZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuR2V0UGxheWVycxJUCgtwaW5n",
+            "UmVxdWVzdBgIIAEoCzI/LmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0",
+            "cmljX2Zvb3RiYWxsLnByb3RvY29sLlBpbmdSZXF1ZXN0EloKDnRlYW1JbnZp",
+            "dGF0aW9uGAkgASgLMkIuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRy",
+            "aWNfZm9vdGJhbGwucHJvdG9jb2wuVGVhbUludml0YXRpb24SUAoJbGVhdmVU",
+            "ZWFtGAogASgLMj0uY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNf",
+            "Zm9vdGJhbGwucHJvdG9jb2wuTGVhdmVUZWFtElIKCmtpY2tQbGF5ZXIYCyAB",
+            "KAsyPi5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFs",
+            "bC5wcm90b2NvbC5LaWNrUGxheWVyEkYKBHRlYW0YDCABKAsyOC5jb20uY2F0",
+            "X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5U",
+            "ZWFtEkoKBnRhY3RpYxgNIAEoCzI6LmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8u",
+            "Z2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sLlRhY3RpYxJYCg10YWN0aWNN",
+            "YXBwaW5nGA4gASgLMkEuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRy",
+            "aWNfZm9vdGJhbGwucHJvdG9jb2wuVGFjdGljTWFwcGluZxJMCgdwbGF5ZXJz",
+            "GA8gASgLMjsuY29tLmNhdF9hbmRfZG9nX3N0dWRpby5nZW9tZXRyaWNfZm9v",
+            "dGJhbGwucHJvdG9jb2wuUGxheWVycxJuChhwbGF5ZXJGb290YmFsbGVyTWFw",
+            "cGluZ3MYECABKAsyTC5jb20uY2F0X2FuZF9kb2dfc3R1ZGlvLmdlb21ldHJp",
+            "Y19mb290YmFsbC5wcm90b2NvbC5QbGF5ZXJGb290YmFsbGVyTWFwcGluZ3MS",
+            "VgoMcmVhZHlGb3JHYW1lGBEgASgLMkAuY29tLmNhdF9hbmRfZG9nX3N0dWRp",
+            "by5nZW9tZXRyaWNfZm9vdGJhbGwucHJvdG9jb2wuUmVhZHlGb3JHYW1lIikK",
+            "A01hdRIPCgdjYXROYW1lGAEgASgJEhEKCW1hdVNlY3JldBgCIAEoCSI0Cg5B",
+            "dXRoZW50aWNhdGlvbhIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgC",
+            "IAEoCSIdCgpEaXNjb25uZWN0Eg8KB21lc3NhZ2UYASABKAkiQQoISG9zdEdh",
+            "bWUSEAoIdXNlcm5hbWUYASABKAkSEAoIZ2FtZU5hbWUYAiABKAkSEQoJaG9z",
+            "dENvbG9yGAMgASgJIk0KCUF3YWl0R2FtZRIQCgh1c2VybmFtZRgBIAEoCRIW",
+            "Cg5wcmVmZXJyZWRDb2xvchgCIAEoCRIWCg53YWl0aW5nTWVzc2FnZRgDIAEo",
+            "CSJeCgpHZXRQbGF5ZXJzElAKBG1vZGUYASABKA4yQi5jb20uY2F0X2FuZF9k",
+            "b2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5HZXRQbGF5",
+            "ZXJzTW9kZSINCgtQaW5nUmVxdWVzdCLIAgoOVGVhbUludml0YXRpb24SbAoX",
+            "dGVhbUludml0YXRpb25EaXJlY3Rpb24YASABKA4ySy5jb20uY2F0X2FuZF9k",
+            "b2dfc3R1ZGlvLmdlb21ldHJpY19mb290YmFsbC5wcm90b2NvbC5UZWFtSW52",
+            "aXRhdGlvbkRpcmVjdGlvbhJmChR0ZWFtSW52aXRhdGlvbkFjdGlvbhgCIAEo",
+            "DjJILmNvbS5jYXRfYW5kX2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxs",
+            "LnByb3RvY29sLlRlYW1JbnZpdGF0aW9uQWN0aW9uEhQKDGdhbWVIb3N0TmFt",
+            "ZRgDIAEoCRIVCg1pbnZpdGVkUGxheWVyGAQgASgJEg8KB21lc3NhZ2UYBSAB",
+            "KAkSFgoOcHJlZmVycmVkQ29sb3IYBiABKAkSCgoCaWQYByABKAkiCwoJTGVh",
+            "dmVUZWFtIh4KCktpY2tQbGF5ZXISEAoIdXNlcm5hbWUYASABKAkqrgIKC1Jl",
+            "cXVlc3RUeXBlEgcKA01BVRAAEhIKDkFVVEhFTlRJQ0FUSU9OEAESDgoKRElT",
+            "Q09OTkVDVBACEg0KCUhPU1RfR0FNRRADEg4KCkFXQUlUX0dBTUUQBBIPCgtH",
+            "RVRfUExBWUVSUxAFEggKBFBJTkcQBhITCg9URUFNX0lOVklUQVRJT04QBxIO",
+            "CgpMRUFWRV9URUFNEAgSDwoLS0lDS19QTEFZRVIQCRIMCghTRVRfVEVBTRAK",
+            "Eg4KClNFVF9UQUNUSUMQCxIWChJTRVRfVEFDVElDX01BUFBJTkcQDBIUChBT",
+            "RVRfVEVBTV9QTEFZRVJTEA0SIgoeU0VUX1RFQU1fUExBWUVSU19VU0VSU19N",
+            "QVBQSU5HEA4SEgoOUkVBRFlfRk9SX0dBTUUQDypLChdUZWFtSW52aXRhdGlv",
+            "bkRpcmVjdGlvbhIXChNGUk9NX0hPU1RfVE9fUExBWUVSEAASFwoTRlJPTV9Q",
+            "TEFZRVJfVE9fSE9TVBABKjoKFFRlYW1JbnZpdGF0aW9uQWN0aW9uEgoKBkFD",
+            "Q0VQVBAAEgoKBlJFSkVDVBABEgoKBkNSRUFURRACQk4KMmNvbS5jYXRfYW5k",
+            "X2RvZ19zdHVkaW8uZ2VvbWV0cmljX2Zvb3RiYWxsLnByb3RvY29sQhhHZW9t",
+            "ZXRyaWNGb290YmFsbFJlcXVlc3RiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.RequestType), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.GetPlayersMode), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamInvitationDirection), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamInvitationAction), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Request), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Request.Parser, new[]{ "Type", "Mau", "Authentication", "Disconnect", "HostGame", "AwaitGame", "GetPlayers", "PingRequest", "TeamInvitation", "LeaveTeam", "KickPlayer" }, null, null, null),
+          new pbr::FileDescriptor[] { global::Com.CatAndDogStudio.GeometricFootball.Protocol.ModelReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.RequestType), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamInvitationDirection), typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.TeamInvitationAction), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Request), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Request.Parser, new[]{ "Type", "Mau", "Authentication", "Disconnect", "HostGame", "AwaitGame", "GetPlayers", "PingRequest", "TeamInvitation", "LeaveTeam", "KickPlayer", "Team", "Tactic", "TacticMapping", "Players", "PlayerFootballerMappings", "ReadyForGame" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Mau), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Mau.Parser, new[]{ "CatName", "MauSecret" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Authentication), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Authentication.Parser, new[]{ "Username", "Password" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.CatAndDogStudio.GeometricFootball.Protocol.Disconnect), global::Com.CatAndDogStudio.GeometricFootball.Protocol.Disconnect.Parser, new[]{ "Message" }, null, null, null),
@@ -105,11 +118,12 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
     [pbr::OriginalName("TEAM_INVITATION")] TeamInvitation = 7,
     [pbr::OriginalName("LEAVE_TEAM")] LeaveTeam = 8,
     [pbr::OriginalName("KICK_PLAYER")] KickPlayer = 9,
-  }
-
-  public enum GetPlayersMode {
-    [pbr::OriginalName("GAME_HOSTS")] GameHosts = 0,
-    [pbr::OriginalName("WAITING_FOR_GAMES")] WaitingForGames = 1,
+    [pbr::OriginalName("SET_TEAM")] SetTeam = 10,
+    [pbr::OriginalName("SET_TACTIC")] SetTactic = 11,
+    [pbr::OriginalName("SET_TACTIC_MAPPING")] SetTacticMapping = 12,
+    [pbr::OriginalName("SET_TEAM_PLAYERS")] SetTeamPlayers = 13,
+    [pbr::OriginalName("SET_TEAM_PLAYERS_USERS_MAPPING")] SetTeamPlayersUsersMapping = 14,
+    [pbr::OriginalName("READY_FOR_GAME")] ReadyForGame = 15,
   }
 
   public enum TeamInvitationDirection {
@@ -162,6 +176,12 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       teamInvitation_ = other.teamInvitation_ != null ? other.teamInvitation_.Clone() : null;
       leaveTeam_ = other.leaveTeam_ != null ? other.leaveTeam_.Clone() : null;
       kickPlayer_ = other.kickPlayer_ != null ? other.kickPlayer_.Clone() : null;
+      team_ = other.team_ != null ? other.team_.Clone() : null;
+      tactic_ = other.tactic_ != null ? other.tactic_.Clone() : null;
+      tacticMapping_ = other.tacticMapping_ != null ? other.tacticMapping_.Clone() : null;
+      players_ = other.players_ != null ? other.players_.Clone() : null;
+      playerFootballerMappings_ = other.playerFootballerMappings_ != null ? other.playerFootballerMappings_.Clone() : null;
+      readyForGame_ = other.readyForGame_ != null ? other.readyForGame_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -291,6 +311,72 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       }
     }
 
+    /// <summary>Field number for the "team" field.</summary>
+    public const int TeamFieldNumber = 12;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team team_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team Team {
+      get { return team_; }
+      set {
+        team_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tactic" field.</summary>
+    public const int TacticFieldNumber = 13;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic tactic_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic Tactic {
+      get { return tactic_; }
+      set {
+        tactic_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tacticMapping" field.</summary>
+    public const int TacticMappingFieldNumber = 14;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping tacticMapping_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping TacticMapping {
+      get { return tacticMapping_; }
+      set {
+        tacticMapping_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "players" field.</summary>
+    public const int PlayersFieldNumber = 15;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players players_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players Players {
+      get { return players_; }
+      set {
+        players_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "playerFootballerMappings" field.</summary>
+    public const int PlayerFootballerMappingsFieldNumber = 16;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings playerFootballerMappings_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings PlayerFootballerMappings {
+      get { return playerFootballerMappings_; }
+      set {
+        playerFootballerMappings_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "readyForGame" field.</summary>
+    public const int ReadyForGameFieldNumber = 17;
+    private global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame readyForGame_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame ReadyForGame {
+      get { return readyForGame_; }
+      set {
+        readyForGame_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Request);
@@ -315,6 +401,12 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       if (!object.Equals(TeamInvitation, other.TeamInvitation)) return false;
       if (!object.Equals(LeaveTeam, other.LeaveTeam)) return false;
       if (!object.Equals(KickPlayer, other.KickPlayer)) return false;
+      if (!object.Equals(Team, other.Team)) return false;
+      if (!object.Equals(Tactic, other.Tactic)) return false;
+      if (!object.Equals(TacticMapping, other.TacticMapping)) return false;
+      if (!object.Equals(Players, other.Players)) return false;
+      if (!object.Equals(PlayerFootballerMappings, other.PlayerFootballerMappings)) return false;
+      if (!object.Equals(ReadyForGame, other.ReadyForGame)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -332,6 +424,12 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       if (teamInvitation_ != null) hash ^= TeamInvitation.GetHashCode();
       if (leaveTeam_ != null) hash ^= LeaveTeam.GetHashCode();
       if (kickPlayer_ != null) hash ^= KickPlayer.GetHashCode();
+      if (team_ != null) hash ^= Team.GetHashCode();
+      if (tactic_ != null) hash ^= Tactic.GetHashCode();
+      if (tacticMapping_ != null) hash ^= TacticMapping.GetHashCode();
+      if (players_ != null) hash ^= Players.GetHashCode();
+      if (playerFootballerMappings_ != null) hash ^= PlayerFootballerMappings.GetHashCode();
+      if (readyForGame_ != null) hash ^= ReadyForGame.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -389,6 +487,30 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
         output.WriteRawTag(90);
         output.WriteMessage(KickPlayer);
       }
+      if (team_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Team);
+      }
+      if (tactic_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Tactic);
+      }
+      if (tacticMapping_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(TacticMapping);
+      }
+      if (players_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Players);
+      }
+      if (playerFootballerMappings_ != null) {
+        output.WriteRawTag(130, 1);
+        output.WriteMessage(PlayerFootballerMappings);
+      }
+      if (readyForGame_ != null) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(ReadyForGame);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -429,6 +551,24 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
       }
       if (kickPlayer_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(KickPlayer);
+      }
+      if (team_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Team);
+      }
+      if (tactic_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tactic);
+      }
+      if (tacticMapping_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TacticMapping);
+      }
+      if (players_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Players);
+      }
+      if (playerFootballerMappings_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PlayerFootballerMappings);
+      }
+      if (readyForGame_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReadyForGame);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -503,6 +643,42 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
           KickPlayer = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.KickPlayer();
         }
         KickPlayer.MergeFrom(other.KickPlayer);
+      }
+      if (other.team_ != null) {
+        if (team_ == null) {
+          Team = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team();
+        }
+        Team.MergeFrom(other.Team);
+      }
+      if (other.tactic_ != null) {
+        if (tactic_ == null) {
+          Tactic = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic();
+        }
+        Tactic.MergeFrom(other.Tactic);
+      }
+      if (other.tacticMapping_ != null) {
+        if (tacticMapping_ == null) {
+          TacticMapping = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping();
+        }
+        TacticMapping.MergeFrom(other.TacticMapping);
+      }
+      if (other.players_ != null) {
+        if (players_ == null) {
+          Players = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players();
+        }
+        Players.MergeFrom(other.Players);
+      }
+      if (other.playerFootballerMappings_ != null) {
+        if (playerFootballerMappings_ == null) {
+          PlayerFootballerMappings = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings();
+        }
+        PlayerFootballerMappings.MergeFrom(other.PlayerFootballerMappings);
+      }
+      if (other.readyForGame_ != null) {
+        if (readyForGame_ == null) {
+          ReadyForGame = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame();
+        }
+        ReadyForGame.MergeFrom(other.ReadyForGame);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -587,6 +763,48 @@ namespace Com.CatAndDogStudio.GeometricFootball.Protocol {
               KickPlayer = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.KickPlayer();
             }
             input.ReadMessage(KickPlayer);
+            break;
+          }
+          case 98: {
+            if (team_ == null) {
+              Team = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Team();
+            }
+            input.ReadMessage(Team);
+            break;
+          }
+          case 106: {
+            if (tactic_ == null) {
+              Tactic = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Tactic();
+            }
+            input.ReadMessage(Tactic);
+            break;
+          }
+          case 114: {
+            if (tacticMapping_ == null) {
+              TacticMapping = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.TacticMapping();
+            }
+            input.ReadMessage(TacticMapping);
+            break;
+          }
+          case 122: {
+            if (players_ == null) {
+              Players = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.Players();
+            }
+            input.ReadMessage(Players);
+            break;
+          }
+          case 130: {
+            if (playerFootballerMappings_ == null) {
+              PlayerFootballerMappings = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.PlayerFootballerMappings();
+            }
+            input.ReadMessage(PlayerFootballerMappings);
+            break;
+          }
+          case 138: {
+            if (readyForGame_ == null) {
+              ReadyForGame = new global::Com.CatAndDogStudio.GeometricFootball.Protocol.ReadyForGame();
+            }
+            input.ReadMessage(ReadyForGame);
             break;
           }
         }

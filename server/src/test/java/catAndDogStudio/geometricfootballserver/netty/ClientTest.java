@@ -4,8 +4,8 @@ import catAndDogStudio.geometricfootballserver.TestConstants;
 import catAndDogStudio.geometricfootballserver.infrastructure.ServerState;
 import catAndDogStudio.geometricfootballserver.mocks.MockFactory;
 import catAndDogStudio.geometricfootballserver.netty.infrastructure.NettyTestClient;
-import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballRequest;
 import com.cat_and_dog_studio.geometric_football.protocol.GeometricFootballResponse;
+import com.cat_and_dog_studio.geometric_football.protocol.Model;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;
@@ -150,12 +150,12 @@ public class ClientTest {
         nettyTestClientTwo.send(mockFactory.hostGame("kotekMaskotek", "Gra java-kotka","green"));
         nettyTestClientTwo.receive();
 
-        nettyTestClient.send(mockFactory.getPlayers(GeometricFootballRequest.GetPlayersMode.GAME_HOSTS));
+        nettyTestClient.send(mockFactory.getPlayers(Model.GetPlayersMode.GAME_HOSTS));
         final GeometricFootballResponse.Response hostsResponse = nettyTestClient.receive();
         assertThat(hostsResponse).isEqualTo(GeometricFootballResponse.Response.newBuilder()
                 .setType(GeometricFootballResponse.ResponseType.GET_PLAYERS)
                 .setGetPlayers(GeometricFootballResponse.GetPlayersResponse.newBuilder()
-                        .setMode(GeometricFootballResponse.GetPlayersMode.GAME_HOSTS)
+                        .setMode(Model.GetPlayersMode.GAME_HOSTS)
                         .addPlayerData(0, GeometricFootballResponse.PlayerData.newBuilder()
                                 .setColor("green")
                                 .setName("kotekMaskotek")
@@ -163,12 +163,12 @@ public class ClientTest {
                         .build())
                 .build());
 
-        nettyTestClientTwo.send(mockFactory.getPlayers(GeometricFootballRequest.GetPlayersMode.WAITING_FOR_GAMES));
+        nettyTestClientTwo.send(mockFactory.getPlayers(Model.GetPlayersMode.WAITING_FOR_GAMES));
         final GeometricFootballResponse.Response waitingForGamesResponse = nettyTestClientTwo.receive();
         assertThat(waitingForGamesResponse).isEqualTo(GeometricFootballResponse.Response.newBuilder()
                 .setType(GeometricFootballResponse.ResponseType.GET_PLAYERS)
                 .setGetPlayers(GeometricFootballResponse.GetPlayersResponse.newBuilder()
-                        .setMode(GeometricFootballResponse.GetPlayersMode.WAITING_FOR_GAMES)
+                        .setMode(Model.GetPlayersMode.WAITING_FOR_GAMES)
                         .addPlayerData(0, GeometricFootballResponse.PlayerData.newBuilder()
                                 .setColor("różowy")
                                 .setName("javaKotek")
