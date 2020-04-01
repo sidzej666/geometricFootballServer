@@ -100,7 +100,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                                 invitationResult(GeometricFootballResponse.InvitationResult.ACCEPTED, invitation.get()));
                         game.getPlayersInTeam().values().stream()
                                 .forEach(g -> sendMessage(g.getChannel(), g, teamInfo));
-                        //TODO: remove all invitations and send to hosts that this player rejects other invitations
+                        invitationService.removePendingGuestInvitationsAndInformHosts(invitedPlayer.get());
                         break;
                 }
                 break;
@@ -165,7 +165,7 @@ public class TeamInvitationHandler extends BaseMessageHandler {
                         sendMessage(channel, game, invitationAccepted);
                         hostGame.getPlayersInTeam().values().stream()
                                 .forEach(g -> sendMessage(g.getChannel(), g, teamInfo));
-                        //TODO: remove all invitations and send that this player had rejected invitations
+                        invitationService.removePendingGuestInvitationsAndInformHosts(game);
                         break;
                     case REJECT:
                         if (!hostInvitation.isPresent() || !guestInvitation.isPresent()) {

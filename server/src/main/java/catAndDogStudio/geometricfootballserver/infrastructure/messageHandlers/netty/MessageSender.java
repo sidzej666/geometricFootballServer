@@ -12,15 +12,21 @@ import java.util.Objects;
 public class MessageSender {
     protected final void sendMessage(final Channel channel, final Game game,
                                      final GeometricFootballResponse.Response response) {
+        sendMessage(channel, game.getOwnerName(), response);
+    }
+
+    protected final void sendMessage(final Channel channel, final String gameOwner,
+                                     final GeometricFootballResponse.Response response) {
         try {
             doWrite(channel, response);
-            log.debug("{} message sent to {}, message: {}", this.getClass().getSimpleName(), game.getOwnerName(), response);
+            log.debug("{} message sent to {}, message: {}", this.getClass().getSimpleName(), gameOwner, response);
         } catch (Exception e){
             log.error("Error while sending message in {}, receiver {}, message {}" , this.getClass().getName(),
-                    game.getOwnerName(), response);
+                    gameOwner, response);
             log.error("Details: ", e);
         }
     }
+
     private void doWrite(final Channel channel, final GeometricFootballResponse.Response response)
             throws IOException {
         if (Objects.isNull(response) || Objects.isNull(response)) {

@@ -48,6 +48,28 @@ public class InvitationService extends BaseMessageHandler {
         }
     }
 
+    public void removePendingGuestInvitationsAndInformHosts(final Game guest) {
+        guest.getInvitations().stream()
+                .forEach(i -> informInvitatorAboutRejectionAndClearInvitation(i));
+        guest.getInvitations().clear();
+    }
+    
+    private void informInvitatorAboutRejectionAndClearInvitation(final Invitation invitation) {
+        final Optional<Game> invitator = serverState.findHostPlayer(invitation.getInvitator());
+        if (!invitator.isPresent()) {
+            return;
+        }
+        final Game invitatorGame = invitator.get();
+        final Optional<Invitation> playerInviation = invitatorGame.getInvitations().stream()
+                .filter(i -> i.getInvitedPlayer().equals(invitation.getInvitedPlayer()))
+                .findFirst();
+        if (playerInviation.isPresent()) {
+            invitatorGame.getInvitations().remove(playerInviation.get());
+        }
+        sendMessage(invitatorGame.getChannel(), invitatorGame,
+                rejectedByPlayer("rejected by player", invitation.getInvitedPlayer()));
+    }
+
     public Optional<Invitation> findGuestInvitation(final List<Invitation> invitations,
                                                      final String gameHostName) {
         return invitations.stream()
