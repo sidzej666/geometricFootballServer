@@ -1,5 +1,7 @@
 # geometricFootballServer
 
+screenshots from Geometric Football game
+
 ![image](https://github.com/sidzej666/geometricFootballServer/assets/5081130/2372b193-0c17-4ff1-aa8f-ecdf41d7682e)
 ![image](https://github.com/sidzej666/geometricFootballServer/assets/5081130/d9df56bc-a08c-4be0-b177-c12d7fe0e832)
 ![image](https://github.com/sidzej666/geometricFootballServer/assets/5081130/f86715d5-6e13-4bec-8a36-fcdc9304221f)
